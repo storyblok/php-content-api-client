@@ -11,11 +11,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Tests\Unit\Domain\Value;
+namespace Storyblok\Api\Tests\Unit\Domain\Value;
 
 use PHPUnit\Framework\TestCase;
-use SensioLabs\Storyblok\Api\Domain\Value\Space;
-use SensioLabs\Storyblok\Api\Tests\Util\FakerTrait;
+use Storyblok\Api\Domain\Value\Space;
+use Storyblok\Api\Tests\Util\FakerTrait;
 
 /**
  * @author Silas Joisten <silasjoisten@proton.me>

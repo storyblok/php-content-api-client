@@ -11,12 +11,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Tests\Unit\Domain\Value\Tag;
+namespace Storyblok\Api\Tests\Unit\Domain\Value\Tag;
 
 use PHPUnit\Framework\TestCase;
-use SensioLabs\Storyblok\Api\Domain\Value\Tag\Tag;
-use SensioLabs\Storyblok\Api\Domain\Value\Tag\TagCollection;
-use SensioLabs\Storyblok\Api\Tests\Util\FakerTrait;
+use Storyblok\Api\Domain\Value\Tag\Tag;
+use Storyblok\Api\Domain\Value\Tag\TagCollection;
+use Storyblok\Api\Tests\Util\FakerTrait;
 
 /**
  * @author Silas Joisten <silasjoisten@proton.me>

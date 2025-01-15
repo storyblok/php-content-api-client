@@ -11,16 +11,16 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Tests\Unit\Domain\Value\Filter;
+namespace Storyblok\Api\Tests\Unit\Domain\Value\Filter;
 
 use PHPUnit\Framework\TestCase;
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\FilterCollection;
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\GreaterThanIntFilter;
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\IsFilter;
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\LikeFilter;
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Operation;
-use SensioLabs\Storyblok\Api\Exception\FilterCanNotBeUsedMultipleTimes;
-use SensioLabs\Storyblok\Api\Tests\Util\FakerTrait;
+use Storyblok\Api\Domain\Value\Filter\FilterCollection;
+use Storyblok\Api\Domain\Value\Filter\Filters\GreaterThanIntFilter;
+use Storyblok\Api\Domain\Value\Filter\Filters\IsFilter;
+use Storyblok\Api\Domain\Value\Filter\Filters\LikeFilter;
+use Storyblok\Api\Domain\Value\Filter\Operation;
+use Storyblok\Api\Exception\FilterCanNotBeUsedMultipleTimes;
+use Storyblok\Api\Tests\Util\FakerTrait;
 
 /**
  * @author Silas Joisten <silasjoisten@proton.me>

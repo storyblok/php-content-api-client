@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Bridge\HttpClient;
+namespace Storyblok\Api\Bridge\HttpClient;
 
 use Symfony\Component\HttpClient\HttpClientTrait;
 use Webmozart\Assert\Assert;

@@ -1,7 +1,7 @@
 {
-    "name": "sensiolabs-de/storyblok-api",
+    "name": "storyblok/storyblok-api",
     "type": "library",
-    "description": "API for Storyblok",
+    "description": "PHP Client for Storyblok Content API",
     "license": "MIT",
     "authors": [
         {
@@ -48,12 +48,12 @@
     },
     "autoload": {
         "psr-4": {
-            "SensioLabs\\Storyblok\\Api\\": "src/"
+            "Storyblok\\Api\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "SensioLabs\\Storyblok\\Api\\Tests\\": "tests/"
+            "Storyblok\\Api\\Tests\\": "tests/"
         }
     },
     "minimum-stability": "stable"

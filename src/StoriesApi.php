@@ -11,15 +11,15 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api;
+namespace Storyblok\Api;
 
-use SensioLabs\Storyblok\Api\Domain\Value\Dto\Version;
-use SensioLabs\Storyblok\Api\Domain\Value\Id;
-use SensioLabs\Storyblok\Api\Domain\Value\Total;
-use SensioLabs\Storyblok\Api\Domain\Value\Uuid;
-use SensioLabs\Storyblok\Api\Request\StoriesRequest;
-use SensioLabs\Storyblok\Api\Response\StoriesResponse;
-use SensioLabs\Storyblok\Api\Response\StoryResponse;
+use Storyblok\Api\Domain\Value\Dto\Version;
+use Storyblok\Api\Domain\Value\Id;
+use Storyblok\Api\Domain\Value\Total;
+use Storyblok\Api\Domain\Value\Uuid;
+use Storyblok\Api\Request\StoriesRequest;
+use Storyblok\Api\Response\StoriesResponse;
+use Storyblok\Api\Response\StoryResponse;
 use Webmozart\Assert\Assert;
 
 /**

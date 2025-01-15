@@ -11,10 +11,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Domain\Value\Filter;
+namespace Storyblok\Api\Domain\Value\Filter;
 
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\Filter;
-use SensioLabs\Storyblok\Api\Exception\FilterCanNotBeUsedMultipleTimes;
+use Storyblok\Api\Domain\Value\Filter\Filters\Filter;
+use Storyblok\Api\Exception\FilterCanNotBeUsedMultipleTimes;
 
 /**
  * @author Silas Joisten <silasjoisten@proton.me>

@@ -11,11 +11,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Bridge\Faker;
+namespace Storyblok\Api\Bridge\Faker;
 
 use Faker\Factory;
 use Faker\Generator as BaseGenerator;
-use SensioLabs\Storyblok\Api\Bridge\Faker\Provider\StoryblokProvider;
+use Storyblok\Api\Bridge\Faker\Provider\StoryblokProvider;
 
 /**
  * @author Silas Joisten <silasjoisten@proton.me>

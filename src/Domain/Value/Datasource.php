@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Domain\Value;
+namespace Storyblok\Api\Domain\Value;
 
 use OskarStark\Value\TrimmedNonEmptyString;
 use Webmozart\Assert\Assert;

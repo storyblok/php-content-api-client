@@ -1,5 +1,5 @@
 {
-    "name": "storyblok/storyblok-api",
+    "name": "storyblok/php-content-api-client",
     "type": "library",
     "description": "PHP Client for Storyblok Content API",
     "license": "MIT",

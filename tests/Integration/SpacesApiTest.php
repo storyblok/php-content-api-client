@@ -11,14 +11,14 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Tests\Integration;
+namespace Storyblok\Api\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use SensioLabs\Storyblok\Api\Domain\Value\Space;
-use SensioLabs\Storyblok\Api\Response\SpaceResponse;
-use SensioLabs\Storyblok\Api\SpacesApi;
-use SensioLabs\Storyblok\Api\StoryblokClient;
-use SensioLabs\Storyblok\Api\Tests\Util\FakerTrait;
+use Storyblok\Api\Domain\Value\Space;
+use Storyblok\Api\Response\SpaceResponse;
+use Storyblok\Api\SpacesApi;
+use Storyblok\Api\StoryblokClient;
+use Storyblok\Api\Tests\Util\FakerTrait;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\JsonMockResponse;
 

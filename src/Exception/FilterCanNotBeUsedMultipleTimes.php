@@ -11,9 +11,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Exception;
+namespace Storyblok\Api\Exception;
 
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\Filter;
+use Storyblok\Api\Domain\Value\Filter\Filters\Filter;
 
 /**
  * @author Silas Joisten <silasjoisten@proton.me>

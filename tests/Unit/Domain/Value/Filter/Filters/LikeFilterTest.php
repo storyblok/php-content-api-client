@@ -11,11 +11,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Tests\Unit\Domain\Value\Filter\Filters;
+namespace Storyblok\Api\Tests\Unit\Domain\Value\Filter\Filters;
 
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\LikeFilter;
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Operation;
-use SensioLabs\Storyblok\Api\Tests\Unit\Domain\Value\Filter\FilterTestCase;
+use Storyblok\Api\Domain\Value\Filter\Filters\LikeFilter;
+use Storyblok\Api\Domain\Value\Filter\Operation;
+use Storyblok\Api\Tests\Unit\Domain\Value\Filter\FilterTestCase;
 
 /**
  * @author Silas Joisten <silasjoisten@proton.me>

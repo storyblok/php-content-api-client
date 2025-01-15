@@ -11,10 +11,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Request;
+namespace Storyblok\Api\Request;
 
-use SensioLabs\Storyblok\Api\Domain\Value\Dto\Pagination;
-use SensioLabs\Storyblok\Api\Domain\Value\Dto\Version;
+use Storyblok\Api\Domain\Value\Dto\Pagination;
+use Storyblok\Api\Domain\Value\Dto\Version;
 use Webmozart\Assert\Assert;
 
 /**

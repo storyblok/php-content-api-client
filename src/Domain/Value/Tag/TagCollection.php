@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Domain\Value\Tag;
+namespace Storyblok\Api\Domain\Value\Tag;
 
 /**
  * @author Silas Joisten <silasjoisten@proton.me>

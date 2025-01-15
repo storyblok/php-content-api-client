@@ -11,9 +11,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters;
+namespace Storyblok\Api\Domain\Value\Filter\Filters;
 
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Operation;
+use Storyblok\Api\Domain\Value\Filter\Operation;
 use Webmozart\Assert\Assert;
 
 /**

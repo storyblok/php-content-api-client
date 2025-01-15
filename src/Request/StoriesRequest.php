@@ -11,15 +11,15 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Request;
+namespace Storyblok\Api\Request;
 
-use SensioLabs\Storyblok\Api\Domain\Value\Dto\Pagination;
-use SensioLabs\Storyblok\Api\Domain\Value\Dto\SortBy;
-use SensioLabs\Storyblok\Api\Domain\Value\Dto\Version;
-use SensioLabs\Storyblok\Api\Domain\Value\Field\FieldCollection;
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\FilterCollection;
-use SensioLabs\Storyblok\Api\Domain\Value\IdCollection;
-use SensioLabs\Storyblok\Api\Domain\Value\Tag\TagCollection;
+use Storyblok\Api\Domain\Value\Dto\Pagination;
+use Storyblok\Api\Domain\Value\Dto\SortBy;
+use Storyblok\Api\Domain\Value\Dto\Version;
+use Storyblok\Api\Domain\Value\Field\FieldCollection;
+use Storyblok\Api\Domain\Value\Filter\FilterCollection;
+use Storyblok\Api\Domain\Value\IdCollection;
+use Storyblok\Api\Domain\Value\Tag\TagCollection;
 use Webmozart\Assert\Assert;
 
 /**

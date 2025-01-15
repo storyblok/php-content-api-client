@@ -11,11 +11,11 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Tests\Integration;
+namespace Storyblok\Api\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use SensioLabs\Storyblok\Api\StoryblokClient;
-use SensioLabs\Storyblok\Api\Tests\Util\FakerTrait;
+use Storyblok\Api\StoryblokClient;
+use Storyblok\Api\Tests\Util\FakerTrait;
 use Symfony\Component\HttpClient\Response\MockResponse;
 use Symfony\Contracts\HttpClient\ResponseInterface;
 

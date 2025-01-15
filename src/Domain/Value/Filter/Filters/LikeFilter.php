@@ -11,10 +11,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters;
+namespace Storyblok\Api\Domain\Value\Filter\Filters;
 
 use OskarStark\Value\TrimmedNonEmptyString;
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Operation;
+use Storyblok\Api\Domain\Value\Filter\Operation;
 
 /**
  * @author Silas Joisten <silasjoisten@proton.me>

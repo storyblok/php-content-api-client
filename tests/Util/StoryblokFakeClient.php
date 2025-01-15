@@ -11,9 +11,9 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Tests\Util;
+namespace Storyblok\Api\Tests\Util;
 
-use SensioLabs\Storyblok\Api\StoryblokClientInterface;
+use Storyblok\Api\StoryblokClientInterface;
 use Symfony\Component\HttpClient\MockHttpClient;
 use Symfony\Component\HttpClient\Response\JsonMockResponse;
 use Symfony\Contracts\HttpClient\HttpClientInterface;

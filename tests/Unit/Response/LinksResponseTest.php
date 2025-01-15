@@ -11,13 +11,13 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Tests\Unit\Response;
+namespace Storyblok\Api\Tests\Unit\Response;
 
 use PHPUnit\Framework\TestCase;
-use SensioLabs\Storyblok\Api\Domain\Value\Dto\Pagination;
-use SensioLabs\Storyblok\Api\Domain\Value\Total;
-use SensioLabs\Storyblok\Api\Response\LinksResponse;
-use SensioLabs\Storyblok\Api\Tests\Util\FakerTrait;
+use Storyblok\Api\Domain\Value\Dto\Pagination;
+use Storyblok\Api\Domain\Value\Total;
+use Storyblok\Api\Response\LinksResponse;
+use Storyblok\Api\Tests\Util\FakerTrait;
 
 /**
  * @author Silas Joisten <silasjoisten@proton.me>

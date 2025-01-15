@@ -2,11 +2,11 @@
 
 | Branch    | PHP                                         | Code Coverage                                                                                                                                       |
 |-----------|---------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
-| `master`  | [![PHP](https://github.com/sensiolabs-de/storyblok-api/actions/workflows/ci.yaml/badge.svg)](https://github.com/sensiolabs-de/storyblok-api/actions/workflows/ci.yaml)  | [![codecov](https://codecov.io/gh/sensiolabs-de/storyblok-api/graph/badge.svg?token=8K4F33LSWF)](https://codecov.io/gh/sensiolabs-de/storyblok-api) |
+| `master`  | [![PHP](https://github.com/storyblok/php-content-api-client/actions/workflows/ci.yaml/badge.svg)](https://github.com/storyblok/php-content-api-client/actions/workflows/ci.yaml)  | [![codecov](https://codecov.io/gh/sensiolabs-de/storyblok-api/graph/badge.svg?token=8K4F33LSWF)](https://codecov.io/gh/sensiolabs-de/storyblok-api) |
 
 ## Symfony
 
-Use the symfony bundle [sensiolabs-de/storyblok-bundle](https://github.com/sensiolabs-de/storyblok-bundle) to integrate
+Use the symfony bundle [storyblok/storyblok-bundle](https://github.com/storyblok/storyblok-bundle) to integrate
 this library into your Symfony application.
 
 ## Usage
@@ -14,13 +14,13 @@ this library into your Symfony application.
 ### Installation
 
 ```bash
-composer require sensiolabs-de/storyblok-api
+composer require storyblok/php-content-api-client
 ```
 
 ### Setup
 
 ```php
-use SensioLabs\Storyblok\Api\StoryblokClient;
+use Storyblok\Api\StoryblokClient;
 
 $client = new StoryblokClient(
     baseUri: 'https://api.storyblok.com',
@@ -34,15 +34,15 @@ $client->request('GET', '/api/something', $options);
 
 ## Spaces
 
-In your code you should type-hint to `SensioLabs\Storyblok\Api\SpacesApiInterface`
+In your code you should type-hint to `Storyblok\Api\SpacesApiInterface`
 
 ### Get the current space
 
 Returns the space associated with the current token.
 
 ```php
-use SensioLabs\Storyblok\Api\SpacesApi;
-use SensioLabs\Storyblok\Api\StoryblokClient;
+use Storyblok\Api\SpacesApi;
+use Storyblok\Api\StoryblokClient;
 
 $client = new StoryblokClient(/* ... */);
 $spacesApi = new SpacesApi($client);
@@ -52,13 +52,13 @@ $response = $spacesApi->me();
 
 ## Stories
 
-In your code you should type-hint to `SensioLabs\Storyblok\Api\StoriesApiInterface`
+In your code you should type-hint to `Storyblok\Api\StoriesApiInterface`
 
 ### Get all available stories
 
 ```php
-use SensioLabs\Storyblok\Api\StoriesApi;
-use SensioLabs\Storyblok\Api\StoryblokClient;
+use Storyblok\Api\StoriesApi;
+use Storyblok\Api\StoryblokClient;
 
 $client = new StoryblokClient(/* ... */);
 
@@ -71,9 +71,9 @@ $response = $storiesApi->all(locale: 'de');
 #### Global
 
 ```php
-use SensioLabs\Storyblok\Api\StoriesApi;
-use SensioLabs\Storyblok\Api\StoryblokClient;
-use SensioLabs\Storyblok\Api\Domain\Value\Dto\Version;
+use Storyblok\Api\StoriesApi;
+use Storyblok\Api\StoryblokClient;
+use Storyblok\Api\Domain\Value\Dto\Version;
 
 $client = new StoryblokClient(/* ... */);
 
@@ -87,9 +87,9 @@ $response = $storiesApi->bySlug(
 #### Method Call
 
 ```php
-use SensioLabs\Storyblok\Api\StoriesApi;
-use SensioLabs\Storyblok\Api\StoryblokClient;
-use SensioLabs\Storyblok\Api\Domain\Value\Dto\Version;
+use Storyblok\Api\StoriesApi;
+use Storyblok\Api\StoryblokClient;
+use Storyblok\Api\Domain\Value\Dto\Version;
 
 $client = new StoryblokClient(/* ... */);
 
@@ -104,9 +104,9 @@ $response = $storiesApi->bySlug(
 ### Pagination
 
 ```php
-use SensioLabs\Storyblok\Api\StoriesApi;
-use SensioLabs\Storyblok\Api\StoryblokClient;
-use SensioLabs\Storyblok\Api\Domain\Value\Dto\Pagination;
+use Storyblok\Api\StoriesApi;
+use Storyblok\Api\StoryblokClient;
+use Storyblok\Api\Domain\Value\Dto\Pagination;
 
 $client = new StoryblokClient(/* ... */);
 
@@ -120,10 +120,10 @@ $response = $storiesApi->all(
 #### Sorting
 
 ```php
-use SensioLabs\Storyblok\Api\StoriesApi;
-use SensioLabs\Storyblok\Api\StoryblokClient;
-use SensioLabs\Storyblok\Api\Domain\Value\Dto\SortBy;
-use SensioLabs\Storyblok\Api\Domain\Value\Dto\Direction;
+use Storyblok\Api\StoriesApi;
+use Storyblok\Api\StoryblokClient;
+use Storyblok\Api\Domain\Value\Dto\SortBy;
+use Storyblok\Api\Domain\Value\Dto\Direction;
 
 $client = new StoryblokClient(/* ... */);
 
@@ -137,11 +137,11 @@ $response = $storiesApi->all(
 #### Filtering
 
 ```php
-use SensioLabs\Storyblok\Api\StoriesApi;
-use SensioLabs\Storyblok\Api\StoryblokClient;
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\FilterCollection;
-use SensioLabs\Storyblok\Api\Domain\Value\Dto\Direction;
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\InFilter;
+use Storyblok\Api\StoriesApi;
+use Storyblok\Api\StoryblokClient;
+use Storyblok\Api\Domain\Value\Filter\FilterCollection;
+use Storyblok\Api\Domain\Value\Dto\Direction;
+use Storyblok\Api\Domain\Value\Filter\Filters\InFilter;
 
 $client = new StoryblokClient(/* ... */);
 
@@ -160,7 +160,7 @@ $response = $storiesApi->all(
 
 Example:
 ```php
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\AllInArrayFilter;
+use Storyblok\Api\Domain\Value\Filter\Filters\AllInArrayFilter;
 
 new AllInArrayFilter(field: 'tags', value: ['foo', 'bar', 'baz']);
 ```
@@ -169,7 +169,7 @@ new AllInArrayFilter(field: 'tags', value: ['foo', 'bar', 'baz']);
 
 Example:
 ```php
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\AnyInArrayFilter;
+use Storyblok\Api\Domain\Value\Filter\Filters\AnyInArrayFilter;
 
 new AnyInArrayFilter(field: 'tags', value: ['foo', 'bar', 'baz']);
 ```
@@ -178,7 +178,7 @@ new AnyInArrayFilter(field: 'tags', value: ['foo', 'bar', 'baz']);
 
 Example:
 ```php
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\GreaterThanDateFilter;
+use Storyblok\Api\Domain\Value\Filter\Filters\GreaterThanDateFilter;
 
 new GreaterThanDateFilter(field: 'created_at', value: new \DateTimeImmutable());
 ```
@@ -187,7 +187,7 @@ new GreaterThanDateFilter(field: 'created_at', value: new \DateTimeImmutable());
 
 Example:
 ```php
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\LessThanDateFilter;
+use Storyblok\Api\Domain\Value\Filter\Filters\LessThanDateFilter;
 
 new LessThanDateFilter(field: 'created_at', value: new \DateTimeImmutable());
 ```
@@ -196,7 +196,7 @@ new LessThanDateFilter(field: 'created_at', value: new \DateTimeImmutable());
 
 Example:
 ```php
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\GreaterThanFloatFilter;
+use Storyblok\Api\Domain\Value\Filter\Filters\GreaterThanFloatFilter;
 
 new GreaterThanFloatFilter(field: 'price', value: 39.99);
 ```
@@ -205,7 +205,7 @@ new GreaterThanFloatFilter(field: 'price', value: 39.99);
 
 Example:
 ```php
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\LessThanFloatFilter;
+use Storyblok\Api\Domain\Value\Filter\Filters\LessThanFloatFilter;
 
 new LessThanFloatFilter(field: 'price', value: 199.99);
 ```
@@ -214,7 +214,7 @@ new LessThanFloatFilter(field: 'price', value: 199.99);
 
 Example:
 ```php
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\GreaterThanIntFilter;
+use Storyblok\Api\Domain\Value\Filter\Filters\GreaterThanIntFilter;
 
 new GreaterThanIntFilter(field: 'stock', value: 0);
 ```
@@ -223,7 +223,7 @@ new GreaterThanIntFilter(field: 'stock', value: 0);
 
 Example:
 ```php
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\LessThanIntFilter;
+use Storyblok\Api\Domain\Value\Filter\Filters\LessThanIntFilter;
 
 new LessThanIntFilter(field: 'stock', value: 100);
 ```
@@ -232,7 +232,7 @@ new LessThanIntFilter(field: 'stock', value: 100);
 
 Example:
 ```php
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\InFilter;
+use Storyblok\Api\Domain\Value\Filter\Filters\InFilter;
 
 new InFilter(field: 'text', value: 'Hello World!');
 // or
@@ -243,7 +243,7 @@ new InFilter(field: 'text', value: ['Hello Symfony!', 'Hello SensioLabs!']);
 
 Example:
 ```php
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\NotInFilter;
+use Storyblok\Api\Domain\Value\Filter\Filters\NotInFilter;
 
 new NotInFilter(field: 'text', value: 'Hello World!');
 // or
@@ -254,7 +254,7 @@ new NotInFilter(field: 'text', value: ['Bye Symfony!', 'Bye SensioLabs!']);
 
 Example:
 ```php
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\IsFilter;
+use Storyblok\Api\Domain\Value\Filter\Filters\IsFilter;
 
 // You can use one of the following constants:
 // IsFilter::EMPTY_ARRAY
@@ -273,7 +273,7 @@ new IsFilter(field: 'text', value: IsFilter::EMPTY);
 
 Example:
 ```php
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\LikeFilter;
+use Storyblok\Api\Domain\Value\Filter\Filters\LikeFilter;
 
 new LikeFilter(field: 'description', value: '*I love Symfony*');
 ```
@@ -282,7 +282,7 @@ new LikeFilter(field: 'description', value: '*I love Symfony*');
 
 Example:
 ```php
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\NotLikeFilter;
+use Storyblok\Api\Domain\Value\Filter\Filters\NotLikeFilter;
 
 new NotLikeFilter(field: 'description', value: '*Text*');
 ```
@@ -291,9 +291,9 @@ new NotLikeFilter(field: 'description', value: '*Text*');
 
 Example:
 ```php
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\OrFilter;
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\LikeFilter;
-use SensioLabs\Storyblok\Api\Domain\Value\Filter\Filters\NotLikeFilter;
+use Storyblok\Api\Domain\Value\Filter\Filters\OrFilter;
+use Storyblok\Api\Domain\Value\Filter\Filters\LikeFilter;
+use Storyblok\Api\Domain\Value\Filter\Filters\NotLikeFilter;
 
 new OrFilter(
     new LikeFilter(field: 'text', value: 'Yes!*'),
@@ -305,8 +305,8 @@ new OrFilter(
 ### Get all available stories by Content Type (`string`)
 
 ```php
-use SensioLabs\Storyblok\Api\StoriesApi;
-use SensioLabs\Storyblok\Api\StoryblokClient;
+use Storyblok\Api\StoriesApi;
+use Storyblok\Api\StoryblokClient;
 
 $client = new StoryblokClient(/* ... */);
 
@@ -314,12 +314,12 @@ $storiesApi = new StoriesApi($client);
 $response = $storiesApi->allByContentType('custom_content_type', locale: 'de');
 ```
 
-### Get by uuid (`SensioLabs\Storyblok\Api\Domain\Value\Uuid`)
+### Get by uuid (`Storyblok\Api\Domain\Value\Uuid`)
 
 ```php
-use SensioLabs\Storyblok\Api\StoriesApi;
-use SensioLabs\Storyblok\Api\StoryblokClient;
-use SensioLabs\Storyblok\Api\Domain\Value\Uuid;
+use Storyblok\Api\StoriesApi;
+use Storyblok\Api\StoryblokClient;
+use Storyblok\Api\Domain\Value\Uuid;
 
 $uuid = new Uuid(/** ... */);
 
@@ -332,8 +332,8 @@ $response = $storiesApi->byUuid($uuid, locale: 'de');
 ### Get by slug (`string`)
 
 ```php
-use SensioLabs\Storyblok\Api\StoriesApi;
-use SensioLabs\Storyblok\Api\StoryblokClient;
+use Storyblok\Api\StoriesApi;
+use Storyblok\Api\StoryblokClient;
 
 $client = new StoryblokClient(/* ... */);
 
@@ -342,12 +342,12 @@ $response = $storiesApi->bySlug('folder/slug', locale: 'de');
 ```
 
 
-### Get by id (`SensioLabs\Storyblok\Api\Domain\Value\Id`)
+### Get by id (`Storyblok\Api\Domain\Value\Id`)
 
 ```php
-use SensioLabs\Storyblok\Api\StoriesApi;
-use SensioLabs\Storyblok\Api\StoryblokClient;
-use SensioLabs\Storyblok\Api\Domain\Value\Id;
+use Storyblok\Api\StoriesApi;
+use Storyblok\Api\StoryblokClient;
+use Storyblok\Api\Domain\Value\Id;
 
 $id = new Id(/** ... */);
 
@@ -360,13 +360,13 @@ $response = $storiesApi->byId($id, locale: 'de');
 
 ## Links
 
-In your code you should type-hint to `SensioLabs\Storyblok\Api\LinksApiInterface`
+In your code you should type-hint to `Storyblok\Api\LinksApiInterface`
 
 ### Get all available links
 
 ```php
-use SensioLabs\Storyblok\Api\LinksApi;
-use SensioLabs\Storyblok\Api\StoryblokClient;
+use Storyblok\Api\LinksApi;
+use Storyblok\Api\StoryblokClient;
 
 $client = new StoryblokClient(/* ... */);
 
@@ -377,9 +377,9 @@ $response = $linksApi->all();
 ### Pagination
 
 ```php
-use SensioLabs\Storyblok\Api\LinksApi;
-use SensioLabs\Storyblok\Api\StoryblokClient;
-use SensioLabs\Storyblok\Api\Domain\Value\Dto\Pagination;
+use Storyblok\Api\LinksApi;
+use Storyblok\Api\StoryblokClient;
+use Storyblok\Api\Domain\Value\Dto\Pagination;
 
 $client = new StoryblokClient(/* ... */);
 
@@ -389,12 +389,12 @@ $response = $linksApi->all(
 );
 ```
 
-### Get by parent (`SensioLabs\Storyblok\Api\Domain\Value\Id`)
+### Get by parent (`Storyblok\Api\Domain\Value\Id`)
 
 ```php
-use SensioLabs\Storyblok\Api\LinksApi;
-use SensioLabs\Storyblok\Api\StoryblokClient;
-use SensioLabs\Storyblok\Api\Domain\Value\Id;
+use Storyblok\Api\LinksApi;
+use Storyblok\Api\StoryblokClient;
+use Storyblok\Api\Domain\Value\Id;
 
 $id = new Id(/** ... */);
 
@@ -407,8 +407,8 @@ $response = $linksApi->byParent($id);
 ### Get all root links
 
 ```php
-use SensioLabs\Storyblok\Api\LinksApi;
-use SensioLabs\Storyblok\Api\StoryblokClient;
+use Storyblok\Api\LinksApi;
+use Storyblok\Api\StoryblokClient;
 
 $client = new StoryblokClient(/* ... */);
 
@@ -419,47 +419,47 @@ $response = $linksApi->roots($id);
 
 ## Datasource
 
-In your code you should type-hint to `SensioLabs\Storyblok\Api\DatasourceApiInterface`
+In your code you should type-hint to `Storyblok\Api\DatasourceApiInterface`
 
 ### Get by name (`string`)
 
 ```php
-use SensioLabs\Storyblok\Api\DatasourceApi;
-use SensioLabs\Storyblok\Api\StoryblokClient;
+use Storyblok\Api\DatasourceApi;
+use Storyblok\Api\StoryblokClient;
 
 $client = new StoryblokClient(/* ... */);
 
 $api = new DatasourceApi($client);
-$response = $api->byName('tags'); // returns SensioLabs\Storyblok\Api\Domain\Value\Datasource
+$response = $api->byName('tags'); // returns Storyblok\Api\Domain\Value\Datasource
 ```
 
 If it has more than one dimension, you can get the entries by
 
 ```php
-use SensioLabs\Storyblok\Api\DatasourceApi;
-use SensioLabs\Storyblok\Api\StoryblokClient;
-use SensioLabs\Storyblok\Api\Domain\Value\Datasource\Dimension;
+use Storyblok\Api\DatasourceApi;
+use Storyblok\Api\StoryblokClient;
+use Storyblok\Api\Domain\Value\Datasource\Dimension;
 
 $client = new StoryblokClient(/* ... */);
 
 $api = new DatasourceApi($client);
-$response = $api->byName('tags', new Dimension('de')); // returns SensioLabs\Storyblok\Api\Domain\Value\Datasource
+$response = $api->byName('tags', new Dimension('de')); // returns Storyblok\Api\Domain\Value\Datasource
 ```
 
 ## Tags
 
-In your code you should type-hint to `SensioLabs\Storyblok\Api\TagsApiInterface`
+In your code you should type-hint to `Storyblok\Api\TagsApiInterface`
 
 ### Get all available tags
 
 ```php
-use SensioLabs\Storyblok\Api\TagsApi;
-use SensioLabs\Storyblok\Api\StoryblokClient;
+use Storyblok\Api\TagsApi;
+use Storyblok\Api\StoryblokClient;
 
 $client = new StoryblokClient(/* ... */);
 
 $api = new TagsApi($client);
-$response = $api->all(); // returns SensioLabs\Storyblok\Api\Response\TagsResponse
+$response = $api->all(); // returns Storyblok\Api\Response\TagsResponse
 ```
 
 
@@ -468,8 +468,8 @@ $response = $api->all(); // returns SensioLabs\Storyblok\Api\Response\TagsRespon
 To use the assets API you have to configure the Assets client.
 
 ```php
-use SensioLabs\Storyblok\Api\StoryblokClient;
-use SensioLabs\Storyblok\Api\AssetsApi;
+use Storyblok\Api\StoryblokClient;
+use Storyblok\Api\AssetsApi;
 
 $client = new StoryblokClient(
     baseUri: 'https://api.storyblok.com',
@@ -500,7 +500,7 @@ declare(strict_types=1);
 namespace App\ContentType;
 
 use IteratorAggregate;
-use SensioLabs\Storyblok\Api\Response\StoriesResponse;
+use Storyblok\Api\Response\StoriesResponse;
 
 /**
  * @template T of ContentTypeInterface

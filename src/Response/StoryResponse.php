@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Response;
+namespace Storyblok\Api\Response;
 
 use Webmozart\Assert\Assert;
 

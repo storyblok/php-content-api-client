@@ -11,7 +11,7 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Bridge\Faker\Provider;
+namespace Storyblok\Api\Bridge\Faker\Provider;
 
 use Faker\Provider\Base as BaseProvider;
 use function Safe\array_replace_recursive;

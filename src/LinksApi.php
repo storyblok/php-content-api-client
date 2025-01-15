@@ -11,13 +11,13 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api;
+namespace Storyblok\Api;
 
-use SensioLabs\Storyblok\Api\Domain\Value\Dto\Version;
-use SensioLabs\Storyblok\Api\Domain\Value\Id;
-use SensioLabs\Storyblok\Api\Domain\Value\Total;
-use SensioLabs\Storyblok\Api\Request\LinksRequest;
-use SensioLabs\Storyblok\Api\Response\LinksResponse;
+use Storyblok\Api\Domain\Value\Dto\Version;
+use Storyblok\Api\Domain\Value\Id;
+use Storyblok\Api\Domain\Value\Total;
+use Storyblok\Api\Request\LinksRequest;
+use Storyblok\Api\Response\LinksResponse;
 
 /**
  * @author Silas Joisten <silasjoisten@proton.me>

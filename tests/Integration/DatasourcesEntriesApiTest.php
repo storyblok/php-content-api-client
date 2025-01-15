@@ -11,15 +11,15 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Tests\Integration;
+namespace Storyblok\Api\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use SensioLabs\Storyblok\Api\DatasourceEntriesApi;
-use SensioLabs\Storyblok\Api\Domain\Value\Dto\Pagination;
-use SensioLabs\Storyblok\Api\Request\DatasourceEntriesRequest;
-use SensioLabs\Storyblok\Api\Response\DatasourceEntriesResponse;
-use SensioLabs\Storyblok\Api\Tests\Util\FakerTrait;
-use SensioLabs\Storyblok\Api\Tests\Util\StoryblokFakeClient;
+use Storyblok\Api\DatasourceEntriesApi;
+use Storyblok\Api\Domain\Value\Dto\Pagination;
+use Storyblok\Api\Request\DatasourceEntriesRequest;
+use Storyblok\Api\Response\DatasourceEntriesResponse;
+use Storyblok\Api\Tests\Util\FakerTrait;
+use Storyblok\Api\Tests\Util\StoryblokFakeClient;
 
 /**
  * @author Silas Joisten <silasjoisten@proton.me>

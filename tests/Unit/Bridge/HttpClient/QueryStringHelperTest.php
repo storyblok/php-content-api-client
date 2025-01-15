@@ -11,10 +11,10 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Tests\Unit\Bridge\HttpClient;
+namespace Storyblok\Api\Tests\Unit\Bridge\HttpClient;
 
 use PHPUnit\Framework\TestCase;
-use SensioLabs\Storyblok\Api\Bridge\HttpClient\QueryStringHelper;
+use Storyblok\Api\Bridge\HttpClient\QueryStringHelper;
 
 /**
  * @author Silas Joisten <silasjoisten@proton.me>

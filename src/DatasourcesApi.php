@@ -11,12 +11,12 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api;
+namespace Storyblok\Api;
 
-use SensioLabs\Storyblok\Api\Domain\Value\Total;
-use SensioLabs\Storyblok\Api\Request\DatasourcesRequest;
-use SensioLabs\Storyblok\Api\Response\DatasourceResponse;
-use SensioLabs\Storyblok\Api\Response\DatasourcesResponse;
+use Storyblok\Api\Domain\Value\Total;
+use Storyblok\Api\Request\DatasourcesRequest;
+use Storyblok\Api\Response\DatasourceResponse;
+use Storyblok\Api\Response\DatasourcesResponse;
 use Webmozart\Assert\Assert;
 
 /**

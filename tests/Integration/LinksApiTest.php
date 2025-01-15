@@ -11,14 +11,14 @@ declare(strict_types=1);
  * file that was distributed with this source code.
  */
 
-namespace SensioLabs\Storyblok\Api\Tests\Integration;
+namespace Storyblok\Api\Tests\Integration;
 
 use PHPUnit\Framework\TestCase;
-use SensioLabs\Storyblok\Api\Domain\Value\Id;
-use SensioLabs\Storyblok\Api\LinksApi;
-use SensioLabs\Storyblok\Api\Response\LinksResponse;
-use SensioLabs\Storyblok\Api\Tests\Util\FakerTrait;
-use SensioLabs\Storyblok\Api\Tests\Util\StoryblokFakeClient;
+use Storyblok\Api\Domain\Value\Id;
+use Storyblok\Api\LinksApi;
+use Storyblok\Api\Response\LinksResponse;
+use Storyblok\Api\Tests\Util\FakerTrait;
+use Storyblok\Api\Tests\Util\StoryblokFakeClient;
 
 /**
  * @author Silas Joisten <silasjoisten@proton.me>

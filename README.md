@@ -1,7 +1,7 @@
 # storyblok-api
 
 > [!WARNING]
-> This Bundle is experimental and subject to change in a future release.
+> This Bundle is in the initial phase and subject to change in a future release.
 
 | Branch    | PHP                                         | Code Coverage                                                                                                                                       |
 |-----------|---------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|

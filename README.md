@@ -1,5 +1,8 @@
 # storyblok-api
 
+> [!WARNING]
+> This Bundle is in the initial phase and subject to change in a future release.
+
 | Branch    | PHP                                         | Code Coverage                                                                                                                                       |
 |-----------|---------------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------|
 | `master`  | [![PHP](https://github.com/storyblok/php-content-api-client/actions/workflows/ci.yaml/badge.svg)](https://github.com/storyblok/php-content-api-client/actions/workflows/ci.yaml)  | [![codecov](https://codecov.io/gh/sensiolabs-de/storyblok-api/graph/badge.svg?token=8K4F33LSWF)](https://codecov.io/gh/sensiolabs-de/storyblok-api) |

@@ -5,7 +5,7 @@
 
 | Branch    | PHP                                         | Code Coverage                                                                                                                                  |
 |-----------|---------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
-| `master`  | [![PHP](https://github.com/storyblok/php-content-api-client/actions/workflows/ci.yaml/badge.svg)](https://github.com/storyblok/php-content-api-client/actions/workflows/ci.yaml)  | [![codecov](https://codecov.io/gh/storyblok/php-content-api-client/graph/badge.svg)](https://codecov.io/gh/sensiolabs-de/storyblok-api) |
+| `master`  | [![PHP](https://github.com/storyblok/php-content-api-client/actions/workflows/ci.yaml/badge.svg)](https://github.com/storyblok/php-content-api-client/actions/workflows/ci.yaml)  | [![codecov](https://codecov.io/gh/storyblok/php-content-api-client/graph/badge.svg)](https://codecov.io/gh/storyblok/php-content-api-client) |
 
 ## Symfony
 

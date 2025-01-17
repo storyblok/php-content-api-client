@@ -15,6 +15,7 @@ namespace Storyblok\Api;
 
 use Storyblok\Api\Domain\Value\Dto\Version;
 use Storyblok\Api\Domain\Value\Id;
+use Storyblok\Api\Domain\Value\Resolver\RelationCollection;
 use Storyblok\Api\Domain\Value\Uuid;
 use Storyblok\Api\Request\StoriesRequest;
 use Storyblok\Api\Resolver\ResolverInterface;
@@ -91,9 +92,9 @@ final readonly class StoriesResolvedApi implements StoriesApiInterface
         );
     }
 
-    public function bySlug(string $slug, string $language = 'default', ?Version $version = null): StoryResponse
+    public function bySlug(string $slug, string $language = 'default', ?Version $version = null, ?RelationCollection $withRelations = null): StoryResponse
     {
-        $response = $this->storiesApi->bySlug($slug, $language, $version);
+        $response = $this->storiesApi->bySlug($slug, $language, $version, $withRelations);
 
         $story = $this->resolver->resolve($response->story, $response->rels);
 
@@ -105,9 +106,9 @@ final readonly class StoriesResolvedApi implements StoriesApiInterface
         ]);
     }
 
-    public function byUuid(Uuid $uuid, string $language = 'default', ?Version $version = null): StoryResponse
+    public function byUuid(Uuid $uuid, string $language = 'default', ?Version $version = null, ?RelationCollection $withRelations = null): StoryResponse
     {
-        $response = $this->storiesApi->byUuid($uuid, $language, $version);
+        $response = $this->storiesApi->byUuid($uuid, $language, $version, $withRelations);
 
         $story = $this->resolver->resolve($response->story, $response->rels);
 
@@ -119,9 +120,9 @@ final readonly class StoriesResolvedApi implements StoriesApiInterface
         ]);
     }
 
-    public function byId(Id $id, string $language = 'default', ?Version $version = null): StoryResponse
+    public function byId(Id $id, string $language = 'default', ?Version $version = null, ?RelationCollection $withRelations = null): StoryResponse
     {
-        $response = $this->storiesApi->byId($id, $language, $version);
+        $response = $this->storiesApi->byId($id, $language, $version, $withRelations);
 
         $story = $this->resolver->resolve($response->story, $response->rels);
 

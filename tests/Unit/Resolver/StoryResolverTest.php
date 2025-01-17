@@ -59,6 +59,46 @@ final class StoryResolverTest extends TestCase
     /**
      * @test
      */
+    public function resolveThrowsExceptionWhenUuidKeyDoesNotExist(): void
+    {
+        $resolver = new StoryResolver();
+
+        $faker = self::faker();
+
+        $reference = [
+            'id' => $faker->uuid(),
+            'name' => $faker->word(),
+            'another_field' => $faker->sentence(),
+        ];
+
+        self::expectException(\InvalidArgumentException::class);
+
+        $resolver->resolve(['name' => $faker->word()], [$reference]);
+    }
+
+    /**
+     * @test
+     */
+    public function resolveThrowsExceptionWhenUuidKeyContainsNoValidUuid(): void
+    {
+        $resolver = new StoryResolver();
+
+        $faker = self::faker();
+
+        $reference = [
+            'uuid' => $faker->word(),
+            'name' => $faker->word(),
+            'another_field' => $faker->sentence(),
+        ];
+
+        self::expectException(\InvalidArgumentException::class);
+
+        $resolver->resolve(['name' => $faker->word()], [$reference]);
+    }
+
+    /**
+     * @test
+     */
     public function resolveWithComplexStructure(): void
     {
         $resolver = new StoryResolver();

@@ -26,6 +26,7 @@ final readonly class StoryResolver implements ResolverInterface
 
         foreach ($relations as $relation) {
             Assert::keyExists($relation, 'uuid');
+            Assert::uuid($relation['uuid']);
             $relationMap[$relation['uuid']] = $relation;
         }
 

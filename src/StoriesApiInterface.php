@@ -13,10 +13,10 @@ declare(strict_types=1);
 
 namespace Storyblok\Api;
 
-use Storyblok\Api\Domain\Value\Dto\Version;
 use Storyblok\Api\Domain\Value\Id;
 use Storyblok\Api\Domain\Value\Uuid;
 use Storyblok\Api\Request\StoriesRequest;
+use Storyblok\Api\Request\StoryRequest;
 use Storyblok\Api\Response\StoriesResponse;
 use Storyblok\Api\Response\StoryResponse;
 
@@ -31,9 +31,9 @@ interface StoriesApiInterface
 
     public function allByContentType(string $contentType, ?StoriesRequest $request = null): StoriesResponse;
 
-    public function bySlug(string $slug, string $language = 'default', ?Version $version = null): StoryResponse;
+    public function bySlug(string $slug, ?StoryRequest $request = null): StoryResponse;
 
-    public function byUuid(Uuid $uuid, string $language = 'default', ?Version $version = null): StoryResponse;
+    public function byUuid(Uuid $uuid, ?StoryRequest $request = null): StoryResponse;
 
-    public function byId(Id $id, string $language = 'default', ?Version $version = null): StoryResponse;
+    public function byId(Id $id, ?StoryRequest $request = null): StoryResponse;
 }

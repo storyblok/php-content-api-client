@@ -14,6 +14,7 @@ declare(strict_types=1);
 namespace Storyblok\Api\Request;
 
 use Storyblok\Api\Domain\Value\Dto\Version;
+use Storyblok\Api\Domain\Value\Resolver\RelationCollection;
 use Webmozart\Assert\Assert;
 
 /**
@@ -24,6 +25,7 @@ final readonly class StoryRequest
     public function __construct(
         public string $language = 'default',
         public ?Version $version = null,
+        public ?RelationCollection $withRelations = null,
     ) {
         Assert::stringNotEmpty($language);
     }
@@ -32,6 +34,7 @@ final readonly class StoryRequest
      * @return array{
      *     language: string,
      *     version?: string,
+     *     resolve_relations?: string,
      * }
      */
     public function toArray(): array
@@ -42,6 +45,10 @@ final readonly class StoryRequest
 
         if (null !== $this->version) {
             $array['version'] = $this->version->value;
+        }
+
+        if (null !== $this->withRelations && $this->withRelations->count() > 0) {
+            $array['resolve_relations'] = $this->withRelations->toString();
         }
 
         return $array;

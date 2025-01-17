@@ -503,4 +503,13 @@ final class StoryblokProvider extends BaseProvider
             $overrides,
         );
     }
+
+    public function relation(): string
+    {
+        return \sprintf(
+            '%s.%s',
+            $this->generator->word(),
+            $this->generator->word(),
+        );
+    }
 }

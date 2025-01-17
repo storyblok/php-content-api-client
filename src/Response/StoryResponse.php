@@ -27,7 +27,7 @@ final readonly class StoryResponse
     public int $cv;
 
     /**
-     * @var list<array<mixed>>
+     * @var list<array<string, mixed>>
      */
     public array $rels;
 

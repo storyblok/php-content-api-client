@@ -29,7 +29,7 @@ final readonly class StoriesResponse
     public int $cv;
 
     /**
-     * @var list<string>
+     * @var list<array<string, mixed>>
      */
     public array $rels;
 

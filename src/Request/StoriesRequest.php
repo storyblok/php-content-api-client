@@ -19,6 +19,7 @@ use Storyblok\Api\Domain\Value\Dto\Version;
 use Storyblok\Api\Domain\Value\Field\FieldCollection;
 use Storyblok\Api\Domain\Value\Filter\FilterCollection;
 use Storyblok\Api\Domain\Value\IdCollection;
+use Storyblok\Api\Domain\Value\Resolver\RelationCollection;
 use Storyblok\Api\Domain\Value\Tag\TagCollection;
 use Webmozart\Assert\Assert;
 
@@ -38,6 +39,7 @@ final readonly class StoriesRequest
         public ?FieldCollection $excludeFields = null,
         public ?TagCollection $withTags = null,
         public ?IdCollection $excludeIds = null,
+        public ?RelationCollection $withRelations = null,
         public ?Version $version = null,
     ) {
         Assert::stringNotEmpty($language);
@@ -83,6 +85,10 @@ final readonly class StoriesRequest
 
         if (null !== $this->excludeIds && $this->excludeIds->count() > 0) {
             $array['excluding_ids'] = $this->excludeIds->toString();
+        }
+
+        if (null !== $this->withRelations && $this->withRelations->count() > 0) {
+            $array['resolve_relations'] = $this->withRelations->toString();
         }
 
         if (null !== $this->version) {

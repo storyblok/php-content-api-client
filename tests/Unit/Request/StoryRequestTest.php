@@ -15,6 +15,8 @@ namespace Storyblok\Api\Tests\Unit\Request;
 
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Dto\Version;
+use Storyblok\Api\Domain\Value\Resolver\Relation;
+use Storyblok\Api\Domain\Value\Resolver\RelationCollection;
 use Storyblok\Api\Request\StoryRequest;
 use Storyblok\Api\Tests\Util\FakerTrait;
 
@@ -65,6 +67,24 @@ final class StoryRequestTest extends TestCase
         self::assertSame([
             'language' => 'default',
             'version' => $version->value,
+        ], $request->toArray());
+    }
+
+    /**
+     * @test
+     */
+    public function toArrayWithRelations(): void
+    {
+        $request = new StoryRequest(
+            withRelations: new RelationCollection([
+                new Relation('root.relation'),
+                new Relation('root.another_relation'),
+            ]),
+        );
+
+        self::assertSame([
+            'language' => 'default',
+            'resolve_relations' => 'root.relation,root.another_relation',
         ], $request->toArray());
     }
 }

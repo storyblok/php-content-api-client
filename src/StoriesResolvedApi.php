@@ -35,10 +35,14 @@ final readonly class StoriesResolvedApi implements StoriesApiInterface
 
     public function all(?StoriesRequest $request = null): StoriesResponse
     {
-        Assert::notNull($request);
-        Assert::notNull($request->withRelations);
-
         $response = $this->storiesApi->all($request);
+
+        if (null === $request
+            || null === $request->withRelations
+            || 0 === $request->withRelations->count()
+        ) {
+            return $response;
+        }
 
         $stories = [];
 
@@ -60,10 +64,14 @@ final readonly class StoriesResolvedApi implements StoriesApiInterface
 
     public function allByContentType(string $contentType, ?StoriesRequest $request = null): StoriesResponse
     {
-        Assert::notNull($request);
-        Assert::notNull($request->withRelations);
-
         $response = $this->storiesApi->allByContentType($contentType, $request);
+
+        if (null === $request
+            || null === $request->withRelations
+            || 0 === $request->withRelations->count()
+        ) {
+            return $response;
+        }
 
         $stories = [];
 

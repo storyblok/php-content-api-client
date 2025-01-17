@@ -87,6 +87,10 @@ final readonly class StoriesRequest
             $array['excluding_ids'] = $this->excludeIds->toString();
         }
 
+        if (null !== $this->withRelations && $this->withRelations->count() > 0) {
+            $array['resolve_relations'] = $this->withRelations->toString();
+        }
+
         if (null !== $this->version) {
             $array['version'] = $this->version->value;
         }

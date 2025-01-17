@@ -25,6 +25,6 @@ final readonly class Relation
         public string $value,
     ) {
         TrimmedNonEmptyString::fromString($value);
-        Assert::contains('.', $value);
+        Assert::contains($value, '.');
     }
 }

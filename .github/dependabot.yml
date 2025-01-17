@@ -15,3 +15,11 @@ updates:
         package-ecosystem: "github-actions"
         schedule:
             interval: "daily"
+        groups:
+            security-updates:
+                patterns:
+                    - '*'
+                exclude-patterns:
+                    - 'storyblok*'
+                update-types:
+                    - patch

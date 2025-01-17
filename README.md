@@ -62,11 +62,12 @@ In your code you should type-hint to `Storyblok\Api\StoriesApiInterface`
 ```php
 use Storyblok\Api\StoriesApi;
 use Storyblok\Api\StoryblokClient;
+use Storyblok\Api\Request\StoriesRequest;
 
 $client = new StoryblokClient(/* ... */);
 
 $storiesApi = new StoriesApi($client);
-$response = $storiesApi->all(locale: 'de');
+$response = $storiesApi->all(new StoriesRequest(language: 'de'));
 ```
 
 ### Fetch by Version (`draft`, `published`)
@@ -77,14 +78,14 @@ $response = $storiesApi->all(locale: 'de');
 use Storyblok\Api\StoriesApi;
 use Storyblok\Api\StoryblokClient;
 use Storyblok\Api\Domain\Value\Dto\Version;
+use Storyblok\Api\Request\StoryRequest;
 
 $client = new StoryblokClient(/* ... */);
 
 $storiesApi = new StoriesApi($client, Version::Draft);
-$response = $storiesApi->bySlug(
-    locale: 'de',
-    slug: '/my-story/',
-);
+$response = $storiesApi->bySlug('/my-story/', new StoryRequest(
+    language: 'de',
+));
 ```
 
 #### Method Call
@@ -93,15 +94,15 @@ $response = $storiesApi->bySlug(
 use Storyblok\Api\StoriesApi;
 use Storyblok\Api\StoryblokClient;
 use Storyblok\Api\Domain\Value\Dto\Version;
+use Storyblok\Api\Request\StoryRequest;
 
 $client = new StoryblokClient(/* ... */);
 
 $storiesApi = new StoriesApi($client, Version::Published);
-$response = $storiesApi->bySlug(
-    locale: 'de',
-    slug: '/my-story/',
+$response = $storiesApi->bySlug('/my-story/', new StoryRequest(
+    language: 'de',
     version: Version::Draft, // This overrides the global "version"
-);
+));
 ```
 
 ### Pagination
@@ -110,14 +111,15 @@ $response = $storiesApi->bySlug(
 use Storyblok\Api\StoriesApi;
 use Storyblok\Api\StoryblokClient;
 use Storyblok\Api\Domain\Value\Dto\Pagination;
+use Storyblok\Api\Request\StoriesRequest;
 
 $client = new StoryblokClient(/* ... */);
 
 $storiesApi = new StoriesApi($client);
-$response = $storiesApi->all(
-    locale: 'de',
+$response = $storiesApi->all(new StoriesRequest(
+    language: 'de',
     pagination: new Pagination(page: 1, perPage: 30)
-);
+));
 ```
 
 #### Sorting
@@ -127,14 +129,15 @@ use Storyblok\Api\StoriesApi;
 use Storyblok\Api\StoryblokClient;
 use Storyblok\Api\Domain\Value\Dto\SortBy;
 use Storyblok\Api\Domain\Value\Dto\Direction;
+use Storyblok\Api\Request\StoriesRequest;
 
 $client = new StoryblokClient(/* ... */);
 
 $storiesApi = new StoriesApi($client);
-$response = $storiesApi->all(
-    locale: 'de',
+$response = $storiesApi->all(new StoriesRequest(
+    language: 'de',
     sortBy: new SortBy(field: 'title', direction: Direction::Desc)
-);
+));
 ```
 
 #### Filtering
@@ -145,16 +148,17 @@ use Storyblok\Api\StoryblokClient;
 use Storyblok\Api\Domain\Value\Filter\FilterCollection;
 use Storyblok\Api\Domain\Value\Dto\Direction;
 use Storyblok\Api\Domain\Value\Filter\Filters\InFilter;
+use Storyblok\Api\Request\StoriesRequest;
 
 $client = new StoryblokClient(/* ... */);
 
 $storiesApi = new StoriesApi($client);
-$response = $storiesApi->all(
-    locale: 'de',
+$response = $storiesApi->all(new StoriesRequest(
+    language: 'de',
     filters: new FilterCollection([
         new InFilter(field: 'single_reference_field', value: 'f2fdb571-a265-4d8a-b7c5-7050d23c2383')
     ])
-);
+));
 ```
 
 #### Available filters
@@ -310,11 +314,14 @@ new OrFilter(
 ```php
 use Storyblok\Api\StoriesApi;
 use Storyblok\Api\StoryblokClient;
+use Storyblok\Api\Request\StoriesRequest;
 
 $client = new StoryblokClient(/* ... */);
 
 $storiesApi = new StoriesApi($client);
-$response = $storiesApi->allByContentType('custom_content_type', locale: 'de');
+$response = $storiesApi->allByContentType('custom_content_type', new StoriesRequest(
+    language: 'de',
+));
 ```
 
 ### Get by uuid (`Storyblok\Api\Domain\Value\Uuid`)
@@ -323,13 +330,16 @@ $response = $storiesApi->allByContentType('custom_content_type', locale: 'de');
 use Storyblok\Api\StoriesApi;
 use Storyblok\Api\StoryblokClient;
 use Storyblok\Api\Domain\Value\Uuid;
+use Storyblok\Api\Request\StoryRequest;
 
 $uuid = new Uuid(/** ... */);
 
 $client = new StoryblokClient(/* ... */);
 
 $storiesApi = new StoriesApi($client);
-$response = $storiesApi->byUuid($uuid, locale: 'de');
+$response = $storiesApi->byUuid($uuid, new StoryRequest(
+    language: 'de',
+));
 ```
 
 ### Get by slug (`string`)
@@ -337,11 +347,14 @@ $response = $storiesApi->byUuid($uuid, locale: 'de');
 ```php
 use Storyblok\Api\StoriesApi;
 use Storyblok\Api\StoryblokClient;
+use Storyblok\Api\Request\StoryRequest;
 
 $client = new StoryblokClient(/* ... */);
 
 $storiesApi = new StoriesApi($client);
-$response = $storiesApi->bySlug('folder/slug', locale: 'de');
+$response = $storiesApi->bySlug('folder/slug', new StoryRequest(
+    language: 'de',
+));
 ```
 
 
@@ -351,13 +364,16 @@ $response = $storiesApi->bySlug('folder/slug', locale: 'de');
 use Storyblok\Api\StoriesApi;
 use Storyblok\Api\StoryblokClient;
 use Storyblok\Api\Domain\Value\Id;
+use Storyblok\Api\Request\StoryRequest;
 
 $id = new Id(/** ... */);
 
 $client = new StoryblokClient(/* ... */);
 
 $storiesApi = new StoriesApi($client);
-$response = $storiesApi->byId($id, locale: 'de');
+$response = $storiesApi->byId($id, new StoryRequest(
+    language: 'de',
+));
 ```
 
 
@@ -383,13 +399,14 @@ $response = $linksApi->all();
 use Storyblok\Api\LinksApi;
 use Storyblok\Api\StoryblokClient;
 use Storyblok\Api\Domain\Value\Dto\Pagination;
+use Storyblok\Api\Request\LinksRequest;
 
 $client = new StoryblokClient(/* ... */);
 
 $linksApi = new LinksApi($client);
-$response = $linksApi->all(
+$response = $linksApi->all(new LinksRequest(
     pagination: new Pagination(page: 1, perPage: 1000)
-);
+));
 ```
 
 ### Get by parent (`Storyblok\Api\Domain\Value\Id`)

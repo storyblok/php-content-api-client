@@ -13,11 +13,10 @@ declare(strict_types=1);
 
 namespace Storyblok\Api;
 
-use Storyblok\Api\Domain\Value\Dto\Version;
 use Storyblok\Api\Domain\Value\Id;
-use Storyblok\Api\Domain\Value\Resolver\RelationCollection;
 use Storyblok\Api\Domain\Value\Uuid;
 use Storyblok\Api\Request\StoriesRequest;
+use Storyblok\Api\Request\StoryRequest;
 use Storyblok\Api\Resolver\ResolverInterface;
 use Storyblok\Api\Response\StoriesResponse;
 use Storyblok\Api\Response\StoryResponse;
@@ -91,9 +90,9 @@ final readonly class StoriesResolvedApi implements StoriesApiInterface
         );
     }
 
-    public function bySlug(string $slug, string $language = 'default', ?Version $version = null, ?RelationCollection $withRelations = null): StoryResponse
+    public function bySlug(string $slug, ?StoryRequest $request = null): StoryResponse
     {
-        $response = $this->storiesApi->bySlug($slug, $language, $version, $withRelations);
+        $response = $this->storiesApi->bySlug($slug, $request);
 
         $story = $this->resolver->resolve($response->story, $response->rels);
 
@@ -105,9 +104,9 @@ final readonly class StoriesResolvedApi implements StoriesApiInterface
         ]);
     }
 
-    public function byUuid(Uuid $uuid, string $language = 'default', ?Version $version = null, ?RelationCollection $withRelations = null): StoryResponse
+    public function byUuid(Uuid $uuid, ?StoryRequest $request = null): StoryResponse
     {
-        $response = $this->storiesApi->byUuid($uuid, $language, $version, $withRelations);
+        $response = $this->storiesApi->byUuid($uuid, $request);
 
         $story = $this->resolver->resolve($response->story, $response->rels);
 
@@ -119,9 +118,9 @@ final readonly class StoriesResolvedApi implements StoriesApiInterface
         ]);
     }
 
-    public function byId(Id $id, string $language = 'default', ?Version $version = null, ?RelationCollection $withRelations = null): StoryResponse
+    public function byId(Id $id, ?StoryRequest $request = null): StoryResponse
     {
-        $response = $this->storiesApi->byId($id, $language, $version, $withRelations);
+        $response = $this->storiesApi->byId($id, $request);
 
         $story = $this->resolver->resolve($response->story, $response->rels);
 

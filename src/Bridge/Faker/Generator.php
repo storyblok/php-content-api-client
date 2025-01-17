@@ -20,19 +20,20 @@ use Storyblok\Api\Bridge\Faker\Provider\StoryblokProvider;
 /**
  * @author Silas Joisten <silasjoisten@proton.me>
  *
- * @method array assetResponse(array $overrides = [])
- * @method array datasourceDimensionResponse(array $overrides = [])
- * @method array datasourceEntriesResponse(array $overrides = [])
- * @method array datasourceEntryResponse(array $overrides = [])
- * @method array datasourceResponse(array $overrides = [])
- * @method array datasourcesResponse(array $overrides = [])
- * @method array linkAlternateResponse(array $overrides = [])
- * @method array linkResponse(array $overrides = [])
- * @method array linksResponse(array $overrides = [])
- * @method array spaceResponse(array $overrides = [])
- * @method array storiesResponse(array $overrides = [])
- * @method array storyResponse(array $overrides = [])
- * @method array tagsResponse(array $overrides = [])
+ * @method array  assetResponse(array $overrides = [])
+ * @method array  datasourceDimensionResponse(array $overrides = [])
+ * @method array  datasourceEntriesResponse(array $overrides = [])
+ * @method array  datasourceEntryResponse(array $overrides = [])
+ * @method array  datasourceResponse(array $overrides = [])
+ * @method array  datasourcesResponse(array $overrides = [])
+ * @method array  linkAlternateResponse(array $overrides = [])
+ * @method array  linkResponse(array $overrides = [])
+ * @method array  linksResponse(array $overrides = [])
+ * @method string relation()
+ * @method array  spaceResponse(array $overrides = [])
+ * @method array  storiesResponse(array $overrides = [])
+ * @method array  storyResponse(array $overrides = [])
+ * @method array  tagsResponse(array $overrides = [])
  */
 final class Generator extends BaseGenerator
 {

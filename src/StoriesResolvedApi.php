@@ -21,7 +21,6 @@ use Storyblok\Api\Request\StoriesRequest;
 use Storyblok\Api\Resolver\ResolverInterface;
 use Storyblok\Api\Response\StoriesResponse;
 use Storyblok\Api\Response\StoryResponse;
-use Webmozart\Assert\Assert;
 
 /**
  * @author Silas Joisten <silasjoisten@proton.me>

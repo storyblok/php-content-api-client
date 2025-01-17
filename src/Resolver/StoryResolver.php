@@ -30,13 +30,13 @@ final readonly class StoryResolver implements ResolverInterface
         }
 
         foreach ($target as &$value) {
-            if (is_string($value) && array_key_exists($value, $relationMap)) {
+            if (\is_string($value) && \array_key_exists($value, $relationMap)) {
                 $value = $relationMap[$value];
 
                 continue;
             }
 
-            if (is_array($value)) {
+            if (\is_array($value)) {
                 $value = $this->resolve($value, $relations);
             }
         }

@@ -129,14 +129,15 @@ final class LinkAlternateTest extends TestCase
     /**
      * @test
      */
-    public function slugKeyMustExist(): void
+    public function slugKeyHasFallback(): void
     {
-        $values = self::faker()->linkAlternateResponse();
+        $values = self::faker()->linkAlternateResponse([
+            'path' => $path = self::faker()->slug(),
+        ]);
+
         unset($values['translated_slug']);
 
-        self::expectException(\InvalidArgumentException::class);
-
-        new LinkAlternate($values);
+        self::assertSame($path, (new LinkAlternate($values))->slug);
     }
 
     /**

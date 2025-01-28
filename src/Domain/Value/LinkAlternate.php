@@ -46,8 +46,13 @@ final readonly class LinkAlternate
         Assert::keyExists($values, 'path');
         $this->path = TrimmedNonEmptyString::fromString($values['path'])->toString();
 
-        Assert::keyExists($values, 'translated_slug');
-        $this->slug = TrimmedNonEmptyString::fromString($values['translated_slug'])->toString();
+        $slug = null;
+
+        if (\array_key_exists('translated_slug', $values)) {
+            $slug = TrimmedNonEmptyString::fromString($values['translated_slug'])->toString();
+        }
+
+        $this->slug = $slug ?? $this->path;
 
         Assert::keyExists($values, 'published');
         $this->published = true === $values['published'];

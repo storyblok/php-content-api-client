@@ -185,4 +185,21 @@ final class StoriesRequestTest extends TestCase
             'version' => $version->value,
         ], $request->toArray());
     }
+
+    /**
+     * @test
+     */
+    public function toArrayWithSearchTerm(): void
+    {
+        $request = new StoriesRequest(
+            searchTerm: $searchTerm = self::faker()->word(),
+        );
+
+        self::assertSame([
+            'language' => 'default',
+            'page' => 1,
+            'per_page' => 25,
+            'search_term' => $searchTerm,
+        ], $request->toArray());
+    }
 }

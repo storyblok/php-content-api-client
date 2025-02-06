@@ -1,4 +1,8 @@
-# Storyblok Content API Client
+<div align="center">
+    <img src="assets/php-content-delivery-api-client-github-repository.png" alt="Storyblok PHP Content API Client" align="center" />
+    <h1 align="center">Storyblok Content Delivery API Client</h1>
+    <p align="center">Co-created with <a href="https://sensiolabs.com/">SensioLabs</a>, the creators of Symfony.</p>
+</div>
 
 > [!WARNING]
 > This library is in the initial phase and subject to change in a future release.
@@ -635,3 +639,7 @@ new BlogPostCollection(
 
 [actions]: https://github.com/sensiolabs-de/storyblok-api/actions
 [codecov]: https://codecov.io/gh/sensiolabs-de/storyblok-api
+
+## License
+
+This project is licensed under the MIT License. Please see [License File](LICENSE) for more information.

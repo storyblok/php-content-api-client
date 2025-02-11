@@ -25,7 +25,7 @@
         "symfony/cache": "^7.0",
         "symfony/cache-contracts": "^3.5",
         "symfony/http-client": "^6.0 || ^7.0",
-        "thecodingmachine/safe": "^3.0",
+        "thecodingmachine/safe": "^2.0",
         "webmozart/assert": "^1.11"
     },
     "require-dev": {

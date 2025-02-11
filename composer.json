@@ -25,7 +25,7 @@
         "symfony/cache": "^7.0",
         "symfony/cache-contracts": "^3.5",
         "symfony/http-client": "^6.0 || ^7.0",
-        "thecodingmachine/safe": "^2.0",
+        "thecodingmachine/safe": "^3.0",
         "webmozart/assert": "^1.11"
     },
     "require-dev": {
@@ -34,10 +34,10 @@
         "ergebnis/php-cs-fixer-config": "^6.28",
         "ergebnis/test-util": "^1.5",
         "phpstan/extension-installer": "^1.0",
-        "phpstan/phpstan": "^1.0",
-        "phpstan/phpstan-webmozart-assert": "^1.0",
+        "phpstan/phpstan": "^2.0",
+        "phpstan/phpstan-webmozart-assert": "^2.0",
         "phpunit/phpunit": "^9.0",
-        "thecodingmachine/phpstan-safe-rule": "^1.0"
+        "thecodingmachine/phpstan-safe-rule": "^1.4"
     },
     "config": {
         "sort-packages": true,

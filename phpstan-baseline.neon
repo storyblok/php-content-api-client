@@ -1,82 +1,332 @@
 parameters:
 	ignoreErrors:
 		-
-			message: "#^Method Storyblok\\\\Api\\\\Bridge\\\\Faker\\\\Provider\\\\StoryblokProvider\\:\\:assetResponse\\(\\) should return array\\{asset\\: array\\{filename\\: string, created_at\\: string, updated_at\\: string, expire_at\\: string\\|null, content_length\\: int, signed_url\\: string, content_type\\: string\\}\\} but returns array\\.$#"
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method assetResponse\(\) parameter \#1 \$overrides with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
-			path: src/Bridge/Faker/Provider/StoryblokProvider.php
+			path: src/Bridge/Faker/Generator.php
 
 		-
-			message: "#^Method Storyblok\\\\Api\\\\Bridge\\\\Faker\\\\Provider\\\\StoryblokProvider\\:\\:datasourceDimensionResponse\\(\\) should return array\\{id\\: int, name\\: string, entry_value\\: string, datasource_id\\: int, created_at\\: string, updated_at\\: string\\} but returns array\\.$#"
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method assetResponse\(\) return type with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
-			path: src/Bridge/Faker/Provider/StoryblokProvider.php
+			path: src/Bridge/Faker/Generator.php
 
 		-
-			message: "#^Method Storyblok\\\\Api\\\\Bridge\\\\Faker\\\\Provider\\\\StoryblokProvider\\:\\:datasourceEntriesResponse\\(\\) should return array\\{datasource_entries\\: array\\<int, array\\{id\\: int, name\\: string, value\\: string, dimension_value\\: string\\|null\\}\\>\\} but returns array\\.$#"
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method datasourceDimensionResponse\(\) parameter \#1 \$overrides with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
-			path: src/Bridge/Faker/Provider/StoryblokProvider.php
+			path: src/Bridge/Faker/Generator.php
 
 		-
-			message: "#^Method Storyblok\\\\Api\\\\Bridge\\\\Faker\\\\Provider\\\\StoryblokProvider\\:\\:datasourceEntryResponse\\(\\) should return array\\{id\\: int, name\\: string, value\\: string, dimension_value\\: string\\|null\\} but returns array\\.$#"
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method datasourceDimensionResponse\(\) return type with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
-			path: src/Bridge/Faker/Provider/StoryblokProvider.php
+			path: src/Bridge/Faker/Generator.php
 
 		-
-			message: "#^Method Storyblok\\\\Api\\\\Bridge\\\\Faker\\\\Provider\\\\StoryblokProvider\\:\\:datasourceResponse\\(\\) should return array\\{id\\: int, name\\: string, slug\\: string, dimensions\\: array\\<int, array\\{id\\: int, name\\: string, entry_value\\: string, datasource_id\\: int, created_at\\: string, updated_at\\: string\\}\\>\\} but returns array\\.$#"
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method datasourceEntriesResponse\(\) parameter \#1 \$overrides with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
-			path: src/Bridge/Faker/Provider/StoryblokProvider.php
+			path: src/Bridge/Faker/Generator.php
 
 		-
-			message: "#^Method Storyblok\\\\Api\\\\Bridge\\\\Faker\\\\Provider\\\\StoryblokProvider\\:\\:datasourcesResponse\\(\\) should return array\\{datasources\\: array\\<int, array\\<string, mixed\\>\\>\\} but returns array\\.$#"
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method datasourceEntriesResponse\(\) return type with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
-			path: src/Bridge/Faker/Provider/StoryblokProvider.php
+			path: src/Bridge/Faker/Generator.php
 
 		-
-			message: "#^Method Storyblok\\\\Api\\\\Bridge\\\\Faker\\\\Provider\\\\StoryblokProvider\\:\\:linkAlternateResponse\\(\\) should return array\\{lang\\: string, name\\: string, path\\: string, published\\: bool, translated_slug\\: string\\} but returns array\\.$#"
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method datasourceEntryResponse\(\) parameter \#1 \$overrides with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
-			path: src/Bridge/Faker/Provider/StoryblokProvider.php
+			path: src/Bridge/Faker/Generator.php
 
 		-
-			message: "#^Method Storyblok\\\\Api\\\\Bridge\\\\Faker\\\\Provider\\\\StoryblokProvider\\:\\:linkResponse\\(\\) should return array\\{uuid\\: string, id\\: int, parent_id\\: int\\|null, name\\: string, slug\\: string, path\\: string, real_path\\: string, is_folder\\: bool, \\.\\.\\.\\} but returns array\\.$#"
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method datasourceEntryResponse\(\) return type with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
-			path: src/Bridge/Faker/Provider/StoryblokProvider.php
+			path: src/Bridge/Faker/Generator.php
 
 		-
-			message: "#^Method Storyblok\\\\Api\\\\Bridge\\\\Faker\\\\Provider\\\\StoryblokProvider\\:\\:linksResponse\\(\\) should return array\\{links\\: array\\<int, array\\<string, mixed\\>\\>\\} but returns array\\.$#"
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method datasourceResponse\(\) parameter \#1 \$overrides with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
-			path: src/Bridge/Faker/Provider/StoryblokProvider.php
+			path: src/Bridge/Faker/Generator.php
 
 		-
-			message: "#^Method Storyblok\\\\Api\\\\Bridge\\\\Faker\\\\Provider\\\\StoryblokProvider\\:\\:spaceResponse\\(\\) should return array\\{id\\: int, name\\: string, domain\\: string, version\\: int, language_codes\\: array\\<int, string\\>\\} but returns array\\.$#"
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method datasourceResponse\(\) return type with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
-			path: src/Bridge/Faker/Provider/StoryblokProvider.php
+			path: src/Bridge/Faker/Generator.php
 
 		-
-			message: "#^Method Storyblok\\\\Api\\\\Bridge\\\\Faker\\\\Provider\\\\StoryblokProvider\\:\\:storiesResponse\\(\\) should return array\\{cv\\: int, stories\\: array\\<int, array\\<string, mixed\\>\\>, links\\: array\\<string\\>, rels\\: array\\<string\\>\\} but returns array\\.$#"
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method datasourcesResponse\(\) parameter \#1 \$overrides with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
-			path: src/Bridge/Faker/Provider/StoryblokProvider.php
+			path: src/Bridge/Faker/Generator.php
 
 		-
-			message: "#^Method Storyblok\\\\Api\\\\Bridge\\\\Faker\\\\Provider\\\\StoryblokProvider\\:\\:storyResponse\\(\\) should return array\\{cv\\: int, story\\: array\\<string, mixed\\>, links\\: array\\<string\\>, rels\\: array\\<string\\>\\} but returns array\\.$#"
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method datasourcesResponse\(\) return type with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
-			path: src/Bridge/Faker/Provider/StoryblokProvider.php
+			path: src/Bridge/Faker/Generator.php
 
 		-
-			message: "#^Method Storyblok\\\\Api\\\\Bridge\\\\Faker\\\\Provider\\\\StoryblokProvider\\:\\:tagsResponse\\(\\) should return array\\{tags\\: array\\<int, array\\{name\\: string, taggings_count\\: int\\}\\>\\} but returns array\\.$#"
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method linkAlternateResponse\(\) parameter \#1 \$overrides with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
-			path: src/Bridge/Faker/Provider/StoryblokProvider.php
+			path: src/Bridge/Faker/Generator.php
 
 		-
-			message: "#^Method Storyblok\\\\Api\\\\Domain\\\\Value\\\\Filter\\\\FilterCollection\\:\\:toArray\\(\\) return type has no value type specified in iterable type array\\.$#"
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method linkAlternateResponse\(\) return type with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Bridge/Faker/Generator.php
+
+		-
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method linkResponse\(\) parameter \#1 \$overrides with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Bridge/Faker/Generator.php
+
+		-
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method linkResponse\(\) return type with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Bridge/Faker/Generator.php
+
+		-
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method linksResponse\(\) parameter \#1 \$overrides with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Bridge/Faker/Generator.php
+
+		-
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method linksResponse\(\) return type with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Bridge/Faker/Generator.php
+
+		-
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method spaceResponse\(\) parameter \#1 \$overrides with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Bridge/Faker/Generator.php
+
+		-
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method spaceResponse\(\) return type with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Bridge/Faker/Generator.php
+
+		-
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method storiesResponse\(\) parameter \#1 \$overrides with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Bridge/Faker/Generator.php
+
+		-
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method storiesResponse\(\) return type with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Bridge/Faker/Generator.php
+
+		-
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method storyResponse\(\) parameter \#1 \$overrides with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Bridge/Faker/Generator.php
+
+		-
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method storyResponse\(\) return type with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Bridge/Faker/Generator.php
+
+		-
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method tagsResponse\(\) parameter \#1 \$overrides with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Bridge/Faker/Generator.php
+
+		-
+			message: '#^Class Storyblok\\Api\\Bridge\\Faker\\Generator has PHPDoc tag @method for method tagsResponse\(\) return type with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Bridge/Faker/Generator.php
+
+		-
+			message: '#^Parameter \#1 \$headers of static method Storyblok\\Api\\Domain\\Value\\Total\:\:fromHeaders\(\) expects array\<string, list\<string\>\>, array\<array\<string\>\> given\.$#'
+			identifier: argument.type
+			count: 4
+			path: src/DatasourceEntriesApi.php
+
+		-
+			message: '#^Parameter \#1 \$headers of static method Storyblok\\Api\\Domain\\Value\\Total\:\:fromHeaders\(\) expects array\<string, list\<string\>\>, array\<array\<string\>\> given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/DatasourcesApi.php
+
+		-
+			message: '#^Property Storyblok\\Api\\Domain\\Value\\Datasource\:\:\$dimensions \(list\<Storyblok\\Api\\Domain\\Value\\DatasourceDimension\>\) does not accept array\<Storyblok\\Api\\Domain\\Value\\DatasourceDimension\>\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Domain/Value/Datasource.php
+
+		-
+			message: '#^Call to static method Webmozart\\Assert\\Assert\:\:notSame\(\) with int\<1, max\> and 0 will always evaluate to true\.$#'
+			identifier: staticMethod.alreadyNarrowedType
+			count: 1
+			path: src/Domain/Value/Dto/Pagination.php
+
+		-
+			message: '#^Property Storyblok\\Api\\Domain\\Value\\Field\\FieldCollection\:\:\$items \(list\<Storyblok\\Api\\Domain\\Value\\Field\\Field\>\) does not accept array\<int\<0, max\>, Storyblok\\Api\\Domain\\Value\\Field\\Field\>\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Domain/Value/Field/FieldCollection.php
+
+		-
+			message: '#^Method Storyblok\\Api\\Domain\\Value\\Filter\\FilterCollection\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
 			count: 1
 			path: src/Domain/Value/Filter/FilterCollection.php
 
 		-
-			message: "#^PHPDoc tag @return contains unresolvable type\\.$#"
+			message: '#^PHPDoc tag @return contains unresolvable type\.$#'
+			identifier: return.unresolvableType
 			count: 1
 			path: src/Domain/Value/Filter/FilterCollection.php
 
 		-
-			message: "#^Cannot call method format\\(\\) on DateTimeImmutable\\|null\\.$#"
+			message: '#^Property Storyblok\\Api\\Domain\\Value\\Filter\\FilterCollection\:\:\$items \(list\<Storyblok\\Api\\Domain\\Value\\Filter\\Filters\\Filter\>\) does not accept array\<int\<0, max\>, Storyblok\\Api\\Domain\\Value\\Filter\\Filters\\Filter\>\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Domain/Value/Filter/FilterCollection.php
+
+		-
+			message: '#^Call to static method Webmozart\\Assert\\Assert\:\:allString\(\) with non\-empty\-array\<string\> will always evaluate to true\.$#'
+			identifier: staticMethod.alreadyNarrowedType
+			count: 1
+			path: src/Domain/Value/Filter/Filters/AllInArrayFilter.php
+
+		-
+			message: '#^Call to static method Webmozart\\Assert\\Assert\:\:allString\(\) with non\-empty\-array\<string\> will always evaluate to true\.$#'
+			identifier: staticMethod.alreadyNarrowedType
+			count: 1
+			path: src/Domain/Value/Filter/Filters/AnyInArrayFilter.php
+
+		-
+			message: '#^Call to static method Webmozart\\Assert\\Assert\:\:allString\(\) with non\-empty\-array\<string\> will always evaluate to true\.$#'
+			identifier: staticMethod.alreadyNarrowedType
+			count: 1
+			path: src/Domain/Value/Filter/Filters/InFilter.php
+
+		-
+			message: '#^Call to static method Webmozart\\Assert\\Assert\:\:allString\(\) with non\-empty\-array\<string\> will always evaluate to true\.$#'
+			identifier: staticMethod.alreadyNarrowedType
+			count: 1
+			path: src/Domain/Value/Filter/Filters/NotInFilter.php
+
+		-
+			message: '#^Property Storyblok\\Api\\Domain\\Value\\IdCollection\:\:\$items \(list\<Storyblok\\Api\\Domain\\Value\\Id\>\) does not accept array\<int\<0, max\>, Storyblok\\Api\\Domain\\Value\\Id\>\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Domain/Value/IdCollection.php
+
+		-
+			message: '#^PHPDoc tag @var has invalid value \(list\<LinkAlternate\>1\)\: Unexpected token "1", expected TOKEN_HORIZONTAL_WS at offset 35 on line 2$#'
+			identifier: phpDoc.parseError
+			count: 1
+			path: src/Domain/Value/Link.php
+
+		-
+			message: '#^Property Storyblok\\Api\\Domain\\Value\\Link\:\:\$alternates type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Domain/Value/Link.php
+
+		-
+			message: '#^Property Storyblok\\Api\\Domain\\Value\\Resolver\\RelationCollection\:\:\$items \(list\<Storyblok\\Api\\Domain\\Value\\Resolver\\Relation\>\) does not accept array\<int\<0, max\>, Storyblok\\Api\\Domain\\Value\\Resolver\\Relation\>\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Domain/Value/Resolver/RelationCollection.php
+
+		-
+			message: '#^Property Storyblok\\Api\\Domain\\Value\\Tag\\TagCollection\:\:\$items \(list\<Storyblok\\Api\\Domain\\Value\\Tag\\Tag\>\) does not accept array\<int\<0, max\>, Storyblok\\Api\\Domain\\Value\\Tag\\Tag\>\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Domain/Value/Tag/TagCollection.php
+
+		-
+			message: '#^Parameter \#1 \$headers of static method Storyblok\\Api\\Domain\\Value\\Total\:\:fromHeaders\(\) expects array\<string, list\<string\>\>, array\<array\<string\>\> given\.$#'
+			identifier: argument.type
+			count: 3
+			path: src/LinksApi.php
+
+		-
+			message: '#^Method Storyblok\\Api\\Request\\StoriesRequest\:\:toArray\(\) should return array\{language\: string, page\: int, per_page\: int, sort_by\?\: string, filter_query\?\: list\<mixed\>, with_tag\?\: string, excluding_fields\?\: string, excluding_ids\?\: string, \.\.\.\} but returns array\{language\: string, page\: int, per_page\: int, sort_by\?\: string, filter_query\?\: array, with_tag\?\: string, excluding_fields\?\: string, excluding_ids\?\: string, \.\.\.\}\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Request/StoriesRequest.php
+
+		-
+			message: '#^Property Storyblok\\Api\\Response\\DatasourceEntriesResponse\:\:\$datasourceEntries \(list\<Storyblok\\Api\\Domain\\Value\\DatasourceEntry\>\) does not accept array\<Storyblok\\Api\\Domain\\Value\\DatasourceEntry\>\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Response/DatasourceEntriesResponse.php
+
+		-
+			message: '#^Property Storyblok\\Api\\Response\\DatasourcesResponse\:\:\$datasources \(list\<Storyblok\\Api\\Domain\\Value\\Datasource\>\) does not accept array\<Storyblok\\Api\\Domain\\Value\\Datasource\>\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Response/DatasourcesResponse.php
+
+		-
+			message: '#^Property Storyblok\\Api\\Response\\TagsResponse\:\:\$tags \(list\<Storyblok\\Api\\Domain\\Value\\Tag\>\) does not accept array\<Storyblok\\Api\\Domain\\Value\\Tag\>\.$#'
+			identifier: assign.propertyType
+			count: 1
+			path: src/Response/TagsResponse.php
+
+		-
+			message: '#^Parameter \#1 \$headers of static method Storyblok\\Api\\Domain\\Value\\Total\:\:fromHeaders\(\) expects array\<string, list\<string\>\>, array\<array\<string\>\> given\.$#'
+			identifier: argument.type
+			count: 2
+			path: src/StoriesApi.php
+
+		-
+			message: '#^Cannot call method format\(\) on DateTimeImmutable\|null\.$#'
+			identifier: method.nonObject
 			count: 1
 			path: tests/Unit/Domain/Value/AssetTest.php
+
+		-
+			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertEmpty\(\) with Storyblok\\Api\\Domain\\Value\\Field\\FieldCollection will always evaluate to false\.$#'
+			identifier: staticMethod.impossibleType
+			count: 2
+			path: tests/Unit/Domain/Value/Field/FieldCollectionTest.php
+
+		-
+			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertEmpty\(\) with Storyblok\\Api\\Domain\\Value\\Filter\\FilterCollection will always evaluate to false\.$#'
+			identifier: staticMethod.impossibleType
+			count: 2
+			path: tests/Unit/Domain/Value/Filter/FilterCollectionTest.php
+
+		-
+			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertEmpty\(\) with Storyblok\\Api\\Domain\\Value\\IdCollection will always evaluate to false\.$#'
+			identifier: staticMethod.impossibleType
+			count: 2
+			path: tests/Unit/Domain/Value/IdCollectionTest.php
+
+		-
+			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertEmpty\(\) with Storyblok\\Api\\Domain\\Value\\Resolver\\RelationCollection will always evaluate to false\.$#'
+			identifier: staticMethod.impossibleType
+			count: 2
+			path: tests/Unit/Domain/Value/Resolver/RelationCollectionTest.php
+
+		-
+			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertEmpty\(\) with Storyblok\\Api\\Domain\\Value\\Tag\\TagCollection will always evaluate to false\.$#'
+			identifier: staticMethod.impossibleType
+			count: 2
+			path: tests/Unit/Domain/Value/Tag/TagCollectionTest.php
 

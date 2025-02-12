@@ -1,18 +1,6 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Parameter \#1 \$headers of static method Storyblok\\Api\\Domain\\Value\\Total\:\:fromHeaders\(\) expects array\<string, list\<string\>\>, array\<array\<string\>\> given\.$#'
-			identifier: argument.type
-			count: 4
-			path: src/DatasourceEntriesApi.php
-
-		-
-			message: '#^Parameter \#1 \$headers of static method Storyblok\\Api\\Domain\\Value\\Total\:\:fromHeaders\(\) expects array\<string, list\<string\>\>, array\<array\<string\>\> given\.$#'
-			identifier: argument.type
-			count: 1
-			path: src/DatasourcesApi.php
-
-		-
 			message: '#^Property Storyblok\\Api\\Domain\\Value\\Datasource\:\:\$dimensions \(list\<Storyblok\\Api\\Domain\\Value\\DatasourceDimension\>\) does not accept array\<Storyblok\\Api\\Domain\\Value\\DatasourceDimension\>\.$#'
 			identifier: assign.propertyType
 			count: 1
@@ -43,8 +31,8 @@ parameters:
 			path: src/Domain/Value/IdCollection.php
 
 		-
-			message: '#^PHPDoc tag @var has invalid value \(list\<LinkAlternate\>1\)\: Unexpected token "1", expected TOKEN_HORIZONTAL_WS at offset 35 on line 2$#'
-			identifier: phpDoc.parseError
+			message: '#^Property Storyblok\\Api\\Domain\\Value\\Link\:\:\$alternates \(list\<Storyblok\\Api\\Domain\\Value\\LinkAlternate\>\) does not accept array\<Storyblok\\Api\\Domain\\Value\\LinkAlternate\>\.$#'
+			identifier: assign.propertyType
 			count: 1
 			path: src/Domain/Value/Link.php
 
@@ -59,12 +47,6 @@ parameters:
 			identifier: assign.propertyType
 			count: 1
 			path: src/Domain/Value/Tag/TagCollection.php
-
-		-
-			message: '#^Parameter \#1 \$headers of static method Storyblok\\Api\\Domain\\Value\\Total\:\:fromHeaders\(\) expects array\<string, list\<string\>\>, array\<array\<string\>\> given\.$#'
-			identifier: argument.type
-			count: 3
-			path: src/LinksApi.php
 
 		-
 			message: '#^Method Storyblok\\Api\\Request\\StoriesRequest\:\:toArray\(\) should return array\{language\: string, page\: int, per_page\: int, sort_by\?\: string, filter_query\?\: list\<mixed\>, with_tag\?\: string, excluding_fields\?\: string, excluding_ids\?\: string, \.\.\.\} but returns array\{language\: string, page\: int, per_page\: int, sort_by\?\: string, filter_query\?\: array, with_tag\?\: string, excluding_fields\?\: string, excluding_ids\?\: string, \.\.\.\}\.$#'
@@ -89,12 +71,6 @@ parameters:
 			identifier: assign.propertyType
 			count: 1
 			path: src/Response/TagsResponse.php
-
-		-
-			message: '#^Parameter \#1 \$headers of static method Storyblok\\Api\\Domain\\Value\\Total\:\:fromHeaders\(\) expects array\<string, list\<string\>\>, array\<array\<string\>\> given\.$#'
-			identifier: argument.type
-			count: 2
-			path: src/StoriesApi.php
 
 		-
 			message: '#^Cannot call method format\(\) on DateTimeImmutable\|null\.$#'

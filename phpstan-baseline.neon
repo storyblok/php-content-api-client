@@ -19,12 +19,6 @@ parameters:
 			path: src/Domain/Value/Datasource.php
 
 		-
-			message: '#^Call to static method Webmozart\\Assert\\Assert\:\:notSame\(\) with int\<1, max\> and 0 will always evaluate to true\.$#'
-			identifier: staticMethod.alreadyNarrowedType
-			count: 1
-			path: src/Domain/Value/Dto/Pagination.php
-
-		-
 			message: '#^Property Storyblok\\Api\\Domain\\Value\\Field\\FieldCollection\:\:\$items \(list\<Storyblok\\Api\\Domain\\Value\\Field\\Field\>\) does not accept array\<int\<0, max\>, Storyblok\\Api\\Domain\\Value\\Field\\Field\>\.$#'
 			identifier: assign.propertyType
 			count: 1
@@ -41,30 +35,6 @@ parameters:
 			identifier: assign.propertyType
 			count: 1
 			path: src/Domain/Value/Filter/FilterCollection.php
-
-		-
-			message: '#^Call to static method Webmozart\\Assert\\Assert\:\:allString\(\) with non\-empty\-array\<string\> will always evaluate to true\.$#'
-			identifier: staticMethod.alreadyNarrowedType
-			count: 1
-			path: src/Domain/Value/Filter/Filters/AllInArrayFilter.php
-
-		-
-			message: '#^Call to static method Webmozart\\Assert\\Assert\:\:allString\(\) with non\-empty\-array\<string\> will always evaluate to true\.$#'
-			identifier: staticMethod.alreadyNarrowedType
-			count: 1
-			path: src/Domain/Value/Filter/Filters/AnyInArrayFilter.php
-
-		-
-			message: '#^Call to static method Webmozart\\Assert\\Assert\:\:allString\(\) with non\-empty\-array\<string\> will always evaluate to true\.$#'
-			identifier: staticMethod.alreadyNarrowedType
-			count: 1
-			path: src/Domain/Value/Filter/Filters/InFilter.php
-
-		-
-			message: '#^Call to static method Webmozart\\Assert\\Assert\:\:allString\(\) with non\-empty\-array\<string\> will always evaluate to true\.$#'
-			identifier: staticMethod.alreadyNarrowedType
-			count: 1
-			path: src/Domain/Value/Filter/Filters/NotInFilter.php
 
 		-
 			message: '#^Property Storyblok\\Api\\Domain\\Value\\IdCollection\:\:\$items \(list\<Storyblok\\Api\\Domain\\Value\\Id\>\) does not accept array\<int\<0, max\>, Storyblok\\Api\\Domain\\Value\\Id\>\.$#'

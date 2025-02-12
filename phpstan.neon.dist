@@ -5,6 +5,8 @@ parameters:
     ignoreErrors:
         -
             identifier: missingType.iterableValue
+        -
+            identifier: staticMethod.alreadyNarrowedType
     inferPrivatePropertyTypeFromConstructor: true
     level: 8
     paths:

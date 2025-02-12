@@ -13,8 +13,7 @@
 
 ## Symfony
 
-Use the symfony bundle [storyblok/storyblok-bundle](https://github.com/storyblok/storyblok-bundle) to integrate
-this library into your Symfony application.
+Use the [storyblok/storyblok-bundle](https://github.com/storyblok/storyblok-bundle) to integrate this library into your Symfony application.
 
 ## Usage
 

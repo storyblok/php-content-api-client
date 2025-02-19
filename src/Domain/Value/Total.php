@@ -27,7 +27,7 @@ final readonly class Total
     }
 
     /**
-     * @param array<string, list<string>> $headers
+     * @param array<string, array<string>> $headers
      */
     public static function fromHeaders(array $headers): self
     {

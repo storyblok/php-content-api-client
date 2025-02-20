@@ -108,3 +108,6 @@ parameters:
 			count: 2
 			path: tests/Unit/Domain/Value/Tag/TagCollectionTest.php
 
+		-
+			message: '#^Method Storyblok\\Api\\Bridge\\Faker\\Provider\\StoryblokProvider::.+ should return array.+ but returns array\.$#'
+			path: src/Bridge/Faker/Provider/StoryblokProvider.php

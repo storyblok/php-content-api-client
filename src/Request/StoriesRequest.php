@@ -20,6 +20,7 @@ use Storyblok\Api\Domain\Value\Field\FieldCollection;
 use Storyblok\Api\Domain\Value\Filter\FilterCollection;
 use Storyblok\Api\Domain\Value\IdCollection;
 use Storyblok\Api\Domain\Value\Resolver\RelationCollection;
+use Storyblok\Api\Domain\Value\Resolver\ResolveLinks;
 use Storyblok\Api\Domain\Value\Tag\TagCollection;
 use Webmozart\Assert\Assert;
 
@@ -42,6 +43,7 @@ final readonly class StoriesRequest
         public RelationCollection $withRelations = new RelationCollection(),
         public ?Version $version = null,
         public ?string $searchTerm = null,
+        public ResolveLinks $resolveLinks = new ResolveLinks(),
     ) {
         Assert::stringNotEmpty($language);
         Assert::lessThanEq($this->pagination->perPage, self::MAX_PER_PAGE);
@@ -57,6 +59,9 @@ final readonly class StoriesRequest
      *     with_tag?: string,
      *     excluding_fields?: string,
      *     excluding_ids?: string,
+     *     resolve_relations?: string,
+     *     resolve_links?: string,
+     *     resolve_links_level?: string,
      *     search_term?: string,
      *     version?: string,
      * }
@@ -91,6 +96,11 @@ final readonly class StoriesRequest
 
         if ($this->withRelations->count() > 0) {
             $array['resolve_relations'] = $this->withRelations->toString();
+        }
+
+        if (null !== $this->resolveLinks->type) {
+            $array['resolve_links'] = $this->resolveLinks->type->value;
+            $array['resolve_links_level'] = $this->resolveLinks->level->value;
         }
 
         if (null !== $this->searchTerm) {

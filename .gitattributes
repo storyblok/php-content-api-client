@@ -3,3 +3,4 @@
 *.neon export-ignore
 *.dist export-ignore
 tests export-ignore
+assets export-ignore

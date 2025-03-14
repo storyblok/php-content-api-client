@@ -13,7 +13,6 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Request;
 
-use OskarStark\Value\TrimmedNonEmptyString;
 use Storyblok\Api\Domain\Value\Dto\Pagination;
 use Storyblok\Api\Domain\Value\Dto\SortBy;
 use Storyblok\Api\Domain\Value\Dto\Version;

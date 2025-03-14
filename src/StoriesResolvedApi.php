@@ -36,10 +36,7 @@ final readonly class StoriesResolvedApi implements StoriesApiInterface
     {
         $response = $this->storiesApi->all($request);
 
-        if (null === $request
-            || null === $request->withRelations
-            || 0 === $request->withRelations->count()
-        ) {
+        if (null === $request || 0 === $request->withRelations->count()) {
             return $response;
         }
 
@@ -65,10 +62,7 @@ final readonly class StoriesResolvedApi implements StoriesApiInterface
     {
         $response = $this->storiesApi->allByContentType($contentType, $request);
 
-        if (null === $request
-            || null === $request->withRelations
-            || 0 === $request->withRelations->count()
-        ) {
+        if (null === $request || 0 === $request->withRelations->count()) {
             return $response;
         }
 

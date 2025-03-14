@@ -26,12 +26,16 @@ final class TagCollection implements \Countable, \IteratorAggregate
     private array $items = [];
 
     /**
-     * @param list<Tag> $items
+     * @param list<string|Tag> $items
      */
     public function __construct(
         array $items = [],
     ) {
         foreach ($items as $item) {
+            if (\is_string($item)) {
+                $item = new Tag($item);
+            }
+
             $this->add($item);
         }
     }

@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value\Tag;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Tag\Tag;
 use Storyblok\Api\Domain\Value\Tag\TagCollection;
@@ -25,9 +26,7 @@ final class TagCollectionTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function constructWithString(): void
     {
         $faker = self::faker();
@@ -37,9 +36,7 @@ final class TagCollectionTest extends TestCase
         self::assertContainsOnlyInstancesOf(Tag::class, $collection);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function add(): void
     {
         $faker = self::faker();
@@ -51,9 +48,7 @@ final class TagCollectionTest extends TestCase
         self::assertCount(1, $collection);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function remove(): void
     {
         $faker = self::faker();
@@ -67,9 +62,7 @@ final class TagCollectionTest extends TestCase
         self::assertEmpty($collection);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function hasReturnsTrue(): void
     {
         $faker = self::faker();
@@ -81,9 +74,7 @@ final class TagCollectionTest extends TestCase
         self::assertTrue($collection->has($tag));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function hasReturnsFalse(): void
     {
         $faker = self::faker();
@@ -93,9 +84,7 @@ final class TagCollectionTest extends TestCase
         self::assertFalse($collection->has(new Tag($faker->word())));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isCountable(): void
     {
         $faker = self::faker();
@@ -104,12 +93,10 @@ final class TagCollectionTest extends TestCase
 
         $collection = new TagCollection([$tag]);
 
-        self::assertSame(1, $collection->count());
+        self::assertCount(1, $collection);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toStringMethod(): void
     {
         $tags = [
@@ -123,9 +110,7 @@ final class TagCollectionTest extends TestCase
         self::assertSame('field,title,description', $collection->toString());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getIterator(): void
     {
         $tags = [

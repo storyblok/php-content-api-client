@@ -13,6 +13,9 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value;
 
+use Ergebnis\DataProvider\StringProvider;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\DatasourceDimension;
 use Storyblok\Api\Tests\Util\FakerTrait;
@@ -25,9 +28,7 @@ final class DatasourceDimensionTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function id(): void
     {
         $faker = self::faker();
@@ -38,9 +39,7 @@ final class DatasourceDimensionTest extends TestCase
         self::assertSame($id, (new DatasourceDimension($response))->id->value);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function idKeyMustExist(): void
     {
         $faker = self::faker();
@@ -52,10 +51,8 @@ final class DatasourceDimensionTest extends TestCase
         new DatasourceDimension($response);
     }
 
-    /**
-     * @test
-     */
-    public function name(): void
+    #[Test]
+    public function nameValue(): void
     {
         $faker = self::faker();
         $response = $faker->datasourceDimensionResponse([
@@ -65,9 +62,7 @@ final class DatasourceDimensionTest extends TestCase
         self::assertSame($name, (new DatasourceDimension($response))->name);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function nameKeyMustExist(): void
     {
         $faker = self::faker();
@@ -79,12 +74,9 @@ final class DatasourceDimensionTest extends TestCase
         new DatasourceDimension($response);
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::blank()
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::empty()
-     */
+    #[DataProviderExternal(StringProvider::class, 'blank')]
+    #[DataProviderExternal(StringProvider::class, 'empty')]
+    #[Test]
     public function nameInvalid(string $value): void
     {
         $faker = self::faker();
@@ -95,9 +87,7 @@ final class DatasourceDimensionTest extends TestCase
         new DatasourceDimension($response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function entryValue(): void
     {
         $faker = self::faker();
@@ -108,9 +98,7 @@ final class DatasourceDimensionTest extends TestCase
         self::assertSame($entryValue, (new DatasourceDimension($response))->entryValue);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function entryValueKeyMustExist(): void
     {
         $faker = self::faker();
@@ -122,12 +110,9 @@ final class DatasourceDimensionTest extends TestCase
         new DatasourceDimension($response);
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::blank()
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::empty()
-     */
+    #[DataProviderExternal(StringProvider::class, 'blank')]
+    #[DataProviderExternal(StringProvider::class, 'empty')]
+    #[Test]
     public function entryValueInvalid(string $value): void
     {
         $faker = self::faker();
@@ -138,9 +123,7 @@ final class DatasourceDimensionTest extends TestCase
         new DatasourceDimension($response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function datasourceId(): void
     {
         $faker = self::faker();
@@ -151,9 +134,7 @@ final class DatasourceDimensionTest extends TestCase
         self::assertSame($id, (new DatasourceDimension($response))->datasourceId->value);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function datasourceIdKeyMustExist(): void
     {
         $faker = self::faker();
@@ -165,9 +146,7 @@ final class DatasourceDimensionTest extends TestCase
         new DatasourceDimension($response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createdAt(): void
     {
         $faker = self::faker();
@@ -178,9 +157,7 @@ final class DatasourceDimensionTest extends TestCase
         self::assertSame($createdAt, (new DatasourceDimension($response))->createdAt->format('Y-m-d H:i'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createdAtKeyMustExist(): void
     {
         $faker = self::faker();
@@ -192,9 +169,7 @@ final class DatasourceDimensionTest extends TestCase
         new DatasourceDimension($response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function updatedAt(): void
     {
         $faker = self::faker();
@@ -205,9 +180,7 @@ final class DatasourceDimensionTest extends TestCase
         self::assertSame($updatedAt, (new DatasourceDimension($response))->updatedAt->format('Y-m-d H:i'));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function updatedAtKeyMustExist(): void
     {
         $faker = self::faker();

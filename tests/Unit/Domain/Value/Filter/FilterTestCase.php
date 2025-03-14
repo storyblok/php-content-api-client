@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value\Filter;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Filter\Operation;
 use Storyblok\Api\Tests\Util\FakerTrait;
@@ -24,9 +25,7 @@ abstract class FilterTestCase extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isSameOperation(): void
     {
         self::assertSame(

@@ -13,6 +13,9 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Response;
 
+use Ergebnis\DataProvider\StringProvider;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Dto\Pagination;
 use Storyblok\Api\Domain\Value\Total;
@@ -26,9 +29,7 @@ final class StoriesResponseTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function stories(): void
     {
         $values = self::faker()->storiesResponse();
@@ -39,9 +40,7 @@ final class StoriesResponseTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function storiesKeyMustExist(): void
     {
         $values = self::faker()->storiesResponse();
@@ -52,9 +51,7 @@ final class StoriesResponseTest extends TestCase
         new StoriesResponse(new Total(1), new Pagination(), $values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function cv(): void
     {
         $values = self::faker()->storiesResponse();
@@ -65,9 +62,7 @@ final class StoriesResponseTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function cvKeyMustExist(): void
     {
         $values = self::faker()->storiesResponse();
@@ -78,11 +73,8 @@ final class StoriesResponseTest extends TestCase
         new StoriesResponse(new Total(1), new Pagination(), $values);
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::arbitrary()
-     */
+    #[DataProviderExternal(StringProvider::class, 'arbitrary')]
+    #[Test]
     public function cvInvalid(string $value): void
     {
         $values = self::faker()->storiesResponse([
@@ -93,9 +85,7 @@ final class StoriesResponseTest extends TestCase
         new StoriesResponse(new Total(1), new Pagination(), $values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rels(): void
     {
         $values = self::faker()->storiesResponse();
@@ -106,9 +96,7 @@ final class StoriesResponseTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function relsKeyMustExist(): void
     {
         $values = self::faker()->storiesResponse();
@@ -119,9 +107,7 @@ final class StoriesResponseTest extends TestCase
         new StoriesResponse(new Total(1), new Pagination(), $values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function links(): void
     {
         $values = self::faker()->storiesResponse();
@@ -132,9 +118,7 @@ final class StoriesResponseTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function linksKeyMustExist(): void
     {
         $values = self::faker()->storiesResponse();

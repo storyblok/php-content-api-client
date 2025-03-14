@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Integration;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Id;
 use Storyblok\Api\LinksApi;
@@ -27,9 +28,7 @@ final class LinksApiTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function all(): void
     {
         $client = StoryblokFakeClient::willRespond(
@@ -44,9 +43,7 @@ final class LinksApiTest extends TestCase
         self::assertSame(1, $response->total->value);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function byParent(): void
     {
         $client = StoryblokFakeClient::willRespond(
@@ -61,9 +58,7 @@ final class LinksApiTest extends TestCase
         self::assertSame(1, $response->total->value);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function roots(): void
     {
         $client = StoryblokFakeClient::willRespond(

@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Response;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Dto\Pagination;
 use Storyblok\Api\Domain\Value\Total;
@@ -27,9 +28,7 @@ final class LinksResponseTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function links(): void
     {
         $values = self::faker()->linksResponse();
@@ -40,9 +39,7 @@ final class LinksResponseTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function linksKeyMustExist(): void
     {
         self::expectException(\InvalidArgumentException::class);

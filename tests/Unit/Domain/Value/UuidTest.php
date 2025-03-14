@@ -13,6 +13,10 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value;
 
+use Ergebnis\DataProvider\StringProvider;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Uuid;
 use Storyblok\Api\Tests\Util\FakerTrait;
@@ -24,9 +28,7 @@ final class UuidTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function value(): void
     {
         $value = self::faker()->uuid();
@@ -34,9 +36,7 @@ final class UuidTest extends TestCase
         self::assertSame($value, (new Uuid($value))->value);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function valueCanStartWithI(): void
     {
         $value = self::faker()->uuid();
@@ -44,13 +44,10 @@ final class UuidTest extends TestCase
         self::assertSame($value, (new Uuid('i-'.$value))->value);
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::blank()
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::empty()
-     * @dataProvider provideInvalidValues
-     */
+    #[DataProvider('provideInvalidValues')]
+    #[DataProviderExternal(StringProvider::class, 'blank')]
+    #[DataProviderExternal(StringProvider::class, 'empty')]
+    #[Test]
     public function valueInvalid(string $value): void
     {
         self::expectException(\InvalidArgumentException::class);
@@ -69,9 +66,7 @@ final class UuidTest extends TestCase
         yield 'upper_case_uuid' => ['9C2C176D-D8A1-457C-B066-F37AB38771AD'];
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function stringable(): void
     {
         $uuid = new Uuid($expected = self::faker()->uuid());

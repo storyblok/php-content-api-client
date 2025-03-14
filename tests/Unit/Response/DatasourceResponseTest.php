@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Response;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Response\DatasourceResponse;
 use Storyblok\Api\Tests\Util\FakerTrait;
@@ -25,9 +26,7 @@ final class DatasourceResponseTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function datasource(): void
     {
         $faker = self::faker();
@@ -38,9 +37,7 @@ final class DatasourceResponseTest extends TestCase
         self::assertSame($name, (new DatasourceResponse($values))->datasource->name);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function datasourceKeyMustExist(): void
     {
         $values = self::faker()->datasourceResponse();

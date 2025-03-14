@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value\Filter\Filters;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use Storyblok\Api\Domain\Value\Filter\Filters\Filter;
 use Storyblok\Api\Domain\Value\Filter\Filters\InFilter;
 use Storyblok\Api\Domain\Value\Filter\Filters\LikeFilter;
@@ -35,9 +37,7 @@ final class OrFilterTest extends FilterTestCase
         return OrFilter::class;
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toArray(): void
     {
         $filter = new OrFilter(new InFilter('title', 'Fancy title'), new LikeFilter('title', '*test'));
@@ -58,9 +58,7 @@ final class OrFilterTest extends FilterTestCase
         ], $filter->toArray());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function field(): void
     {
         $filter = new OrFilter(new InFilter('title', 'Fancy title'), new LikeFilter('title', '*test'));
@@ -69,12 +67,10 @@ final class OrFilterTest extends FilterTestCase
     }
 
     /**
-     * @test
-     *
-     * @dataProvider invalidValues
-     *
      * @param list<Filter> $filters
      */
+    #[DataProvider('invalidValues')]
+    #[Test]
     public function invalid(array $filters): void
     {
         self::expectException(\InvalidArgumentException::class);
@@ -92,9 +88,7 @@ final class OrFilterTest extends FilterTestCase
         yield 'one filter passed' => [[new InFilter($faker->word(), $faker->word())]];
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function filtersCanBeTheSameForField(): void
     {
         $filter = new OrFilter(

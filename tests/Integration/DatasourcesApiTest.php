@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Integration;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\DatasourcesApi;
 use Storyblok\Api\Domain\Value\Dto\Pagination;
@@ -30,9 +31,7 @@ class DatasourcesApiTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function allDatasourcesAreRetrievedSuccessfully(): void
     {
         $client = StoryblokFakeClient::willRespond(
@@ -46,9 +45,7 @@ class DatasourcesApiTest extends TestCase
         self::assertInstanceOf(DatasourcesResponse::class, $response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function datasourceIsRetrievedBySlugSuccessfully(): void
     {
         $client = StoryblokFakeClient::willRespond(
@@ -61,9 +58,7 @@ class DatasourcesApiTest extends TestCase
         self::assertInstanceOf(DatasourceResponse::class, $response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function exceptionIsThrownWhenRetrievingAllDatasourcesFails(): void
     {
         $client = StoryblokFakeClient::willThrowException(new \Exception());
@@ -74,9 +69,7 @@ class DatasourcesApiTest extends TestCase
         $api->all(new DatasourcesRequest(pagination: new Pagination(1, 10)));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function exceptionIsThrownWhenRetrievingDatasourceBySlugFails(): void
     {
         $client = StoryblokFakeClient::willThrowException(new \Exception());

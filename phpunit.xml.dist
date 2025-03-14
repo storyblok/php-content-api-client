@@ -7,7 +7,6 @@
          colors="true"
          columns="max"
          executionOrder="random"
-         verbose="true"
 >
     <php>
         <ini name="error_reporting" value="-1" />
@@ -16,20 +15,17 @@
     </php>
 
     <testsuites>
-        <testsuite name="all">
-            <directory>tests</directory>
-        </testsuite>
         <testsuite name="unit">
             <directory>tests/Unit</directory>
         </testsuite>
         <testsuite name="integration">
-            <directory>tests/Unit</directory>
+            <directory>tests/Integration</directory>
         </testsuite>
     </testsuites>
 
-    <filter>
-        <whitelist>
-            <directory>src</directory>
-        </whitelist>
-    </filter>
+    <source>
+        <include>
+            <directory suffix=".php">src</directory>
+        </include>
+    </source>
 </phpunit>

@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Bridge\HttpClient;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Bridge\HttpClient\QueryStringHelper;
 
@@ -22,12 +24,10 @@ use Storyblok\Api\Bridge\HttpClient\QueryStringHelper;
 class QueryStringHelperTest extends TestCase
 {
     /**
-     * @test
-     *
-     * @dataProvider provideTestCases
-     *
      * @param array<int|string, mixed> $parameters
      */
+    #[DataProvider('provideTestCases')]
+    #[Test]
     public function itAppliesQueryString(string $expected, string $url, array $parameters): void
     {
         self::assertSame($expected, QueryStringHelper::applyQueryString($url, $parameters));

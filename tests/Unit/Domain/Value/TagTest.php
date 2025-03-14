@@ -13,6 +13,9 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value;
 
+use Ergebnis\DataProvider\StringProvider;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Tag;
 use Storyblok\Api\Tests\Util\FakerTrait;
@@ -25,10 +28,8 @@ final class TagTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
-    public function name(): void
+    #[Test]
+    public function nameValue(): void
     {
         $value = self::faker()->word();
         $tag = new Tag($value, 0);
@@ -36,12 +37,9 @@ final class TagTest extends TestCase
         self::assertSame($value, $tag->name);
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::blank()
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::empty()
-     */
+    #[DataProviderExternal(StringProvider::class, 'blank')]
+    #[DataProviderExternal(StringProvider::class, 'empty')]
+    #[Test]
     public function nameInvalid(string $value): void
     {
         self::expectException(\InvalidArgumentException::class);
@@ -49,9 +47,7 @@ final class TagTest extends TestCase
         new Tag($value, 0);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function taggingsCount(): void
     {
         $word = self::faker()->word();
@@ -60,9 +56,7 @@ final class TagTest extends TestCase
         self::assertSame($value, (new Tag($word, $value))->taggingsCount);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function taggingsCountCanBeZero(): void
     {
         $word = self::faker()->word();
@@ -70,9 +64,7 @@ final class TagTest extends TestCase
         self::assertSame(0, (new Tag($word, 0))->taggingsCount);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function taggingCountMustBeGreaterThanOrEqualZero(): void
     {
         $word = self::faker()->word();

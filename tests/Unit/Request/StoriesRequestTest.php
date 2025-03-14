@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Request;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Dto\Direction;
 use Storyblok\Api\Domain\Value\Dto\SortBy;
@@ -37,9 +38,7 @@ final class StoriesRequestTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toArrayWithDefaults(): void
     {
         $request = new StoriesRequest();
@@ -51,9 +50,7 @@ final class StoriesRequestTest extends TestCase
         ], $request->toArray());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toArrayWithSortBy(): void
     {
         $request = new StoriesRequest(
@@ -68,9 +65,7 @@ final class StoriesRequestTest extends TestCase
         ], $request->toArray());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toArrayWithFilters(): void
     {
         $request = new StoriesRequest(
@@ -91,9 +86,7 @@ final class StoriesRequestTest extends TestCase
         ], $request->toArray());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toArrayWithExcludeFields(): void
     {
         $request = new StoriesRequest(
@@ -111,9 +104,7 @@ final class StoriesRequestTest extends TestCase
         ], $request->toArray());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toArrayWithTags(): void
     {
         $request = new StoriesRequest(
@@ -131,9 +122,7 @@ final class StoriesRequestTest extends TestCase
         ], $request->toArray());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toArrayWithExcludeIds(): void
     {
         $request = new StoriesRequest(
@@ -150,9 +139,7 @@ final class StoriesRequestTest extends TestCase
         ], $request->toArray());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toArrayWithRelations(): void
     {
         $request = new StoriesRequest(
@@ -169,9 +156,7 @@ final class StoriesRequestTest extends TestCase
         ], $request->toArray());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toArrayWithVersion(): void
     {
         $request = new StoriesRequest(
@@ -186,9 +171,7 @@ final class StoriesRequestTest extends TestCase
         ], $request->toArray());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toArrayWithSearchTerm(): void
     {
         $request = new StoriesRequest(

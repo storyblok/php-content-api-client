@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Integration;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\StoryblokClient;
 use Storyblok\Api\Tests\Util\FakerTrait;
@@ -27,9 +28,7 @@ final class StoryblokClientTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function requestUrlMustStartWithTrailingSlash(): void
     {
         $client = self::createClient(new MockResponse());
@@ -39,9 +38,7 @@ final class StoryblokClientTest extends TestCase
         $client->request('GET', self::faker()->word());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function requestUrlMustNotStartWithHttp(): void
     {
         $client = self::createClient(new MockResponse());

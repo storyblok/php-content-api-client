@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Response;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Dto\Pagination;
 use Storyblok\Api\Domain\Value\Total;
@@ -27,9 +28,7 @@ final class DatasourcesResponseTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function datasources(): void
     {
         $values = self::faker()->datasourcesResponse();
@@ -40,9 +39,7 @@ final class DatasourcesResponseTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function datasourcesKeyMustExist(): void
     {
         $values = self::faker()->datasourcesResponse();

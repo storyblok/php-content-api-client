@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Response;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Response\TagsResponse;
 use Storyblok\Api\Tests\Util\FakerTrait;
@@ -25,9 +26,7 @@ final class TagsResponseTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function tags(): void
     {
         $values = self::faker()->tagsResponse();
@@ -38,9 +37,7 @@ final class TagsResponseTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function tagsKeyMustExist(): void
     {
         $values = self::faker()->tagsResponse();

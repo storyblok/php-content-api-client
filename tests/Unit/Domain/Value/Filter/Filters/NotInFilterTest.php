@@ -13,6 +13,10 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value\Filter\Filters;
 
+use Ergebnis\DataProvider\StringProvider;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
+use PHPUnit\Framework\Attributes\Test;
 use Storyblok\Api\Domain\Value\Filter\Filters\NotInFilter;
 use Storyblok\Api\Domain\Value\Filter\Operation;
 use Storyblok\Api\Tests\Unit\Domain\Value\Filter\FilterTestCase;
@@ -32,9 +36,7 @@ final class NotInFilterTest extends FilterTestCase
         return NotInFilter::class;
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toArray(): void
     {
         $faker = self::faker();
@@ -47,9 +49,7 @@ final class NotInFilterTest extends FilterTestCase
         ], $filter->toArray());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function field(): void
     {
         $faker = self::faker();
@@ -58,12 +58,9 @@ final class NotInFilterTest extends FilterTestCase
         self::assertSame($field, $filter->field());
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::blank()
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::empty()
-     */
+    #[DataProviderExternal(StringProvider::class, 'blank')]
+    #[DataProviderExternal(StringProvider::class, 'empty')]
+    #[Test]
     public function fieldInvalid(string $field): void
     {
         self::expectException(\InvalidArgumentException::class);
@@ -71,11 +68,8 @@ final class NotInFilterTest extends FilterTestCase
         new NotInFilter($field, [self::faker()->word()]);
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider invalidValues
-     */
+    #[DataProvider('invalidValues')]
+    #[Test]
     public function valueInvalid(mixed $value): void
     {
         self::expectException(\InvalidArgumentException::class);

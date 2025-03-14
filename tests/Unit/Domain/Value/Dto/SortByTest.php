@@ -13,6 +13,9 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value\Dto;
 
+use Ergebnis\DataProvider\StringProvider;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Dto\Direction;
 use Storyblok\Api\Domain\Value\Dto\SortBy;
@@ -25,9 +28,7 @@ final class SortByTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function page(): void
     {
         $value = self::faker()->word();
@@ -35,12 +36,9 @@ final class SortByTest extends TestCase
         self::assertSame($value, (new SortBy($value, Direction::Asc))->field);
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::blank()
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::empty()
-     */
+    #[DataProviderExternal(StringProvider::class, 'blank')]
+    #[DataProviderExternal(StringProvider::class, 'empty')]
+    #[Test]
     public function pageInvalid(string $value): void
     {
         self::expectException(\InvalidArgumentException::class);
@@ -48,9 +46,7 @@ final class SortByTest extends TestCase
         new SortBy($value, Direction::Asc);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toStringMethod(): void
     {
         $value = self::faker()->word();

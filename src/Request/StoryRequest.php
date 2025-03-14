@@ -25,7 +25,7 @@ final readonly class StoryRequest
     public function __construct(
         public string $language = 'default',
         public ?Version $version = null,
-        public ?RelationCollection $withRelations = null,
+        public RelationCollection $withRelations = new RelationCollection(),
     ) {
         Assert::stringNotEmpty($language);
     }
@@ -47,7 +47,7 @@ final readonly class StoryRequest
             $array['version'] = $this->version->value;
         }
 
-        if (null !== $this->withRelations && $this->withRelations->count() > 0) {
+        if ($this->withRelations->count() > 0) {
             $array['resolve_relations'] = $this->withRelations->toString();
         }
 

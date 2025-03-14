@@ -13,9 +13,9 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value;
 
-use Ergebnis\DataProvider\StringProvider;
 use Ergebnis\DataProvider\IntProvider;
 use Ergebnis\DataProvider\NullProvider;
+use Ergebnis\DataProvider\StringProvider;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;

@@ -26,12 +26,16 @@ final class FieldCollection implements \Countable, \IteratorAggregate
     private array $items = [];
 
     /**
-     * @param list<Field> $items
+     * @param list<Field|string> $items
      */
     public function __construct(
         array $items = [],
     ) {
         foreach ($items as $item) {
+            if (\is_string($item)) {
+                $item = new Field($item);
+            }
+
             $this->add($item);
         }
     }

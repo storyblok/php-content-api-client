@@ -28,6 +28,18 @@ final class FieldCollectionTest extends TestCase
     /**
      * @test
      */
+    public function constructWithString(): void
+    {
+        $faker = self::faker();
+        $collection = new FieldCollection([$faker->word(), $faker->word()]);
+
+        self::assertCount(2, $collection);
+        self::assertContainsOnlyInstancesOf(Field::class, $collection);
+    }
+
+    /**
+     * @test
+     */
     public function add(): void
     {
         $faker = self::faker();

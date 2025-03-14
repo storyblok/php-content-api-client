@@ -26,12 +26,16 @@ final class IdCollection implements \Countable, \IteratorAggregate
     private array $items = [];
 
     /**
-     * @param list<Id> $items
+     * @param list<Id|int> $items
      */
     public function __construct(
         array $items = [],
     ) {
         foreach ($items as $item) {
+            if (\is_int($item)) {
+                $item = new Id($item);
+            }
+
             $this->add($item);
         }
     }

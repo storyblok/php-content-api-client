@@ -28,6 +28,18 @@ final class IdCollectionTest extends TestCase
     /**
      * @test
      */
+    public function constructWithString(): void
+    {
+        $faker = self::faker();
+        $collection = new IdCollection([$faker->numberBetween(1), $faker->numberBetween(1)]);
+
+        self::assertCount(2, $collection);
+        self::assertContainsOnlyInstancesOf(Id::class, $collection);
+    }
+
+    /**
+     * @test
+     */
     public function add(): void
     {
         $faker = self::faker();

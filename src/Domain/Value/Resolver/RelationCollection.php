@@ -26,12 +26,16 @@ final class RelationCollection implements \Countable, \IteratorAggregate
     private array $items = [];
 
     /**
-     * @param list<Relation> $items
+     * @param list<Relation|string> $items
      */
     public function __construct(
         array $items = [],
     ) {
         foreach ($items as $item) {
+            if (\is_string($item)) {
+                $item = new Relation($item);
+            }
+
             $this->add($item);
         }
     }

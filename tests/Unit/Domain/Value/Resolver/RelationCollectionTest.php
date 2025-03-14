@@ -28,6 +28,18 @@ final class RelationCollectionTest extends TestCase
     /**
      * @test
      */
+    public function constructWithString(): void
+    {
+        $faker = self::faker();
+        $collection = new RelationCollection([$faker->relation(), $faker->relation()]);
+
+        self::assertCount(2, $collection);
+        self::assertContainsOnlyInstancesOf(Relation::class, $collection);
+    }
+
+    /**
+     * @test
+     */
     public function add(): void
     {
         $faker = self::faker();

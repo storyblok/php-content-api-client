@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Link;
 use Storyblok\Api\Tests\Util\FakerTrait;
@@ -24,9 +25,7 @@ final class LinkTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function uuid(): void
     {
         $values = self::faker()->linkResponse();
@@ -34,9 +33,7 @@ final class LinkTest extends TestCase
         self::assertSame($values['uuid'], (new Link($values))->uuid->value);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function uuidKeyMustExist(): void
     {
         $values = self::faker()->linkResponse();
@@ -47,9 +44,7 @@ final class LinkTest extends TestCase
         new Link($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function id(): void
     {
         $values = self::faker()->linkResponse();
@@ -57,9 +52,7 @@ final class LinkTest extends TestCase
         self::assertSame($values['id'], (new Link($values))->id->value);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function idKeyMustExist(): void
     {
         $values = self::faker()->linkResponse();
@@ -70,9 +63,7 @@ final class LinkTest extends TestCase
         new Link($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function parentId(): void
     {
         $values = self::faker()->linkResponse([
@@ -83,9 +74,7 @@ final class LinkTest extends TestCase
         self::assertSame(24, (new Link($values))->parentId->value);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function parentIdNull(): void
     {
         $values = self::faker()->linkResponse([
@@ -95,9 +84,7 @@ final class LinkTest extends TestCase
         self::assertNull((new Link($values))->parentId);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function parentIdKeyMustExist(): void
     {
         $values = self::faker()->linkResponse();
@@ -108,9 +95,7 @@ final class LinkTest extends TestCase
         new Link($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function position(): void
     {
         $values = self::faker()->linkResponse();
@@ -118,9 +103,7 @@ final class LinkTest extends TestCase
         self::assertSame($values['position'], (new Link($values))->position);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function positionKeyMustExist(): void
     {
         $values = self::faker()->linkResponse();
@@ -131,9 +114,7 @@ final class LinkTest extends TestCase
         new Link($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function slug(): void
     {
         $values = self::faker()->linkResponse();
@@ -141,9 +122,7 @@ final class LinkTest extends TestCase
         self::assertSame($values['slug'], (new Link($values))->slug);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function slugKeyMustExist(): void
     {
         $values = self::faker()->linkResponse();
@@ -154,9 +133,7 @@ final class LinkTest extends TestCase
         new Link($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function path(): void
     {
         $values = self::faker()->linkResponse();
@@ -164,9 +141,7 @@ final class LinkTest extends TestCase
         self::assertSame($values['path'], (new Link($values))->path);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function pathKeyMustExist(): void
     {
         $values = self::faker()->linkResponse();
@@ -177,9 +152,7 @@ final class LinkTest extends TestCase
         new Link($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isFolder(): void
     {
         $values = self::faker()->linkResponse();
@@ -187,9 +160,7 @@ final class LinkTest extends TestCase
         self::assertSame($values['is_folder'], (new Link($values))->isFolder);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isFolderKeyMustExist(): void
     {
         $values = self::faker()->linkResponse();
@@ -200,9 +171,7 @@ final class LinkTest extends TestCase
         new Link($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isStartPage(): void
     {
         $values = self::faker()->linkResponse();
@@ -210,9 +179,7 @@ final class LinkTest extends TestCase
         self::assertSame($values['is_startpage'], (new Link($values))->isStartPage);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isStartPageKeyMustExist(): void
     {
         $values = self::faker()->linkResponse();
@@ -223,9 +190,7 @@ final class LinkTest extends TestCase
         new Link($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isPublished(): void
     {
         $values = self::faker()->linkResponse();
@@ -233,9 +198,7 @@ final class LinkTest extends TestCase
         self::assertSame($values['published'], (new Link($values))->isPublished);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isPublishedNull(): void
     {
         $values = self::faker()->linkResponse();
@@ -244,9 +207,7 @@ final class LinkTest extends TestCase
         self::assertFalse((new Link($values))->isPublished);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isPublishedKeyMustExist(): void
     {
         $values = self::faker()->linkResponse();
@@ -257,9 +218,7 @@ final class LinkTest extends TestCase
         new Link($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function realPath(): void
     {
         $values = self::faker()->linkResponse();
@@ -267,9 +226,7 @@ final class LinkTest extends TestCase
         self::assertSame($values['real_path'], (new Link($values))->realPath);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function realPathKeyMustExist(): void
     {
         $values = self::faker()->linkResponse();
@@ -280,9 +237,7 @@ final class LinkTest extends TestCase
         new Link($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isPublishedWithNullAndStoryIsNotPublished(): void
     {
         $values = self::faker()->linkResponse(['published' => null]);
@@ -290,9 +245,7 @@ final class LinkTest extends TestCase
         self::assertFalse((new Link($values))->isPublished());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isPublishedWithNullAndStoryIsPublished(): void
     {
         $values = self::faker()->linkResponse(['published' => true]);
@@ -300,9 +253,7 @@ final class LinkTest extends TestCase
         self::assertTrue((new Link($values))->isPublished());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isPublishedWithLangAndAlternateIsPublished(): void
     {
         $faker = self::faker();
@@ -318,9 +269,7 @@ final class LinkTest extends TestCase
         self::assertTrue((new Link($values))->isPublished($lang));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isPublishedWithLangAndAlternateIsNotPublished(): void
     {
         $faker = self::faker();
@@ -336,9 +285,7 @@ final class LinkTest extends TestCase
         self::assertFalse((new Link($values))->isPublished($lang));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isFolderReturnsTrue(): void
     {
         $values = self::faker()->linkResponse(['is_folder' => true]);
@@ -346,9 +293,7 @@ final class LinkTest extends TestCase
         self::assertTrue((new Link($values))->isFolder());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isFolderReturnsFalse(): void
     {
         $values = self::faker()->linkResponse(['is_folder' => false]);
@@ -356,9 +301,7 @@ final class LinkTest extends TestCase
         self::assertFalse((new Link($values))->isFolder());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isStoryReturnsTrue(): void
     {
         $values = self::faker()->linkResponse(['is_folder' => false]);
@@ -366,9 +309,7 @@ final class LinkTest extends TestCase
         self::assertTrue((new Link($values))->isStory());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isStoryReturnsFalse(): void
     {
         $values = self::faker()->linkResponse(['is_folder' => true]);
@@ -376,9 +317,7 @@ final class LinkTest extends TestCase
         self::assertFalse((new Link($values))->isStory());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isStartPageReturnsTrue(): void
     {
         $values = self::faker()->linkResponse(['is_startpage' => true]);
@@ -386,9 +325,7 @@ final class LinkTest extends TestCase
         self::assertTrue((new Link($values))->isStartPage());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isStartPageReturnsFalse(): void
     {
         $values = self::faker()->linkResponse(['is_startpage' => false]);
@@ -396,9 +333,7 @@ final class LinkTest extends TestCase
         self::assertFalse((new Link($values))->isStartPage());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getNameWithLangAndAlternate(): void
     {
         $faker = self::faker();
@@ -414,9 +349,7 @@ final class LinkTest extends TestCase
         self::assertSame($name, (new Link($values))->getName($lang));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getNameWithNullReturnsDefaultName(): void
     {
         $faker = self::faker();
@@ -426,9 +359,7 @@ final class LinkTest extends TestCase
         self::assertSame($name, (new Link($values))->getName());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getNameThrowsExceptionOnUnknownLanguage(): void
     {
         $faker = self::faker();
@@ -440,9 +371,7 @@ final class LinkTest extends TestCase
         (new Link($values))->getName('unknown');
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getSlugWithLangAndAlternate(): void
     {
         $faker = self::faker();
@@ -458,9 +387,7 @@ final class LinkTest extends TestCase
         self::assertSame($slug, (new Link($values))->getSlug($lang));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getSlugWithNullReturnsDefaultName(): void
     {
         $faker = self::faker();
@@ -470,9 +397,7 @@ final class LinkTest extends TestCase
         self::assertSame($slug, (new Link($values))->getSlug());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getSlugThrowsExceptionOnUnknownLanguage(): void
     {
         $faker = self::faker();

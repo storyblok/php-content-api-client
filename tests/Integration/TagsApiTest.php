@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Integration;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Response\TagsResponse;
 use Storyblok\Api\TagsApi;
@@ -27,9 +28,7 @@ class TagsApiTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function allTagsAreRetrievedSuccessfully(): void
     {
         $client = StoryblokFakeClient::willRespond(
@@ -42,9 +41,7 @@ class TagsApiTest extends TestCase
         self::assertInstanceOf(TagsResponse::class, $response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function exceptionIsThrownWhenRetrievingAllTagsFails(): void
     {
         $client = StoryblokFakeClient::willThrowException(new \Exception());

@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Integration;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Id;
 use Storyblok\Api\Domain\Value\Uuid;
@@ -30,9 +31,7 @@ final class StoriesApiTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function allStoriesAreRetrievedSuccessfully(): void
     {
         $client = StoryblokFakeClient::willRespond(
@@ -47,9 +46,7 @@ final class StoriesApiTest extends TestCase
         self::assertSame(1, $response->total->value);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function allStoriesByContentTypeAreRetrievedSuccessfully(): void
     {
         $client = StoryblokFakeClient::willRespond(
@@ -64,9 +61,7 @@ final class StoriesApiTest extends TestCase
         self::assertSame(1, $response->total->value);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function storyBySlugIsRetrievedSuccessfully(): void
     {
         $client = StoryblokFakeClient::willRespond(
@@ -79,9 +74,7 @@ final class StoriesApiTest extends TestCase
         self::assertInstanceOf(StoryResponse::class, $response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function storyByUuidIsRetrievedSuccessfully(): void
     {
         $client = StoryblokFakeClient::willRespond(
@@ -94,9 +87,7 @@ final class StoriesApiTest extends TestCase
         self::assertInstanceOf(StoryResponse::class, $response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function storyByIdIsRetrievedSuccessfully(): void
     {
         $client = StoryblokFakeClient::willRespond(
@@ -109,9 +100,7 @@ final class StoriesApiTest extends TestCase
         self::assertInstanceOf(StoryResponse::class, $response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function exceptionIsThrownWhenRetrievingAllStoriesFails(): void
     {
         $client = StoryblokFakeClient::willThrowException(new \Exception());
@@ -122,9 +111,7 @@ final class StoriesApiTest extends TestCase
         $api->all();
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function exceptionIsThrownWhenRetrievingAllStoriesByContentTypeFails(): void
     {
         $client = StoryblokFakeClient::willThrowException(new \Exception());
@@ -135,9 +122,7 @@ final class StoriesApiTest extends TestCase
         $api->allByContentType(self::faker()->word());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function exceptionIsThrownWhenRetrievingAllStoriesByIdFails(): void
     {
         $client = StoryblokFakeClient::willThrowException(new \Exception());
@@ -148,9 +133,7 @@ final class StoriesApiTest extends TestCase
         $api->byId(new Id(self::faker()->numberBetween(1)));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function exceptionIsThrownWhenRetrievingAllStoriesByUuidFails(): void
     {
         $client = StoryblokFakeClient::willThrowException(new \Exception());
@@ -161,9 +144,7 @@ final class StoriesApiTest extends TestCase
         $api->byUuid(new Uuid(self::faker()->uuid()));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function exceptionIsThrownWhenRetrievingAllStoriesBySlugFails(): void
     {
         $client = StoryblokFakeClient::willThrowException(new \Exception());

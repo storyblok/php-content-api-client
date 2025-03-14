@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value\Resolver;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Resolver\Relation;
 use Storyblok\Api\Domain\Value\Resolver\RelationCollection;
@@ -25,9 +26,7 @@ final class RelationCollectionTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function constructWithString(): void
     {
         $faker = self::faker();
@@ -37,9 +36,7 @@ final class RelationCollectionTest extends TestCase
         self::assertContainsOnlyInstancesOf(Relation::class, $collection);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function add(): void
     {
         $faker = self::faker();
@@ -51,9 +48,7 @@ final class RelationCollectionTest extends TestCase
         self::assertCount(1, $collection);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function remove(): void
     {
         $faker = self::faker();
@@ -67,9 +62,7 @@ final class RelationCollectionTest extends TestCase
         self::assertEmpty($collection);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function hasReturnsTrue(): void
     {
         $faker = self::faker();
@@ -81,9 +74,7 @@ final class RelationCollectionTest extends TestCase
         self::assertTrue($collection->has($relation));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function hasReturnsFalse(): void
     {
         $faker = self::faker();
@@ -93,9 +84,7 @@ final class RelationCollectionTest extends TestCase
         self::assertFalse($collection->has(new Relation($faker->relation())));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isCountable(): void
     {
         $faker = self::faker();
@@ -104,12 +93,10 @@ final class RelationCollectionTest extends TestCase
 
         $collection = new RelationCollection([$relation]);
 
-        self::assertSame(1, $collection->count());
+        self::assertCount(1, $collection);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toStringMethod(): void
     {
         $faker = self::faker();
@@ -125,9 +112,7 @@ final class RelationCollectionTest extends TestCase
         self::assertSame(implode(',', [$relation1, $relation2, $relation3]), $collection->toString());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getIterator(): void
     {
         $faker = self::faker();

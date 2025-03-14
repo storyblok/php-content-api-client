@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Response;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Response\SpaceResponse;
 use Storyblok\Api\Tests\Util\FakerTrait;
@@ -25,9 +27,7 @@ final class SpaceResponseTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function space(): void
     {
         $response = [
@@ -42,11 +42,8 @@ final class SpaceResponseTest extends TestCase
         self::assertCount(\count($values['language_codes']), $space->languageCodes);
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider provideMissingKeys
-     */
+    #[DataProvider('provideMissingKeys')]
+    #[Test]
     public function missingKeyThrowsException(string $key): void
     {
         $values = self::faker()->spaceResponse();

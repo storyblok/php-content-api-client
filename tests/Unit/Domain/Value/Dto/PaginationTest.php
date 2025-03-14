@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value\Dto;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Dto\Pagination;
 use Storyblok\Api\Tests\Util\FakerTrait;
@@ -24,18 +25,14 @@ final class PaginationTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function defaults(): void
     {
         self::assertSame(1, (new Pagination())->page);
         self::assertSame(25, (new Pagination())->perPage);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function page(): void
     {
         $value = self::faker()->numberBetween(1);
@@ -43,9 +40,7 @@ final class PaginationTest extends TestCase
         self::assertSame($value, (new Pagination($value))->page);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function pageMustBePositiveInt(): void
     {
         $value = self::faker()->numberBetween(-100, 0);
@@ -55,9 +50,7 @@ final class PaginationTest extends TestCase
         new Pagination($value);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function pageMustNotBeZero(): void
     {
         self::expectException(\InvalidArgumentException::class);
@@ -65,9 +58,7 @@ final class PaginationTest extends TestCase
         new Pagination(0);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function perPage(): void
     {
         $value = self::faker()->numberBetween(1);
@@ -75,9 +66,7 @@ final class PaginationTest extends TestCase
         self::assertSame($value, (new Pagination(perPage: $value))->perPage);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function perPageMustBePositiveInt(): void
     {
         $value = self::faker()->numberBetween(-100, 0);
@@ -87,9 +76,7 @@ final class PaginationTest extends TestCase
         new Pagination(perPage: $value);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function perPageMustNotBeZero(): void
     {
         self::expectException(\InvalidArgumentException::class);

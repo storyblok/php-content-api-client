@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Request;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Dto\Version;
 use Storyblok\Api\Domain\Value\Resolver\Relation;
@@ -27,9 +28,7 @@ final class StoryRequestTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toArray(): void
     {
         $request = new StoryRequest(
@@ -43,9 +42,7 @@ final class StoryRequestTest extends TestCase
         ], $request->toArray());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toArrayWithDefaults(): void
     {
         $request = new StoryRequest();
@@ -55,9 +52,7 @@ final class StoryRequestTest extends TestCase
         ], $request->toArray());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toArrayWithVersion(): void
     {
         $request = new StoryRequest(
@@ -70,9 +65,7 @@ final class StoryRequestTest extends TestCase
         ], $request->toArray());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toArrayWithRelations(): void
     {
         $request = new StoryRequest(

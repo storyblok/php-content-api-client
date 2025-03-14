@@ -13,6 +13,8 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value;
 
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Id;
 use Storyblok\Api\Tests\Util\FakerTrait;
@@ -24,9 +26,7 @@ final class IdTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function value(): void
     {
         $value = self::faker()->numberBetween(1);
@@ -34,11 +34,8 @@ final class IdTest extends TestCase
         self::assertSame($value, (new Id($value))->value);
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider provideInvalidValues
-     */
+    #[DataProvider('provideInvalidValues')]
+    #[Test]
     public function valueInvalid(int $value): void
     {
         self::expectException(\InvalidArgumentException::class);
@@ -55,9 +52,7 @@ final class IdTest extends TestCase
         yield 'negative_number' => [-1];
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function equalsReturnsTrue(): void
     {
         $value = self::faker()->numberBetween(1);
@@ -65,9 +60,7 @@ final class IdTest extends TestCase
         self::assertTrue((new Id($value))->equals(new Id($value)));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function equalsReturnsFalse(): void
     {
         self::assertFalse((new Id(1))->equals(new Id(2)));

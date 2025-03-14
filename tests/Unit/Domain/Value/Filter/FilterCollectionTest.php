@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value\Filter;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Filter\FilterCollection;
 use Storyblok\Api\Domain\Value\Filter\Filters\GreaterThanIntFilter;
@@ -29,9 +30,7 @@ final class FilterCollectionTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function add(): void
     {
         $faker = self::faker();
@@ -43,9 +42,7 @@ final class FilterCollectionTest extends TestCase
         self::assertCount(1, $collection);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function remove(): void
     {
         $faker = self::faker();
@@ -59,9 +56,7 @@ final class FilterCollectionTest extends TestCase
         self::assertEmpty($collection);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function hasReturnsTrue(): void
     {
         $faker = self::faker();
@@ -73,9 +68,7 @@ final class FilterCollectionTest extends TestCase
         self::assertTrue($collection->has($filter));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function hasReturnsFalse(): void
     {
         $faker = self::faker();
@@ -85,9 +78,7 @@ final class FilterCollectionTest extends TestCase
         self::assertFalse($collection->has(new IsFilter($faker->word(), IsFilter::EMPTY)));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isCountable(): void
     {
         $faker = self::faker();
@@ -96,12 +87,10 @@ final class FilterCollectionTest extends TestCase
 
         $collection = new FilterCollection([$filter]);
 
-        self::assertSame(1, $collection->count());
+        self::assertCount(1, $collection);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toArray(): void
     {
         $filters = [
@@ -125,9 +114,7 @@ final class FilterCollectionTest extends TestCase
         ], $collection->toArray());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toArrayFiltersGetCombined(): void
     {
         $filters = [
@@ -145,9 +132,7 @@ final class FilterCollectionTest extends TestCase
         ], $collection->toArray());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function throwsExceptionIfAlreadyInCollectionAndFilterCanBeUsedOnlyOnceForAField(): void
     {
         $faker = self::faker();
@@ -162,9 +147,7 @@ final class FilterCollectionTest extends TestCase
         new FilterCollection($filters);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function getIterator(): void
     {
         $filters = [

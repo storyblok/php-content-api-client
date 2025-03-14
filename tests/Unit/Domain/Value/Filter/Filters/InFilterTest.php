@@ -13,6 +13,10 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value\Filter\Filters;
 
+use Ergebnis\DataProvider\StringProvider;
+use PHPUnit\Framework\Attributes\DataProvider;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
+use PHPUnit\Framework\Attributes\Test;
 use Storyblok\Api\Domain\Value\Filter\Filters\InFilter;
 use Storyblok\Api\Domain\Value\Filter\Operation;
 use Storyblok\Api\Tests\Unit\Domain\Value\Filter\FilterTestCase;
@@ -44,12 +48,9 @@ final class InFilterTest extends FilterTestCase
         ], $filter->toArray());
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::blank()
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::empty()
-     */
+    #[DataProviderExternal(StringProvider::class, 'blank')]
+    #[DataProviderExternal(StringProvider::class, 'empty')]
+    #[Test]
     public function fieldInvalid(string $field): void
     {
         self::expectException(\InvalidArgumentException::class);
@@ -58,12 +59,10 @@ final class InFilterTest extends FilterTestCase
     }
 
     /**
-     * @test
-     *
-     * @dataProvider invalidValues
-     *
      * @param array<mixed>|string $value
      */
+    #[DataProvider('invalidValues')]
+    #[Test]
     public function valueInvalid(array|string $value): void
     {
         self::expectException(\InvalidArgumentException::class);

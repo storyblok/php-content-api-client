@@ -13,6 +13,9 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value;
 
+use Ergebnis\DataProvider\IntProvider;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Asset;
 use Storyblok\Api\Tests\Util\FakerTrait;
@@ -24,9 +27,7 @@ final class AssetTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function filename(): void
     {
         $values = self::faker()->assetResponse()['asset'];
@@ -34,9 +35,7 @@ final class AssetTest extends TestCase
         self::assertSame($values['filename'], (new Asset($values))->filename);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function filenameKeyMustExist(): void
     {
         $values = self::faker()->assetResponse()['asset'];
@@ -47,9 +46,7 @@ final class AssetTest extends TestCase
         new Asset($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createdAt(): void
     {
         $values = self::faker()->assetResponse()['asset'];
@@ -57,9 +54,7 @@ final class AssetTest extends TestCase
         self::assertSame($values['created_at'], (new Asset($values))->createdAt->format(\DATE_ATOM));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function createdAtKeyMustExist(): void
     {
         $values = self::faker()->assetResponse()['asset'];
@@ -70,9 +65,7 @@ final class AssetTest extends TestCase
         new Asset($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function updatedAt(): void
     {
         $values = self::faker()->assetResponse()['asset'];
@@ -80,9 +73,7 @@ final class AssetTest extends TestCase
         self::assertSame($values['updated_at'], (new Asset($values))->updatedAt->format(\DATE_ATOM));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function updatedAtKeyMustExist(): void
     {
         $values = self::faker()->assetResponse()['asset'];
@@ -93,9 +84,7 @@ final class AssetTest extends TestCase
         new Asset($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function expiresAt(): void
     {
         $faker = self::faker();
@@ -109,9 +98,7 @@ final class AssetTest extends TestCase
         self::assertSame($values['expire_at'], (new Asset($values))->expiresAt->format(\DATE_ATOM));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function expiresAtCanBeNull(): void
     {
         $faker = self::faker();
@@ -125,9 +112,7 @@ final class AssetTest extends TestCase
         self::assertNull((new Asset($values))->expiresAt);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function expiresAtKeyMustExist(): void
     {
         $values = self::faker()->assetResponse()['asset'];
@@ -138,9 +123,7 @@ final class AssetTest extends TestCase
         new Asset($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function contentLength(): void
     {
         $values = self::faker()->assetResponse()['asset'];
@@ -148,9 +131,7 @@ final class AssetTest extends TestCase
         self::assertSame($values['content_length'], (new Asset($values))->contentLength);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function contentLengthKeyMustExist(): void
     {
         $values = self::faker()->assetResponse()['asset'];
@@ -161,11 +142,8 @@ final class AssetTest extends TestCase
         new Asset($values);
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero()
-     */
+    #[DataProviderExternal(IntProvider::class, 'lessThanZero')]
+    #[Test]
     public function contentLengthInvalid(int $value): void
     {
         $values = self::faker()->assetResponse([
@@ -179,9 +157,7 @@ final class AssetTest extends TestCase
         new Asset($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function signedUrl(): void
     {
         $values = self::faker()->assetResponse()['asset'];
@@ -189,9 +165,7 @@ final class AssetTest extends TestCase
         self::assertSame($values['signed_url'], (new Asset($values))->signedUrl);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function signedUrlKeyMustExist(): void
     {
         $values = self::faker()->assetResponse()['asset'];
@@ -202,9 +176,7 @@ final class AssetTest extends TestCase
         new Asset($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function contentType(): void
     {
         $values = self::faker()->assetResponse()['asset'];
@@ -212,9 +184,7 @@ final class AssetTest extends TestCase
         self::assertSame($values['content_type'], (new Asset($values))->contentType);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function contentTypeKeyMustExist(): void
     {
         $values = self::faker()->assetResponse()['asset'];

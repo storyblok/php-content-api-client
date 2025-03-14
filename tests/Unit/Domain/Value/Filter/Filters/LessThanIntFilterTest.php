@@ -13,6 +13,9 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value\Filter\Filters;
 
+use Ergebnis\DataProvider\StringProvider;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
+use PHPUnit\Framework\Attributes\Test;
 use Storyblok\Api\Domain\Value\Filter\Filters\LessThanIntFilter;
 use Storyblok\Api\Domain\Value\Filter\Operation;
 use Storyblok\Api\Tests\Unit\Domain\Value\Filter\FilterTestCase;
@@ -32,9 +35,7 @@ final class LessThanIntFilterTest extends FilterTestCase
         return LessThanIntFilter::class;
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function toArray(): void
     {
         $faker = self::faker();
@@ -47,9 +48,7 @@ final class LessThanIntFilterTest extends FilterTestCase
         ], $filter->toArray());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function field(): void
     {
         $faker = self::faker();
@@ -58,12 +57,9 @@ final class LessThanIntFilterTest extends FilterTestCase
         self::assertSame($field, $filter->field());
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::blank()
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::empty()
-     */
+    #[DataProviderExternal(StringProvider::class, 'blank')]
+    #[DataProviderExternal(StringProvider::class, 'empty')]
+    #[Test]
     public function fieldInvalid(string $field): void
     {
         self::expectException(\InvalidArgumentException::class);

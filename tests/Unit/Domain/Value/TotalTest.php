@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Link;
 use Storyblok\Api\Domain\Value\Total;
@@ -25,9 +26,7 @@ final class TotalTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function fromHeaders(): void
     {
         $headers = ['total' => ['5']];
@@ -35,9 +34,7 @@ final class TotalTest extends TestCase
         self::assertSame((int) $headers['total'][0], Total::fromHeaders($headers)->value);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function totalKeyMustExist(): void
     {
         self::expectException(\InvalidArgumentException::class);
@@ -45,9 +42,7 @@ final class TotalTest extends TestCase
         new Link([]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function totalKeyMustContainExactlyOneItem(): void
     {
         self::expectException(\InvalidArgumentException::class);

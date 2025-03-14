@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Integration;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Space;
 use Storyblok\Api\Response\SpaceResponse;
@@ -30,9 +31,7 @@ final class SpacesApiTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function me(): void
     {
         $client = self::createClient([
@@ -58,9 +57,7 @@ final class SpacesApiTest extends TestCase
         self::assertSame(['de', 'en'], $space->languageCodes);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function meThrowsExceptionIfSpaceIsMissing(): void
     {
         $client = self::createClient([]);

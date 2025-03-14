@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Integration;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\DatasourceEntriesApi;
 use Storyblok\Api\Domain\Value\Dto\Pagination;
@@ -29,9 +30,7 @@ class DatasourcesEntriesApiTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function allDatasourceEntriesAreRetrievedSuccessfully(): void
     {
         $client = StoryblokFakeClient::willRespond(
@@ -45,9 +44,7 @@ class DatasourcesEntriesApiTest extends TestCase
         self::assertInstanceOf(DatasourceEntriesResponse::class, $response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function allDatasourceEntriesByDatasourceAreRetrievedSuccessfully(): void
     {
         $client = StoryblokFakeClient::willRespond(
@@ -64,9 +61,7 @@ class DatasourcesEntriesApiTest extends TestCase
         self::assertInstanceOf(DatasourceEntriesResponse::class, $response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function allDatasourceEntriesByDimensionAreRetrievedSuccessfully(): void
     {
         $client = StoryblokFakeClient::willRespond(
@@ -83,9 +78,7 @@ class DatasourcesEntriesApiTest extends TestCase
         self::assertInstanceOf(DatasourceEntriesResponse::class, $response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function allDatasourceEntriesByDatasourceDimensionAreRetrievedSuccessfully(): void
     {
         $client = StoryblokFakeClient::willRespond(
@@ -103,9 +96,7 @@ class DatasourcesEntriesApiTest extends TestCase
         self::assertInstanceOf(DatasourceEntriesResponse::class, $response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function exceptionIsThrownWhenRetrievingAllDatasourceEntriesFails(): void
     {
         $client = StoryblokFakeClient::willThrowException(new \Exception());
@@ -116,9 +107,7 @@ class DatasourcesEntriesApiTest extends TestCase
         $api->all(new DatasourceEntriesRequest(pagination: new Pagination(1, 10)));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function exceptionIsThrownWhenRetrievingDatasourceEntriesByDatasourceFails(): void
     {
         $client = StoryblokFakeClient::willThrowException(new \Exception());
@@ -132,9 +121,7 @@ class DatasourcesEntriesApiTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function exceptionIsThrownWhenRetrievingDatasourceEntriesByDimensionFails(): void
     {
         $client = StoryblokFakeClient::willThrowException(new \Exception());
@@ -148,9 +135,7 @@ class DatasourcesEntriesApiTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function exceptionIsThrownWhenRetrievingDatasourceEntriesByDatasourceDimensionFails(): void
     {
         $client = StoryblokFakeClient::willThrowException(new \Exception());

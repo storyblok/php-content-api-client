@@ -13,6 +13,11 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value;
 
+use Ergebnis\DataProvider\StringProvider;
+use Ergebnis\DataProvider\IntProvider;
+use Ergebnis\DataProvider\NullProvider;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Space;
 use Storyblok\Api\Tests\Util\FakerTrait;
@@ -25,9 +30,7 @@ final class SpaceTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function id(): void
     {
         $faker = self::faker();
@@ -38,9 +41,7 @@ final class SpaceTest extends TestCase
         self::assertSame($id, (new Space($response))->id->value);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function idKeyMustExist(): void
     {
         $faker = self::faker();
@@ -52,10 +53,8 @@ final class SpaceTest extends TestCase
         new Space($response);
     }
 
-    /**
-     * @test
-     */
-    public function name(): void
+    #[Test]
+    public function nameValue(): void
     {
         $faker = self::faker();
         $response = $faker->spaceResponse([
@@ -65,9 +64,7 @@ final class SpaceTest extends TestCase
         self::assertSame($name, (new Space($response))->name);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function nameKeyMustExist(): void
     {
         $faker = self::faker();
@@ -79,12 +76,9 @@ final class SpaceTest extends TestCase
         new Space($response);
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::blank()
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::empty()
-     */
+    #[DataProviderExternal(StringProvider::class, 'blank')]
+    #[DataProviderExternal(StringProvider::class, 'empty')]
+    #[Test]
     public function nameInvalid(string $value): void
     {
         $faker = self::faker();
@@ -95,9 +89,7 @@ final class SpaceTest extends TestCase
         new Space($response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function version(): void
     {
         $faker = self::faker();
@@ -108,9 +100,7 @@ final class SpaceTest extends TestCase
         self::assertSame($version, (new Space($response))->version);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function versionKeyMustExist(): void
     {
         $faker = self::faker();
@@ -122,13 +112,10 @@ final class SpaceTest extends TestCase
         new Space($response);
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::lessThanZero()
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::zero()
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::arbitrary()
-     */
+    #[DataProviderExternal(IntProvider::class, 'lessThanZero')]
+    #[DataProviderExternal(IntProvider::class, 'zero')]
+    #[DataProviderExternal(StringProvider::class, 'arbitrary')]
+    #[Test]
     public function versionInvalid(int|string $value): void
     {
         $faker = self::faker();
@@ -139,9 +126,7 @@ final class SpaceTest extends TestCase
         new Space($response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function languageCodes(): void
     {
         $faker = self::faker();
@@ -152,9 +137,7 @@ final class SpaceTest extends TestCase
         self::assertSame($languageCodes, (new Space($response))->languageCodes);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function languageCodesKeyMustExist(): void
     {
         $faker = self::faker();
@@ -166,13 +149,10 @@ final class SpaceTest extends TestCase
         new Space($response);
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider \Ergebnis\DataProvider\IntProvider::arbitrary()
-     * @dataProvider \Ergebnis\DataProvider\NullProvider::null()
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::arbitrary()
-     */
+    #[DataProviderExternal(IntProvider::class, 'arbitrary')]
+    #[DataProviderExternal(NullProvider::class, 'null')]
+    #[DataProviderExternal(StringProvider::class, 'arbitrary')]
+    #[Test]
     public function languageCodesMustBeArray(mixed $value): void
     {
         $faker = self::faker();
@@ -183,9 +163,7 @@ final class SpaceTest extends TestCase
         new Space($response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function languageCodesMustAllArray(): void
     {
         $faker = self::faker();

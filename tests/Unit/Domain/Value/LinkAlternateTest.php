@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\LinkAlternate;
 use Storyblok\Api\Tests\Util\FakerTrait;
@@ -24,9 +25,7 @@ final class LinkAlternateTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function lang(): void
     {
         $values = self::faker()->linkAlternateResponse();
@@ -34,9 +33,7 @@ final class LinkAlternateTest extends TestCase
         self::assertSame($values['lang'], (new LinkAlternate($values))->lang);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function langKeyMustExist(): void
     {
         $values = self::faker()->linkAlternateResponse();
@@ -47,19 +44,15 @@ final class LinkAlternateTest extends TestCase
         new LinkAlternate($values);
     }
 
-    /**
-     * @test
-     */
-    public function name(): void
+    #[Test]
+    public function nameValue(): void
     {
         $values = self::faker()->linkAlternateResponse();
 
         self::assertSame($values['name'], (new LinkAlternate($values))->name);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function nameKeyMustExist(): void
     {
         $values = self::faker()->linkAlternateResponse();
@@ -70,9 +63,7 @@ final class LinkAlternateTest extends TestCase
         new LinkAlternate($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function path(): void
     {
         $values = self::faker()->linkAlternateResponse();
@@ -80,9 +71,7 @@ final class LinkAlternateTest extends TestCase
         self::assertSame($values['path'], (new LinkAlternate($values))->path);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function pathKeyMustExist(): void
     {
         $values = self::faker()->linkAlternateResponse();
@@ -93,9 +82,7 @@ final class LinkAlternateTest extends TestCase
         new LinkAlternate($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function published(): void
     {
         $values = self::faker()->linkAlternateResponse();
@@ -103,9 +90,7 @@ final class LinkAlternateTest extends TestCase
         self::assertSame($values['published'], (new LinkAlternate($values))->published);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function publishedKeyMustExist(): void
     {
         $values = self::faker()->linkAlternateResponse();
@@ -116,9 +101,7 @@ final class LinkAlternateTest extends TestCase
         new LinkAlternate($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function slug(): void
     {
         $values = self::faker()->linkAlternateResponse();
@@ -126,9 +109,7 @@ final class LinkAlternateTest extends TestCase
         self::assertSame($values['translated_slug'], (new LinkAlternate($values))->slug);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function slugKeyHasFallback(): void
     {
         $values = self::faker()->linkAlternateResponse([
@@ -140,9 +121,7 @@ final class LinkAlternateTest extends TestCase
         self::assertSame($path, (new LinkAlternate($values))->slug);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isPublishedReturnsTrue(): void
     {
         $values = self::faker()->linkAlternateResponse(['published' => true]);
@@ -150,9 +129,7 @@ final class LinkAlternateTest extends TestCase
         self::assertTrue((new LinkAlternate($values))->isPublished());
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function isPublishedReturnsFalse(): void
     {
         $values = self::faker()->linkAlternateResponse(['published' => false]);

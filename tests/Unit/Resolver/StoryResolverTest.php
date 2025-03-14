@@ -13,6 +13,7 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Resolver;
 
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Resolver\StoryResolver;
 use Storyblok\Api\Tests\Util\FakerTrait;
@@ -24,9 +25,7 @@ final class StoryResolverTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function resolve(): void
     {
         $resolver = new StoryResolver();
@@ -56,9 +55,7 @@ final class StoryResolverTest extends TestCase
         self::assertSame($expected, $resolver->resolve($story, $references));
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function resolveThrowsExceptionWhenUuidKeyDoesNotExist(): void
     {
         $resolver = new StoryResolver();
@@ -76,9 +73,7 @@ final class StoryResolverTest extends TestCase
         $resolver->resolve(['name' => $faker->word()], [$reference]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function resolveThrowsExceptionWhenUuidKeyContainsNoValidUuid(): void
     {
         $resolver = new StoryResolver();
@@ -96,9 +91,7 @@ final class StoryResolverTest extends TestCase
         $resolver->resolve(['name' => $faker->word()], [$reference]);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function resolveWithComplexStructure(): void
     {
         $resolver = new StoryResolver();

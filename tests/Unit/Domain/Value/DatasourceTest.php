@@ -13,6 +13,9 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value;
 
+use Ergebnis\DataProvider\StringProvider;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Datasource;
 use Storyblok\Api\Domain\Value\DatasourceDimension;
@@ -26,9 +29,7 @@ final class DatasourceTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function id(): void
     {
         $faker = self::faker();
@@ -39,9 +40,7 @@ final class DatasourceTest extends TestCase
         self::assertSame($id, (new Datasource($response))->id->value);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function idKeyMustExist(): void
     {
         $faker = self::faker();
@@ -53,10 +52,8 @@ final class DatasourceTest extends TestCase
         new Datasource($response);
     }
 
-    /**
-     * @test
-     */
-    public function name(): void
+    #[Test]
+    public function nameValue(): void
     {
         $faker = self::faker();
         $response = $faker->datasourceResponse([
@@ -66,9 +63,7 @@ final class DatasourceTest extends TestCase
         self::assertSame($name, (new Datasource($response))->name);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function nameKeyMustExist(): void
     {
         $faker = self::faker();
@@ -80,12 +75,9 @@ final class DatasourceTest extends TestCase
         new Datasource($response);
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::blank()
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::empty()
-     */
+    #[DataProviderExternal(StringProvider::class, 'blank')]
+    #[DataProviderExternal(StringProvider::class, 'empty')]
+    #[Test]
     public function nameInvalid(string $value): void
     {
         $faker = self::faker();
@@ -96,9 +88,7 @@ final class DatasourceTest extends TestCase
         new Datasource($response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function slug(): void
     {
         $faker = self::faker();
@@ -109,9 +99,7 @@ final class DatasourceTest extends TestCase
         self::assertSame($slug, (new Datasource($response))->slug);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function slugKeyMustExist(): void
     {
         $faker = self::faker();
@@ -123,12 +111,9 @@ final class DatasourceTest extends TestCase
         new Datasource($response);
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::blank()
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::empty()
-     */
+    #[DataProviderExternal(StringProvider::class, 'blank')]
+    #[DataProviderExternal(StringProvider::class, 'empty')]
+    #[Test]
     public function slugInvalid(string $value): void
     {
         $faker = self::faker();
@@ -139,9 +124,7 @@ final class DatasourceTest extends TestCase
         new Datasource($response);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function dimensions(): void
     {
         $faker = self::faker();
@@ -153,9 +136,7 @@ final class DatasourceTest extends TestCase
         );
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function dimensionsKeyMustExist(): void
     {
         $faker = self::faker();

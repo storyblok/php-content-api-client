@@ -13,6 +13,9 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Response;
 
+use Ergebnis\DataProvider\StringProvider;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
+use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Response\StoryResponse;
 use Storyblok\Api\Tests\Util\FakerTrait;
@@ -24,9 +27,7 @@ final class StoryResponseTest extends TestCase
 {
     use FakerTrait;
 
-    /**
-     * @test
-     */
+    #[Test]
     public function storyKeyMustExist(): void
     {
         $values = self::faker()->storyResponse();
@@ -37,9 +38,7 @@ final class StoryResponseTest extends TestCase
         new StoryResponse($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function cv(): void
     {
         $values = self::faker()->storyResponse();
@@ -47,9 +46,7 @@ final class StoryResponseTest extends TestCase
         self::assertSame($values['cv'], (new StoryResponse($values))->cv);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function cvKeyMustExist(): void
     {
         $values = self::faker()->storyResponse();
@@ -60,11 +57,8 @@ final class StoryResponseTest extends TestCase
         new StoryResponse($values);
     }
 
-    /**
-     * @test
-     *
-     * @dataProvider \Ergebnis\DataProvider\StringProvider::arbitrary()
-     */
+    #[DataProviderExternal(StringProvider::class, 'arbitrary')]
+    #[Test]
     public function cvInvalid(string $value): void
     {
         $values = self::faker()->storyResponse([
@@ -75,9 +69,7 @@ final class StoryResponseTest extends TestCase
         new StoryResponse($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function rels(): void
     {
         $values = self::faker()->storyResponse();
@@ -85,9 +77,7 @@ final class StoryResponseTest extends TestCase
         self::assertCount(\count($values['rels']), (new StoryResponse($values))->rels);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function relsKeyMustExist(): void
     {
         $values = self::faker()->storyResponse();
@@ -98,9 +88,7 @@ final class StoryResponseTest extends TestCase
         new StoryResponse($values);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function links(): void
     {
         $values = self::faker()->storyResponse();
@@ -108,9 +96,7 @@ final class StoryResponseTest extends TestCase
         self::assertCount(\count($values['links']), (new StoryResponse($values))->links);
     }
 
-    /**
-     * @test
-     */
+    #[Test]
     public function linksKeyMustExist(): void
     {
         $values = self::faker()->storyResponse();

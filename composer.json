@@ -39,6 +39,9 @@
         "phpunit/phpunit": "^11.5",
         "thecodingmachine/phpstan-safe-rule": "^1.4"
     },
+    "scripts": {
+        "license-check": "php license-checker.php"
+    },
     "config": {
         "sort-packages": true,
         "allow-plugins": {

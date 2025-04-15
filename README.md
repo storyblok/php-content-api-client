@@ -8,10 +8,6 @@
 |-----------|---------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------|
 | `master`  | [![PHP](https://github.com/storyblok/php-content-api-client/actions/workflows/ci.yaml/badge.svg)](https://github.com/storyblok/php-content-api-client/actions/workflows/ci.yaml)  | [![codecov](https://codecov.io/gh/storyblok/php-content-api-client/graph/badge.svg)](https://codecov.io/gh/storyblok/php-content-api-client) |
 
-The Storyblok Content API PHP Client library simplifies the integration with Storyblok's Content API in PHP applications.
-
-For the Management API PHP Client, see [storyblok/php-management-api-client](https://github.com/storyblok/php-management-api-client).
-
 ## Symfony
 
 Use the [storyblok/storyblok-bundle](https://github.com/storyblok/storyblok-bundle) to integrate this library into your Symfony application.
@@ -639,6 +635,10 @@ new BlogPostCollection(
 
 [actions]: https://github.com/sensiolabs-de/storyblok-api/actions
 [codecov]: https://codecov.io/gh/sensiolabs-de/storyblok-api
+
+## Management API client
+
+For the Management API PHP Client, see [storyblok/php-management-api-client](https://github.com/storyblok/php-management-api-client).
 
 ## License
 

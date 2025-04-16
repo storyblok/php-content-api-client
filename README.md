@@ -636,6 +636,10 @@ new BlogPostCollection(
 [actions]: https://github.com/sensiolabs-de/storyblok-api/actions
 [codecov]: https://codecov.io/gh/sensiolabs-de/storyblok-api
 
+## Management API client
+
+For the Management API PHP Client, see [storyblok/php-management-api-client](https://github.com/storyblok/php-management-api-client).
+
 ## License
 
 This project is licensed under the MIT License. Please see [License File](LICENSE) for more information.

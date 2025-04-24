@@ -21,6 +21,7 @@ use Storyblok\Api\Domain\Value\Filter\FilterCollection;
 use Storyblok\Api\Domain\Value\IdCollection;
 use Storyblok\Api\Domain\Value\Resolver\RelationCollection;
 use Storyblok\Api\Domain\Value\Resolver\ResolveLinks;
+use Storyblok\Api\Domain\Value\Slug\SlugCollection;
 use Storyblok\Api\Domain\Value\Tag\TagCollection;
 use Webmozart\Assert\Assert;
 
@@ -44,6 +45,7 @@ final readonly class StoriesRequest
         public ?Version $version = null,
         public ?string $searchTerm = null,
         public ResolveLinks $resolveLinks = new ResolveLinks(),
+        public SlugCollection $excludeSlugs = new SlugCollection(),
     ) {
         Assert::stringNotEmpty($language);
         Assert::lessThanEq($this->pagination->perPage, self::MAX_PER_PAGE);
@@ -64,6 +66,7 @@ final readonly class StoriesRequest
      *     resolve_links_level?: string,
      *     search_term?: string,
      *     version?: string,
+     *     excluding_slugs?: string,
      * }
      */
     public function toArray(): array
@@ -109,6 +112,10 @@ final readonly class StoriesRequest
 
         if (null !== $this->version) {
             $array['version'] = $this->version->value;
+        }
+
+        if ($this->excludeSlugs->count() > 0) {
+            $array['excluding_slugs'] = $this->excludeSlugs->toString();
         }
 
         return $array;

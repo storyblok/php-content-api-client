@@ -1,0 +1,91 @@
+<?php
+
+declare(strict_types=1);
+
+/**
+ * This file is part of Storyblok-Api.
+ *
+ * (c) SensioLabs Deutschland <info@sensiolabs.de>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
+namespace Storyblok\Api\Domain\Value\Slug;
+
+/**
+ * @author Silas Joisten <silasjoisten@proton.me>
+ *
+ * @implements \IteratorAggregate<int, Slug>
+ */
+final class SlugCollection implements \Countable, \IteratorAggregate
+{
+    /**
+     * @var list<Slug>
+     */
+    private array $items = [];
+
+    /**
+     * @param list<Slug|string> $items
+     */
+    public function __construct(
+        array $items = [],
+    ) {
+        foreach ($items as $item) {
+            if (\is_string($item)) {
+                $item = new Slug($item);
+            }
+
+            $this->add($item);
+        }
+    }
+
+    /**
+     * @return \Traversable<int, Slug>
+     */
+    public function getIterator(): \Traversable
+    {
+        return new \ArrayIterator($this->items);
+    }
+
+    public function count(): int
+    {
+        return \count($this->items);
+    }
+
+    public function add(Slug $field): void
+    {
+        if ($this->has($field)) {
+            return;
+        }
+
+        $this->items[] = $field;
+    }
+
+    public function has(Slug $field): bool
+    {
+        foreach ($this->items as $item) {
+            if ($item->value === $field->value) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    public function remove(Slug $field): void
+    {
+        foreach ($this->items as $key => $item) {
+            if ($item->value === $field->value) {
+                unset($this->items[$key]);
+
+                break;
+            }
+        }
+    }
+
+    public function toString(): string
+    {
+        return implode(',', array_map(static fn (Slug $slug): string => $slug->value, $this->items));
+    }
+}

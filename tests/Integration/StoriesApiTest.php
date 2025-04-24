@@ -62,6 +62,21 @@ final class StoriesApiTest extends TestCase
     }
 
     #[Test]
+    public function allStoriesByUuidsAreRetrievedSuccessfully(): void
+    {
+        $client = StoryblokFakeClient::willRespond(
+            self::faker()->storiesResponse(),
+            ['total' => 1],
+        );
+        $api = new StoriesApi($client);
+
+        $response = $api->allByUuids([new Uuid(self::faker()->uuid())]);
+
+        self::assertInstanceOf(StoriesResponse::class, $response);
+        self::assertSame(1, $response->total->value);
+    }
+
+    #[Test]
     public function storyBySlugIsRetrievedSuccessfully(): void
     {
         $client = StoryblokFakeClient::willRespond(

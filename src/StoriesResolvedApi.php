@@ -84,6 +84,32 @@ final readonly class StoriesResolvedApi implements StoriesApiInterface
         );
     }
 
+    public function allByUuids(array $uuids, bool $keepOrder = true, ?StoriesRequest $request = null): StoriesResponse
+    {
+        $response = $this->storiesApi->allByUuids($uuids, $keepOrder, $request);
+
+        if (null === $request || 0 === $request->withRelations->count()) {
+            return $response;
+        }
+
+        $stories = [];
+
+        foreach ($response->stories as $story) {
+            $stories[] = $this->resolver->resolve($story, $response->rels);
+        }
+
+        return new StoriesResponse(
+            $response->total,
+            $response->pagination,
+            [
+                'cv' => $response->cv,
+                'rels' => $response->rels,
+                'links' => $response->links,
+                'stories' => $stories,
+            ],
+        );
+    }
+
     public function bySlug(string $slug, ?StoryRequest $request = null): StoryResponse
     {
         $response = $this->storiesApi->bySlug($slug, $request);

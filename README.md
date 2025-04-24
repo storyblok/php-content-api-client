@@ -324,6 +324,22 @@ $response = $storiesApi->allByContentType('custom_content_type', new StoriesRequ
 ));
 ```
 
+### Get multiple stories by multiple uuid's (`array`)
+
+```php
+use Storyblok\Api\StoriesApi;
+use Storyblok\Api\StoryblokClient;
+use Storyblok\Api\Request\StoriesRequest;
+use Storyblok\Api\Domain\Value\Uuid;
+
+$client = new StoryblokClient(/* ... */);
+
+$storiesApi = new StoriesApi($client);
+$response = $storiesApi->allByUuids([new Uuid(/** ... */), new Uuid(/** ... */)], new StoriesRequest(
+    language: 'de',
+));
+```
+
 ### Get by uuid (`Storyblok\Api\Domain\Value\Uuid`)
 
 ```php

@@ -81,6 +81,35 @@ final class StoriesApi implements StoriesApiInterface
         );
     }
 
+    public function allByUuids(array $uuids, bool $keepOrder = true, ?StoriesRequest $request = null): StoriesResponse
+    {
+        Assert::allIsInstanceOf($uuids, Uuid::class);
+
+        $request ??= new StoriesRequest();
+
+        $uuids = \implode(',', \array_map(static fn (Uuid $uuid) => $uuid->value, $uuids));
+
+        $query = ['by_uuids' => $uuids];
+
+        if ($keepOrder) {
+            $query = ['by_uuids_ordered' => $uuids];
+        }
+
+        $response = $this->client->request('GET', self::ENDPOINT, [
+            'query' => [
+                ...$request->toArray(),
+                ...$query,
+                'version' => null !== $request->version ? $request->version->value : $this->version->value,
+            ],
+        ]);
+
+        return new StoriesResponse(
+            Total::fromHeaders($response->getHeaders()),
+            $request->pagination,
+            $response->toArray(),
+        );
+    }
+
     public function bySlug(string $slug, ?StoryRequest $request = null): StoryResponse
     {
         Assert::stringNotEmpty($slug);

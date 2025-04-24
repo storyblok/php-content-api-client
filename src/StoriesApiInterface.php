@@ -31,6 +31,11 @@ interface StoriesApiInterface
 
     public function allByContentType(string $contentType, ?StoriesRequest $request = null): StoriesResponse;
 
+    /**
+     * @param Uuid[] $uuids
+     */
+    public function allByUuids(array $uuids, bool $keepOrder = true, ?StoriesRequest $request = null): StoriesResponse;
+
     public function bySlug(string $slug, ?StoryRequest $request = null): StoryResponse;
 
     public function byUuid(Uuid $uuid, ?StoryRequest $request = null): StoryResponse;

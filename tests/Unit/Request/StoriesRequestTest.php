@@ -26,6 +26,8 @@ use Storyblok\Api\Domain\Value\Id;
 use Storyblok\Api\Domain\Value\IdCollection;
 use Storyblok\Api\Domain\Value\Resolver\Relation;
 use Storyblok\Api\Domain\Value\Resolver\RelationCollection;
+use Storyblok\Api\Domain\Value\Slug\Slug;
+use Storyblok\Api\Domain\Value\Slug\SlugCollection;
 use Storyblok\Api\Domain\Value\Tag\Tag;
 use Storyblok\Api\Domain\Value\Tag\TagCollection;
 use Storyblok\Api\Request\StoriesRequest;
@@ -183,6 +185,24 @@ final class StoriesRequestTest extends TestCase
             'page' => 1,
             'per_page' => 25,
             'search_term' => $searchTerm,
+        ], $request->toArray());
+    }
+
+    #[Test]
+    public function toArrayExcludeSlugs(): void
+    {
+        $request = new StoriesRequest(
+            excludeSlugs: new SlugCollection([
+                new Slug('path/*'),
+                new Slug('another-path/*'),
+            ]),
+        );
+
+        self::assertSame([
+            'language' => 'default',
+            'page' => 1,
+            'per_page' => 25,
+            'excluding_slugs' => 'path/*,another-path/*',
         ], $request->toArray());
     }
 }

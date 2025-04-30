@@ -3,9 +3,10 @@
 declare(strict_types=1);
 
 /**
- * This file is part of Storyblok-Api.
+ * This file is part of storyblok/php-content-api-client.
  *
- * (c) SensioLabs Deutschland <info@sensiolabs.de>
+ * (c) Storyblok GmbH <info@storyblok.com>
+ * in cooperation with SensioLabs Deutschland <info@sensiolabs.de>
  *
  * For the full copyright and license information, please view the LICENSE
  * file that was distributed with this source code.
@@ -16,9 +17,10 @@ use Ergebnis\PhpCsFixer\Config\Rules;
 use Ergebnis\PhpCsFixer\Config\RuleSet\Php83;
 
 $header = <<<'HEADER'
-This file is part of Storyblok-Api.
+This file is part of storyblok/php-content-api-client.
 
-(c) SensioLabs Deutschland <info@sensiolabs.de>
+(c) Storyblok GmbH <info@storyblok.com>
+in cooperation with SensioLabs Deutschland <info@sensiolabs.de>
 
 For the full copyright and license information, please view the LICENSE
 file that was distributed with this source code.

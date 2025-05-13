@@ -161,39 +161,3 @@ parameters:
 			identifier: method.nonObject
 			count: 1
 			path: tests/Unit/Domain/Value/AssetTest.php
-
-		-
-			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertEmpty\(\) with Storyblok\\Api\\Domain\\Value\\Field\\FieldCollection will always evaluate to false\.$#'
-			identifier: staticMethod.impossibleType
-			count: 2
-			path: tests/Unit/Domain/Value/Field/FieldCollectionTest.php
-
-		-
-			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertEmpty\(\) with Storyblok\\Api\\Domain\\Value\\Filter\\FilterCollection will always evaluate to false\.$#'
-			identifier: staticMethod.impossibleType
-			count: 2
-			path: tests/Unit/Domain/Value/Filter/FilterCollectionTest.php
-
-		-
-			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertEmpty\(\) with Storyblok\\Api\\Domain\\Value\\IdCollection will always evaluate to false\.$#'
-			identifier: staticMethod.impossibleType
-			count: 2
-			path: tests/Unit/Domain/Value/IdCollectionTest.php
-
-		-
-			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertEmpty\(\) with Storyblok\\Api\\Domain\\Value\\Resolver\\RelationCollection will always evaluate to false\.$#'
-			identifier: staticMethod.impossibleType
-			count: 2
-			path: tests/Unit/Domain/Value/Resolver/RelationCollectionTest.php
-
-		-
-			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertEmpty\(\) with Storyblok\\Api\\Domain\\Value\\Slug\\SlugCollection will always evaluate to false\.$#'
-			identifier: staticMethod.impossibleType
-			count: 2
-			path: tests/Unit/Domain/Value/Slug/SlugCollectionTest.php
-
-		-
-			message: '#^Call to static method PHPUnit\\Framework\\Assert\:\:assertEmpty\(\) with Storyblok\\Api\\Domain\\Value\\Tag\\TagCollection will always evaluate to false\.$#'
-			identifier: staticMethod.impossibleType
-			count: 2
-			path: tests/Unit/Domain/Value/Tag/TagCollectionTest.php

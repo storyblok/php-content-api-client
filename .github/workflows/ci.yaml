@@ -39,7 +39,7 @@ jobs:
               run: "composer validate"
 
             - name: "Install dependencies with composer"
-              uses: "ramsey/composer-install@3.1.0"
+              uses: "ramsey/composer-install@3.1.1"
               with:
                   composer-options: "--no-scripts"
 
@@ -71,7 +71,7 @@ jobs:
                   php-version: "${{ matrix.php-version }}"
 
             - name: "Install dependencies with composer"
-              uses: "ramsey/composer-install@3.1.0"
+              uses: "ramsey/composer-install@3.1.1"
 
             - name: "Static code analysis"
               run: "vendor/bin/phpstan analyse --configuration phpstan.neon.dist --no-progress"
@@ -98,13 +98,13 @@ jobs:
                 php-version: "${{ matrix.php-version }}"
 
             - name: "Install dependencies with composer"
-              uses: "ramsey/composer-install@3.1.0"
+              uses: "ramsey/composer-install@3.1.1"
 
             - name: "Run unit tests"
               run: "vendor/bin/phpunit --configuration=phpunit.xml.dist --coverage-clover=.build/logs/clover.xml"
 
             - name: 'Upload coverage reports to Codecov'
-              uses: 'codecov/codecov-action@v5.4.2'
+              uses: 'codecov/codecov-action@v5.4.3'
               with:
                 files: './.build/logs/clover.xml'
                 token: ${{ secrets.CODECOV_TOKEN }}

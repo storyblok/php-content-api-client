@@ -27,6 +27,7 @@ use Storyblok\Api\Bridge\Faker\Provider\StoryblokProvider;
  * @method array  datasourceEntryResponse(array $overrides = [])
  * @method array  datasourceResponse(array $overrides = [])
  * @method array  datasourcesResponse(array $overrides = [])
+ * @method string editable(?string $uid = null, ?string $id = null, ?string $name = null, ?string $space = null)
  * @method array  linkAlternateResponse(array $overrides = [])
  * @method array  linkResponse(array $overrides = [])
  * @method array  linksResponse(array $overrides = [])

@@ -585,10 +585,20 @@ final class StoryblokProvider extends BaseProvider
         );
     }
 
+    /**
+     * @param mixed[] $overrides
+     *
+     * @return array{
+     *     id: int,
+     *     is_external_url: bool,
+     *     filename: string,
+     * }
+     */
     public function storyAssetResponse(array $overrides = []): array
     {
-        return [
+        $response = [
             'id' => $this->generator->numberBetween(1, 1000000),
+            'is_external_url' => false,
             'filename' => \sprintf(
                 'https://a.storyblok.com/f/287488/%dx%d/xxxxxx/%s.png',
                 $this->generator->word(),
@@ -596,6 +606,11 @@ final class StoryblokProvider extends BaseProvider
                 $height ?? 1080,
             ),
         ];
+
+        return array_replace_recursive(
+            $response,
+            $overrides,
+        );
     }
 
     public function relation(): string

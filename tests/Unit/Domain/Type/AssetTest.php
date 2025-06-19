@@ -14,14 +14,13 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Type;
 
-use App\Bridge\Storyblok\Value\Type\Asset;
-use App\Bridge\Storyblok\Value\Type\Orientation;
-use App\Factory\Storyblok\Type\AssetResponseFactory;
 use Ergebnis\DataProvider\StringProvider;
 use PHPUnit\Framework\Attributes\DataProvider;
 use PHPUnit\Framework\Attributes\DataProviderExternal;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
+use Storyblok\Api\Domain\Type\Asset;
+use Storyblok\Api\Domain\Type\Orientation;
 use Storyblok\Api\Tests\Util\FakerTrait;
 
 final class AssetTest extends TestCase
@@ -31,59 +30,56 @@ final class AssetTest extends TestCase
     #[Test]
     public function alt(): void
     {
-        $asset = self::faker()->storyAssetResponse();
-
-        $values = AssetResponseFactory::createOne([
-            'alt' => $expected = self::faker()->word(),
+        $faker = self::faker();
+        $response = $faker->storyAssetResponse([
+            'alt' => $expected = $faker->word(),
         ]);
 
-        self::assertSame($expected, (new Asset($values))->alt);
+        self::assertSame($expected, (new Asset($response))->alt);
     }
 
     #[Test]
-    public function altKeyMustExist(): void
+    public function altKeyIsOptional(): void
     {
-        $values = AssetResponseFactory::createOne();
-        unset($values['alt']);
+        $response = self::faker()->storyAssetResponse();
+        unset($response['alt']);
 
-        self::expectException(\InvalidArgumentException::class);
-
-        new Asset($values);
+        self::assertNull((new Asset($response))->alt);
     }
 
     #[DataProviderExternal(StringProvider::class, 'blank')]
-    #[DataProviderExternal(StringProvider::class, 'empty')]
     #[Test]
     public function altInvalid(string $value): void
     {
-        $values = AssetResponseFactory::createOne([
+        $response = self::faker()->storyAssetResponse([
             'alt' => $value,
         ]);
 
         self::expectException(\InvalidArgumentException::class);
 
-        new Asset($values);
+        new Asset($response);
     }
 
     #[Test]
     public function filename(): void
     {
-        $values = AssetResponseFactory::createOne([
-            'filename' => $expected = self::faker()->storyblokAssetFilename(),
+        $faker = self::faker();
+        $response = $faker->storyAssetResponse([
+            'filename' => $expected = $faker->assetFilename(),
         ]);
 
-        self::assertSame($expected, (new Asset($values))->url);
+        self::assertSame($expected, (new Asset($response))->url);
     }
 
     #[Test]
     public function filenameKeyMustExist(): void
     {
-        $values = AssetResponseFactory::createOne();
-        unset($values['filename']);
+        $response = self::faker()->storyAssetResponse();
+        unset($response['filename']);
 
         self::expectException(\InvalidArgumentException::class);
 
-        new Asset($values);
+        new Asset($response);
     }
 
     #[DataProviderExternal(StringProvider::class, 'blank')]
@@ -91,13 +87,13 @@ final class AssetTest extends TestCase
     #[Test]
     public function filenameInvalid(string $value): void
     {
-        $values = AssetResponseFactory::createOne([
+        $response = self::faker()->storyAssetResponse([
             'filename' => $value,
         ]);
 
         self::expectException(\InvalidArgumentException::class);
 
-        new Asset($values);
+        new Asset($response);
     }
 
     #[Test]
@@ -105,43 +101,44 @@ final class AssetTest extends TestCase
     {
         $faker = self::faker();
 
-        $values = AssetResponseFactory::createOne([
-            'filename' => $faker->storyblokAssetFilename(height: $expected = $faker->randomNumber()),
+        $response = $faker->storyAssetResponse([
+            'filename' => $faker->assetFilename(height: $expected = $faker->randomNumber()),
         ]);
 
-        self::assertSame($expected, (new Asset($values))->height);
+        self::assertSame($expected, (new Asset($response))->height);
     }
 
     #[Test]
     public function heightCanBeZero(): void
     {
-        $values = AssetResponseFactory::createOne([
-            'filename' => self::faker()->word(),
+        $faker = self::faker();
+        $response = $faker->storyAssetResponse([
+            'filename' => $faker->word(),
         ]);
 
-        self::assertSame(0, (new Asset($values))->height);
+        self::assertSame(0, (new Asset($response))->height);
     }
 
     #[Test]
     public function width(): void
     {
         $faker = self::faker();
-
-        $values = AssetResponseFactory::createOne([
-            'filename' => $faker->storyblokAssetFilename(width: $expected = $faker->randomNumber()),
+        $response = $faker->storyAssetResponse([
+            'filename' => $faker->assetFilename(width: $expected = $faker->randomNumber()),
         ]);
 
-        self::assertSame($expected, (new Asset($values))->width);
+        self::assertSame($expected, (new Asset($response))->width);
     }
 
     #[Test]
     public function widthCanBeZero(): void
     {
-        $values = AssetResponseFactory::createOne([
-            'filename' => self::faker()->word(),
+        $faker = self::faker();
+        $response = $faker->storyAssetResponse([
+            'filename' => $faker->word(),
         ]);
 
-        self::assertSame(0, (new Asset($values))->width);
+        self::assertSame(0, (new Asset($response))->width);
     }
 
     #[DataProvider('orientationProvider')]
@@ -149,27 +146,22 @@ final class AssetTest extends TestCase
     public function orientation(Orientation $expected, int $width, int $height): void
     {
         $faker = self::faker();
-
-        $values = AssetResponseFactory::createOne([
-            'filename' => $faker->storyblokAssetFilename(
-                width: $width,
-                height: $height,
-            ),
+        $response = $faker->storyAssetResponse([
+            'filename' => $faker->assetFilename($width, $height),
         ]);
 
-        self::assertTrue($expected->equals((new Asset($values))->orientation));
+        self::assertTrue($expected->equals((new Asset($response))->orientation));
     }
 
     #[Test]
     public function orientationWithNoImage(): void
     {
         $faker = self::faker();
-
-        $values = AssetResponseFactory::createOne([
+        $response = $faker->storyAssetResponse([
             'filename' => $faker->url(),
         ]);
 
-        self::assertTrue(Orientation::Unknown->equals((new Asset($values))->orientation));
+        self::assertTrue(Orientation::Unknown->equals((new Asset($response))->orientation));
     }
 
     /**

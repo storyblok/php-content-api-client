@@ -55,6 +55,12 @@ parameters:
 			path: src/Bridge/Faker/Provider/StoryblokProvider.php
 
 		-
+			message: '#^Method Storyblok\\Api\\Bridge\\Faker\\Provider\\StoryblokProvider\:\:richTextResponse\(\) should return array\{type\: string, content\: list\<array\<mixed\>\>\} but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Bridge/Faker/Provider/StoryblokProvider.php
+
+		-
 			message: '#^Method Storyblok\\Api\\Bridge\\Faker\\Provider\\StoryblokProvider\:\:spaceResponse\(\) should return array\{id\: int, name\: string, domain\: string, version\: int, language_codes\: list\<string\>\} but returns array\.$#'
 			identifier: return.type
 			count: 1

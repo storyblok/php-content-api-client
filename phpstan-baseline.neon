@@ -73,6 +73,12 @@ parameters:
 			path: src/Bridge/Faker/Provider/StoryblokProvider.php
 
 		-
+			message: '#^Method Storyblok\\Api\\Bridge\\Faker\\Provider\\StoryblokProvider\:\:storyAssetResponse\(\) should return array\{id\: int, is_external_url\: bool, filename\: string\} but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Bridge/Faker/Provider/StoryblokProvider.php
+
+		-
 			message: '#^Method Storyblok\\Api\\Bridge\\Faker\\Provider\\StoryblokProvider\:\:storyResponse\(\) should return array\{cv\: int, story\: array\<string, mixed\>, links\: array\<string\>, rels\: array\<string\>\} but returns array\.$#'
 			identifier: return.type
 			count: 1

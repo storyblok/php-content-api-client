@@ -16,6 +16,7 @@ namespace Storyblok\Api\Bridge\Faker\Provider;
 
 use Faker\Provider\Base as BaseProvider;
 use function Safe\array_replace_recursive;
+use function Safe\json_encode;
 
 /**
  * @author Silas Joisten <silasjoisten@proton.me>

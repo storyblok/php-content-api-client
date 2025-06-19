@@ -505,6 +505,75 @@ final class StoryblokProvider extends BaseProvider
         );
     }
 
+    /**
+     * @param mixed[] $overrides
+     *
+     * @return array{
+     *    type: string,
+     *    content: list<mixed[]>,
+     * }
+     */
+    public function richTextResponse(array $overrides = []): array
+    {
+        $response = [
+            'type' => 'doc',
+            'content' => [
+                [
+                    'type' => 'paragraph',
+                    'content' => [
+                        [
+                            'type' => 'text',
+                            'text' => $this->generator->sentence(),
+                        ],
+                    ],
+                ],
+            ],
+        ];
+
+        return array_replace_recursive(
+            $response,
+            $overrides,
+        );
+    }
+
+    /**
+     * @return array{
+     *     type: 'doc',
+     *     content: list<mixed[]>
+     * }
+     */
+    public function richTextParagraphResponse(?string $text = null): array
+    {
+        return [
+            'type' => 'doc',
+            'content' => [
+                [
+                    'type' => 'paragraph',
+                    'content' => [
+                        [
+                            'type' => 'text',
+                            'text' => $text,
+                        ],
+                    ],
+                ],
+            ],
+        ];
+    }
+
+    /**
+     * @return array{
+     *     type: 'doc',
+     *     content: list<mixed[]>
+     * }
+     */
+    public function richTextEmptyResponse(): array
+    {
+        return [
+            'type' => 'doc',
+            'content' => [],
+        ];
+    }
+
     public function relation(): string
     {
         return \sprintf(

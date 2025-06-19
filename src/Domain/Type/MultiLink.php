@@ -18,6 +18,11 @@ use OskarStark\Value\TrimmedNonEmptyString;
 use Storyblok\Api\Domain\Value\Uuid;
 use Webmozart\Assert\Assert;
 
+/**
+ * @experimental This class is experimental and may change in future versions.
+ * 
+ * @author Silas Joisten <silasjoisten@proton.me>
+ */
 final readonly class MultiLink
 {
     public MultiLinkType $type;

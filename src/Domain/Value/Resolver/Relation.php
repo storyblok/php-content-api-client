@@ -15,7 +15,6 @@ declare(strict_types=1);
 namespace Storyblok\Api\Domain\Value\Resolver;
 
 use OskarStark\Value\TrimmedNonEmptyString;
-use Webmozart\Assert\Assert;
 
 /**
  * @author Silas Joisten <silasjoisten@proton.me>

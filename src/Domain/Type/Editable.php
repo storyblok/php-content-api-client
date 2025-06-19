@@ -22,6 +22,11 @@ use function Safe\json_decode;
 use function Safe\json_encode;
 use function Symfony\Component\String\u;
 
+/**
+ * @experimental This class is experimental and may change in future versions.
+ *
+ * @author Silas Joisten <silasjoisten@proton.me>
+ */
 final readonly class Editable
 {
     public Uuid $uuid;

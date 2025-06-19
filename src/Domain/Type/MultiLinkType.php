@@ -16,6 +16,11 @@ namespace Storyblok\Api\Domain\Type;
 
 use OskarStark\Enum\Trait\Comparable;
 
+/**
+ * @experimental This class is experimental and may change in future versions.
+ *
+ * @author Silas Joisten <silasjoisten@proton.me>
+ */
 enum MultiLinkType: string
 {
     use Comparable;

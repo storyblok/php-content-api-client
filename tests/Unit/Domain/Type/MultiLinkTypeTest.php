@@ -17,6 +17,9 @@ namespace Storyblok\Api\Tests\Unit\Domain\Type;
 use OskarStark\Enum\Test\EnumTestCase;
 use Storyblok\Api\Domain\Type\MultiLinkType;
 
+/**
+ * @author Silas Joisten <silasjoisten@proton.me>
+ */
 final class MultiLinkTypeTest extends EnumTestCase
 {
     protected static function getClass(): string

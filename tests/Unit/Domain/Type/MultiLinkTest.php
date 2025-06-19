@@ -22,6 +22,9 @@ use Storyblok\Api\Domain\Type\MultiLink;
 use Storyblok\Api\Domain\Type\MultiLinkType;
 use Storyblok\Api\Tests\Util\FakerTrait;
 
+/**
+ * @author Silas Joisten <silasjoisten@proton.me>
+ */
 final class MultiLinkTest extends TestCase
 {
     use FakerTrait;

@@ -21,6 +21,7 @@ use Storyblok\Api\Bridge\Faker\Provider\StoryblokProvider;
 /**
  * @author Silas Joisten <silasjoisten@proton.me>
  *
+ * @method array  assetFilename(?int $width = null, ?int $height = null, ?string $extension = null)
  * @method array  assetResponse(array $overrides = [])
  * @method array  datasourceDimensionResponse(array $overrides = [])
  * @method array  datasourceEntriesResponse(array $overrides = [])
@@ -36,6 +37,7 @@ use Storyblok\Api\Bridge\Faker\Provider\StoryblokProvider;
  * @method array  richTextResponse(array $overrides = [])
  * @method array  spaceResponse(array $overrides = [])
  * @method array  storiesResponse(array $overrides = [])
+ * @method array  storyAssetResponse(array $overrides = [])
  * @method array  storyResponse(array $overrides = [])
  * @method array  tagsResponse(array $overrides = [])
  */

@@ -574,6 +574,30 @@ final class StoryblokProvider extends BaseProvider
         ];
     }
 
+    public function assetFilename(?int $width = null, ?int $height = null, ?string $extension = null): string
+    {
+        return \sprintf(
+            '%s_%dx%d.%s',
+            $this->generator->word(),
+            $width ?? $this->generator->randomNumber(),
+            $height ?? $this->generator->randomNumber(),
+            $extension ?? $this->generator->fileExtension(),
+        );
+    }
+
+    public function storyAssetResponse(array $overrides = []): array
+    {
+        return [
+            'id' => $this->generator->numberBetween(1, 1000000),
+            'filename' => \sprintf(
+                'https://a.storyblok.com/f/287488/%dx%d/xxxxxx/%s.png',
+                $this->generator->word(),
+                $width ?? 1920,
+                $height ?? 1080,
+            ),
+        ];
+    }
+
     public function relation(): string
     {
         return \sprintf(

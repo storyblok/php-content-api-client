@@ -19,6 +19,9 @@ use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Type\RichText;
 use Storyblok\Api\Tests\Util\FakerTrait;
 
+/**
+ * @author Silas Joisten <silasjoisten@proton.me>
+ */
 final class RichTextTest extends TestCase
 {
     use FakerTrait;

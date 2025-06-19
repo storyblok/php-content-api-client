@@ -30,6 +30,7 @@ use Storyblok\Api\Bridge\Faker\Provider\StoryblokProvider;
  * @method array  linkAlternateResponse(array $overrides = [])
  * @method array  linkResponse(array $overrides = [])
  * @method array  linksResponse(array $overrides = [])
+ * @method array  multiLinkResponse(array $overrides = [])
  * @method string relation()
  * @method array  richTextEmptyResponse()
  * @method array  richTextParagraphResponse(?string $text = null)

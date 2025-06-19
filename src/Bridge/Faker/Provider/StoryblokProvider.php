@@ -15,6 +15,7 @@ declare(strict_types=1);
 namespace Storyblok\Api\Bridge\Faker\Provider;
 
 use Faker\Provider\Base as BaseProvider;
+use Storyblok\Api\Domain\Type\MultiLinkType;
 use function Safe\array_replace_recursive;
 
 /**
@@ -528,6 +529,39 @@ final class StoryblokProvider extends BaseProvider
                     ],
                 ],
             ],
+        ];
+
+        return array_replace_recursive(
+            $response,
+            $overrides,
+        );
+    }
+
+    /**
+     * @param array{
+     *     id?: string,
+     *     url?: string,
+     *     email?: string,
+     *     linktype?: string,
+     *     fieldtype?: string
+     * } $overrides
+     *
+     * @return array{
+     *     id: string,
+     *     url: string,
+     *     email: string,
+     *     linktype: string,
+     *     fieldtype: string
+     * }
+     */
+    public function multiLinkResponse(array $overrides = []): array
+    {
+        $response = [
+            'id' => $this->generator->uuid(),
+            'url' => $this->generator->url(),
+            'email' => $this->generator->email(),
+            'linktype' => $this->generator->randomElement(MultiLinkType::cases())->value,
+            'fieldtype' => 'multilink',
         ];
 
         return array_replace_recursive(

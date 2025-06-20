@@ -17,7 +17,7 @@ namespace Storyblok\Api\Domain\Type;
 use OskarStark\Value\TrimmedNonEmptyString;
 use Storyblok\Api\Domain\Value\Id;
 use Webmozart\Assert\Assert;
-use function Symfony\Component\String\u;
+use function Safe\preg_match;
 
 /**
  * @experimental This class is experimental and may change in future versions.
@@ -98,10 +98,9 @@ final readonly class Asset
         $this->extension = pathinfo($this->url, \PATHINFO_EXTENSION);
         $this->name = pathinfo($this->url, \PATHINFO_FILENAME);
 
-        $dimensions = u($this->url)->match('/(?P<width>\d+)x(?P<height>\d+)/');
+        preg_match('/(?P<width>\d+)x(?P<height>\d+)/', $this->url, $dimensions);
 
         $width = 0;
-
         if (\array_key_exists('width', $dimensions) && [] !== $dimensions['width']) {
             $width = (int) $dimensions['width'];
         }
@@ -109,7 +108,6 @@ final readonly class Asset
         $this->width = $width;
 
         $height = 0;
-
         if (\array_key_exists('height', $dimensions) && [] !== $dimensions['height']) {
             $height = (int) $dimensions['height'];
         }

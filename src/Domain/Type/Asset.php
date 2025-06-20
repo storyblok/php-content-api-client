@@ -101,6 +101,7 @@ final readonly class Asset
         preg_match('/(?P<width>\d+)x(?P<height>\d+)/', $this->url, $dimensions);
 
         $width = 0;
+
         if (\array_key_exists('width', $dimensions) && [] !== $dimensions['width']) {
             $width = (int) $dimensions['width'];
         }
@@ -108,6 +109,7 @@ final readonly class Asset
         $this->width = $width;
 
         $height = 0;
+
         if (\array_key_exists('height', $dimensions) && [] !== $dimensions['height']) {
             $height = (int) $dimensions['height'];
         }

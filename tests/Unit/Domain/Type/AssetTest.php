@@ -61,6 +61,138 @@ final class AssetTest extends TestCase
     }
 
     #[Test]
+    public function title(): void
+    {
+        $faker = self::faker();
+        $response = $faker->storyAssetResponse([
+            'title' => $expected = $faker->word(),
+        ]);
+
+        self::assertSame($expected, (new Asset($response))->title);
+    }
+
+    #[Test]
+    public function titleKeyIsOptional(): void
+    {
+        $response = self::faker()->storyAssetResponse();
+        unset($response['title']);
+
+        self::assertNull((new Asset($response))->title);
+    }
+
+    #[DataProviderExternal(StringProvider::class, 'blank')]
+    #[Test]
+    public function titleInvalid(string $value): void
+    {
+        $response = self::faker()->storyAssetResponse([
+            'title' => $value,
+        ]);
+
+        self::expectException(\InvalidArgumentException::class);
+
+        new Asset($response);
+    }
+
+    #[Test]
+    public function focus(): void
+    {
+        $faker = self::faker();
+        $response = $faker->storyAssetResponse([
+            'focus' => $expected = $faker->word(),
+        ]);
+
+        self::assertSame($expected, (new Asset($response))->focus);
+    }
+
+    #[Test]
+    public function focusKeyIsOptional(): void
+    {
+        $response = self::faker()->storyAssetResponse();
+        unset($response['focus']);
+
+        self::assertNull((new Asset($response))->focus);
+    }
+
+    #[DataProviderExternal(StringProvider::class, 'blank')]
+    #[Test]
+    public function focusInvalid(string $value): void
+    {
+        $response = self::faker()->storyAssetResponse([
+            'focus' => $value,
+        ]);
+
+        self::expectException(\InvalidArgumentException::class);
+
+        new Asset($response);
+    }
+
+    #[Test]
+    public function source(): void
+    {
+        $faker = self::faker();
+        $response = $faker->storyAssetResponse([
+            'source' => $expected = $faker->word(),
+        ]);
+
+        self::assertSame($expected, (new Asset($response))->source);
+    }
+
+    #[Test]
+    public function sourceKeyIsOptional(): void
+    {
+        $response = self::faker()->storyAssetResponse();
+        unset($response['source']);
+
+        self::assertNull((new Asset($response))->source);
+    }
+
+    #[DataProviderExternal(StringProvider::class, 'blank')]
+    #[Test]
+    public function sourceInvalid(string $value): void
+    {
+        $response = self::faker()->storyAssetResponse([
+            'source' => $value,
+        ]);
+
+        self::expectException(\InvalidArgumentException::class);
+
+        new Asset($response);
+    }
+
+    #[Test]
+    public function copyright(): void
+    {
+        $faker = self::faker();
+        $response = $faker->storyAssetResponse([
+            'copyright' => $expected = $faker->word(),
+        ]);
+
+        self::assertSame($expected, (new Asset($response))->copyright);
+    }
+
+    #[Test]
+    public function copyrightKeyIsOptional(): void
+    {
+        $response = self::faker()->storyAssetResponse();
+        unset($response['copyright']);
+
+        self::assertNull((new Asset($response))->copyright);
+    }
+
+    #[DataProviderExternal(StringProvider::class, 'blank')]
+    #[Test]
+    public function copyrightInvalid(string $value): void
+    {
+        $response = self::faker()->storyAssetResponse([
+            'copyright' => $value,
+        ]);
+
+        self::expectException(\InvalidArgumentException::class);
+
+        new Asset($response);
+    }
+
+    #[Test]
     public function filename(): void
     {
         $faker = self::faker();

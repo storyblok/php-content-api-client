@@ -20,7 +20,6 @@ use Storyblok\Api\Domain\Value\Uuid;
 use Webmozart\Assert\Assert;
 use function Safe\json_decode;
 use function Safe\json_encode;
-use function Symfony\Component\String\u;
 
 /**
  * @experimental This class is experimental and may change in future versions.

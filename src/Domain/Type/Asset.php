@@ -52,8 +52,13 @@ final readonly class Asset
         Assert::keyExists($values, 'filename');
         $this->url = TrimmedNonEmptyString::fromString($values['filename'])->toString();
 
-        Assert::keyExists($values, 'is_external_url');
-        $this->isExternalUrl = true === $values['is_external_url'];
+        $isExternalUrl = false;
+
+        if (\array_key_exists('is_external_url', $values)) {
+            $isExternalUrl = true === $values['is_external_url'];
+        }
+
+        $this->isExternalUrl = $isExternalUrl;
 
         $alt = null;
 

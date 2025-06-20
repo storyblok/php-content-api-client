@@ -41,7 +41,7 @@ final readonly class Editable
         Assert::endsWith($value, '-->');
 
         $values = json_decode(
-            u($value)->trimStart('<!--#storyblok#')->trimEnd('-->')->toString(),
+            rtrim(ltrim($value, '<!--#storyblok#'), '-->'),
             true,
         );
 

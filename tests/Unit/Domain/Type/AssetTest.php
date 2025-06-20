@@ -308,4 +308,24 @@ final class AssetTest extends TestCase
         yield 'landscape' => [Orientation::Landscape, 1920, 1080];
         yield 'portrait' => [Orientation::Portrait, 1080, 1920];
     }
+
+    #[Test]
+    public function isExternalUrl(): void
+    {
+        $faker = self::faker();
+        $response = $faker->storyAssetResponse([
+            'is_external_url' => $expected = $faker->boolean(),
+        ]);
+
+        self::assertSame($expected, (new Asset($response))->isExternalUrl);
+    }
+
+    #[Test]
+    public function isExternalUrlKeyIsOptional(): void
+    {
+        $response = self::faker()->storyAssetResponse();
+        unset($response['is_external_url']);
+
+        self::assertFalse((new Asset($response))->isExternalUrl);
+    }
 }

@@ -79,6 +79,12 @@ parameters:
 			path: src/Bridge/Faker/Provider/StoryblokProvider.php
 
 		-
+			message: '#^Method Storyblok\\Api\\Bridge\\Faker\\Provider\\StoryblokProvider\:\:storyAssetResponse\(\) should return array\{id\: int, is_external_url\: bool, filename\: string\} but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Bridge/Faker/Provider/StoryblokProvider.php
+
+		-
 			message: '#^Method Storyblok\\Api\\Bridge\\Faker\\Provider\\StoryblokProvider\:\:storyResponse\(\) should return array\{cv\: int, story\: array\<string, mixed\>, links\: array\<string\>, rels\: array\<string\>\} but returns array\.$#'
 			identifier: return.type
 			count: 1
@@ -89,6 +95,12 @@ parameters:
 			identifier: return.type
 			count: 1
 			path: src/Bridge/Faker/Provider/StoryblokProvider.php
+
+		-
+			message: '#^Strict comparison using \!\=\= between array\{\} and numeric\-string will always evaluate to true\.$#'
+			identifier: notIdentical.alwaysTrue
+			count: 2
+			path: src/Domain/Type/Asset.php
 
 		-
 			message: '#^Property Storyblok\\Api\\Domain\\Value\\Datasource\:\:\$dimensions \(list\<Storyblok\\Api\\Domain\\Value\\DatasourceDimension\>\) does not accept array\<Storyblok\\Api\\Domain\\Value\\DatasourceDimension\>\.$#'

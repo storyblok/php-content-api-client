@@ -206,4 +206,19 @@ final class StoriesRequestTest extends TestCase
             'excluding_slugs' => 'path/*,another-path/*',
         ], $request->toArray());
     }
+
+    #[Test]
+    public function toArrayStartsWith(): void
+    {
+        $request = new StoriesRequest(
+            startsWith: new Slug('my/path'),
+        );
+
+        self::assertSame([
+            'language' => 'default',
+            'page' => 1,
+            'per_page' => 25,
+            'starts_with' => 'my/path',
+        ], $request->toArray());
+    }
 }

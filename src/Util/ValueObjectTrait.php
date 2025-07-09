@@ -2,6 +2,16 @@
 
 declare(strict_types=1);
 
+/**
+ * This file is part of storyblok/php-content-api-client.
+ *
+ * (c) Storyblok GmbH <info@storyblok.com>
+ * in cooperation with SensioLabs Deutschland <info@sensiolabs.de>
+ *
+ * For the full copyright and license information, please view the LICENSE
+ * file that was distributed with this source code.
+ */
+
 namespace Storyblok\Api\Util;
 
 use BackedEnum as T;
@@ -78,10 +88,7 @@ trait ValueObjectTrait
      * @param array<mixed>     $values
      * @param non-empty-string $key
      * @param class-string<T>  $class
-     * @param null|T           $default
      * @param null|array<T>    $allowedSubset Only some cases of the enum that are allowed
-     *
-     * @return T
      */
     final protected static function enum(array $values, string $key, string $class, ?\BackedEnum $default = null, ?array $allowedSubset = null): \BackedEnum
     {

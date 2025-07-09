@@ -95,7 +95,7 @@ trait ValueObjectTrait
      * @param class-string<T>  $class
      * @param null|array<T>    $allowedSubset Only some cases of the enum that are allowed
      *
-     * @return \BackedEnum<T>
+     * @return T
      */
     final protected static function enum(array $values, string $key, string $class, ?\BackedEnum $default = null, ?array $allowedSubset = null): \BackedEnum
     {

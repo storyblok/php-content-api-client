@@ -187,7 +187,433 @@ parameters:
 			path: tests/Unit/Domain/Value/AssetTest.php
 
 		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:1003\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:101\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:1022\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:1038\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:1054\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:1070\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:1086\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:1102\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:1118\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:1134\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:1150\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:1166\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:1182\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:1197\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:122\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:138\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:157\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:175\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:194\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:212\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:230\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:250\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:267\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:283\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:299\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:315\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:331\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:348\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:364\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:37\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:380\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:396\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:413\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:431\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:447\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:464\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:486\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:502\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:518\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:534\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:53\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:550\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:566\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:588\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:604\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:620\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:641\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:657\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:673\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:689\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:69\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:705\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:721\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:737\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:753\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:769\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:785\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:801\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:817\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:833\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:852\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:85\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:868\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:884\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:900\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:916\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:932\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:948\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:968\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:984\:\:enum\(\) should return T of BackedEnum but returns BackedEnum\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
 			message: '#^Parameter \#3 \$class of static method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:331\:\:enum\(\) expects class\-string\<BackedEnum\>, string given\.$#'
 			identifier: argument.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Unable to resolve the template type T in call to method static method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:331\:\:enum\(\)$#'
+			identifier: argument.templateType
 			count: 1
 			path: tests/Unit/Util/ValueObjectTraitTest.php

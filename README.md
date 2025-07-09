@@ -649,6 +649,37 @@ new BlogPostCollection(
 );
 ```
 
+### Helpers
+
+The `Storyblok\Api\Util\ValueObjectTrait` provides utility methods for mapping raw Storyblok data arrays into strong PHP
+value objects, enums, and domain models. These helpers reduce boilerplate code and improve readability in DTO
+constructors or factory methods.
+
+Use this trait in your value objects or models to simplify the parsing and validation of Storyblok field values.
+
+#### Available Methods
+
+| Method                | Description                                                                                                      |
+|-----------------------|------------------------------------------------------------------------------------------------------------------|
+| `one()`               | Expects exactly one item (e.g. from a `blocks` field). Instantiates one object from it.                          |
+| `list()`              | Maps a list of items to objects. Allows setting `$min`, `$max`, or exact `$count` constraints.                   |
+| `nullOrOne()`         | Same as `one()`, but allows the field to be optional (returns `null` if empty).                                  |
+| `enum()`              | Maps a string value to a backed enum. Supports default value and whitelisting of allowed values.                 |
+| `DateTimeImmutable()` | Returns a `Safe\DateTimeImmutable` object from a given date string.                                              |
+| `Uuid()`              | Returns a `Storyblok\Api\Domain\Value\Uuid` instance from a string.                                              |
+| `Asset()`             | Maps an asset array to a `Storyblok\Api\Domain\Type\Asset` object.                                               |
+| `nullOrAsset()`       | Same as `Asset()`, but allows null or invalid input.                                                             |
+| `MultiLink()`         | Maps a multilink array to a `Storyblok\Api\Domain\Type\MultiLink` object.                                        |
+| `nullOrMultiLink()`   | Same as `MultiLink()`, but returns `null` if `url` and `id` are missing or empty.                                |
+| `RichText()`          | Maps rich text content to a `Storyblok\Api\Domain\Type\RichText` object.                                         |
+| `nullOrRichText()`    | Same as `RichText()`, but returns `null` if content is empty or only contains whitespace.                        |
+| `boolean()`           | Returns `true` if the key exists and its value is `true`, otherwise `false`.                                     |
+| `zeroOrInteger()`     | Returns an integer from the field, or `0` if missing.                                                            |
+| `zeroOrFloat()`       | Returns a float from the field, or `0.0` if missing.                                                             |
+| `string()`            | Returns a trimmed non-empty string (using `TrimmedNonEmptyString`). Optional max length check.                   |
+| `nullOrString()`      | Same as `string()`, but returns `null` if missing or invalid.                                                    |
+| `nullOrEditable()`    | Returns an `Editable` instance or `null`.                                                                        |
+
 [actions]: https://github.com/sensiolabs-de/storyblok-api/actions
 [codecov]: https://codecov.io/gh/sensiolabs-de/storyblok-api
 

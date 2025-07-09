@@ -26,7 +26,9 @@ use Tiptap\Editor;
 use Webmozart\Assert\Assert;
 
 /**
- * @experimental 
+ * @experimental This trait is experimental and may change in future versions.
+ *
+ * @author Silas Joisten <silasjoisten@proton.me>
  */
 trait ValueObjectTrait
 {

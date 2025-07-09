@@ -26,7 +26,7 @@ use Tiptap\Editor;
 use Webmozart\Assert\Assert;
 
 /**
- * @experimental 
+ * @experimental
  */
 trait ValueObjectTrait
 {

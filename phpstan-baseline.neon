@@ -185,3 +185,9 @@ parameters:
 			identifier: method.nonObject
 			count: 1
 			path: tests/Unit/Domain/Value/AssetTest.php
+
+		-
+			message: '#^Parameter \#3 \$class of static method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:331\:\:enum\(\) expects class\-string\<BackedEnum\>, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php

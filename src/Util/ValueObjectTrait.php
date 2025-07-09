@@ -25,6 +25,9 @@ use Storyblok\Api\Domain\Value\Uuid;
 use Tiptap\Editor;
 use Webmozart\Assert\Assert;
 
+/**
+ * @experimental 
+ */
 trait ValueObjectTrait
 {
     /**

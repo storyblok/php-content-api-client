@@ -47,7 +47,7 @@ final readonly class RichText
 
     /**
      * @return array{
-     *     type: string,
+     *     type: 'doc',
      *     content: list<mixed[]>,
      * }
      */

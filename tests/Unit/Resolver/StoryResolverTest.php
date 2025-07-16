@@ -158,4 +158,34 @@ final class StoryResolverTest extends TestCase
 
         self::assertSame($expected, $resolver->resolve($story, $references));
     }
+
+    #[Test]
+    public function resolveReplacesMultiLinkWithLinkPayload(): void
+    {
+        $resolver = new StoryResolver();
+
+        $faker = self::faker();
+
+        $story = [
+            'name' => $faker->word(),
+            'content' => [
+                'link' => [
+                    'id' => $referenceUuid = $faker->uuid(),
+                ],
+            ],
+        ];
+
+        $references = [
+            $reference = [
+                'uuid' => $referenceUuid,
+                'name' => $faker->word(),
+                'another_field' => $faker->sentence(),
+            ],
+        ];
+
+        $expected = $story;
+        $expected['content']['link'] = $reference;
+
+        self::assertSame($expected, $resolver->resolve($story, $references));
+    }
 }

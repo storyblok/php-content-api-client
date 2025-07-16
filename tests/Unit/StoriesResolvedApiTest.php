@@ -228,7 +228,7 @@ final class StoriesResolvedApiTest extends TestCase
                 'links' => [],
             ]));
 
-        self::assertSame($expected, (new StoriesResolvedApi($storiesApi, new StoryResolver()))->allByUuids([self::faker()->uuid()]));
+        self::assertSame($expected, (new StoriesResolvedApi($storiesApi, new StoryResolver()))->allByUuids([new Uuid(self::faker()->uuid())]));
     }
 
     #[Test]

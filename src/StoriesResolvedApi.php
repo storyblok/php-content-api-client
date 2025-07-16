@@ -50,14 +50,20 @@ final readonly class StoriesResolvedApi implements StoriesApiInterface
             $resolvedStory = $story;
 
             if ($this->resolveRelations && 0 !== $request->withRelations->count()) {
-                // There is a limit of possible resolvable relations.
-                // @see https://www.storyblok.com/docs/api/content-delivery/v2/stories/retrieve-a-single-story
+                /**
+                 * There is a limit of possible resolvable relations.
+                 *
+                 * @see https://www.storyblok.com/docs/api/content-delivery/v2/stories/retrieve-a-single-story
+                 */
                 $resolvedStory = $this->resolver->resolve($resolvedStory, \array_slice($response->rels, 0, 50));
             }
 
             if ($this->resolveLinks && null !== $request->resolveLinks->type) {
-                // There is a limit of possible resolvable relations.
-                // @see https://www.storyblok.com/docs/guide/in-depth/rendering-the-link-field
+                /**
+                 * There is a limit of possible resolvable relations.
+                 *
+                 * @see https://www.storyblok.com/docs/guide/in-depth/rendering-the-link-field
+                 */
                 $limit = match ($request->resolveLinks->type) {
                     LinkType::Story => 50,
                     LinkType::Link, LinkType::Url => 500,
@@ -95,14 +101,20 @@ final readonly class StoriesResolvedApi implements StoriesApiInterface
             $resolvedStory = $story;
 
             if ($this->resolveRelations && 0 !== $request->withRelations->count()) {
-                // There is a limit of possible resolvable relations.
-                // @see https://www.storyblok.com/docs/api/content-delivery/v2/stories/retrieve-a-single-story
+                /**
+                 * There is a limit of possible resolvable relations.
+                 *
+                 * @see https://www.storyblok.com/docs/api/content-delivery/v2/stories/retrieve-a-single-story
+                 */
                 $resolvedStory = $this->resolver->resolve($resolvedStory, \array_slice($response->rels, 0, 50));
             }
 
             if ($this->resolveLinks && null !== $request->resolveLinks->type) {
-                // There is a limit of possible resolvable relations.
-                // @see https://www.storyblok.com/docs/guide/in-depth/rendering-the-link-field
+                /**
+                 * There is a limit of possible resolvable relations.
+                 *
+                 * @see https://www.storyblok.com/docs/guide/in-depth/rendering-the-link-field
+                 */
                 $limit = match ($request->resolveLinks->type) {
                     LinkType::Story => 50,
                     LinkType::Link, LinkType::Url => 500,
@@ -140,14 +152,20 @@ final readonly class StoriesResolvedApi implements StoriesApiInterface
             $resolvedStory = $story;
 
             if ($this->resolveRelations && 0 !== $request->withRelations->count()) {
-                // There is a limit of possible resolvable relations.
-                // @see https://www.storyblok.com/docs/api/content-delivery/v2/stories/retrieve-a-single-story
+                /**
+                 * There is a limit of possible resolvable relations.
+                 *
+                 * @see https://www.storyblok.com/docs/api/content-delivery/v2/stories/retrieve-a-single-story
+                 */
                 $resolvedStory = $this->resolver->resolve($resolvedStory, \array_slice($response->rels, 0, 50));
             }
 
             if ($this->resolveLinks && null !== $request->resolveLinks->type) {
-                // There is a limit of possible resolvable relations.
-                // @see https://www.storyblok.com/docs/guide/in-depth/rendering-the-link-field
+                /**
+                 * There is a limit of possible resolvable relations.
+                 *
+                 * @see https://www.storyblok.com/docs/guide/in-depth/rendering-the-link-field
+                 */
                 $limit = match ($request->resolveLinks->type) {
                     LinkType::Story => 50,
                     LinkType::Link, LinkType::Url => 500,
@@ -175,17 +193,27 @@ final readonly class StoriesResolvedApi implements StoriesApiInterface
     {
         $response = $this->storiesApi->bySlug($slug, $request);
 
+        if (null === $request) {
+            return $response;
+        }
+
         $resolvedStory = $response->story;
 
         if ($this->resolveRelations && 0 !== $request->withRelations->count()) {
-            // There is a limit of possible resolvable relations.
-            // @see https://www.storyblok.com/docs/api/content-delivery/v2/stories/retrieve-a-single-story
+            /**
+             * There is a limit of possible resolvable relations.
+             *
+             * @see https://www.storyblok.com/docs/api/content-delivery/v2/stories/retrieve-a-single-story
+             */
             $resolvedStory = $this->resolver->resolve($resolvedStory, \array_slice($response->rels, 0, 50));
         }
 
         if ($this->resolveLinks && null !== $request->resolveLinks->type) {
-            // There is a limit of possible resolvable relations.
-            // @see https://www.storyblok.com/docs/guide/in-depth/rendering-the-link-field
+            /**
+             * There is a limit of possible resolvable relations.
+             *
+             * @see https://www.storyblok.com/docs/guide/in-depth/rendering-the-link-field
+             */
             $limit = match ($request->resolveLinks->type) {
                 LinkType::Story => 50,
                 LinkType::Link, LinkType::Url => 500,
@@ -206,17 +234,27 @@ final readonly class StoriesResolvedApi implements StoriesApiInterface
     {
         $response = $this->storiesApi->byUuid($uuid, $request);
 
+        if (null === $request) {
+            return $response;
+        }
+
         $resolvedStory = $response->story;
 
         if ($this->resolveRelations && 0 !== $request->withRelations->count()) {
-            // There is a limit of possible resolvable relations.
-            // @see https://www.storyblok.com/docs/api/content-delivery/v2/stories/retrieve-a-single-story
+            /**
+             * There is a limit of possible resolvable relations.
+             *
+             * @see https://www.storyblok.com/docs/api/content-delivery/v2/stories/retrieve-a-single-story
+             */
             $resolvedStory = $this->resolver->resolve($resolvedStory, \array_slice($response->rels, 0, 50));
         }
 
         if ($this->resolveLinks && null !== $request->resolveLinks->type) {
-            // There is a limit of possible resolvable relations.
-            // @see https://www.storyblok.com/docs/guide/in-depth/rendering-the-link-field
+            /**
+             * There is a limit of possible resolvable relations.
+             *
+             * @see https://www.storyblok.com/docs/guide/in-depth/rendering-the-link-field
+             */
             $limit = match ($request->resolveLinks->type) {
                 LinkType::Story => 50,
                 LinkType::Link, LinkType::Url => 500,
@@ -237,17 +275,27 @@ final readonly class StoriesResolvedApi implements StoriesApiInterface
     {
         $response = $this->storiesApi->byId($id, $request);
 
+        if (null === $request) {
+            return $response;
+        }
+
         $resolvedStory = $response->story;
 
         if ($this->resolveRelations && 0 !== $request->withRelations->count()) {
-            // There is a limit of possible resolvable relations.
-            // @see https://www.storyblok.com/docs/api/content-delivery/v2/stories/retrieve-a-single-story
+            /**
+             * There is a limit of possible resolvable relations.
+             *
+             * @see https://www.storyblok.com/docs/api/content-delivery/v2/stories/retrieve-a-single-story
+             */
             $resolvedStory = $this->resolver->resolve($resolvedStory, \array_slice($response->rels, 0, 50));
         }
 
         if ($this->resolveLinks && null !== $request->resolveLinks->type) {
-            // There is a limit of possible resolvable relations.
-            // @see https://www.storyblok.com/docs/guide/in-depth/rendering-the-link-field
+            /**
+             * There is a limit of possible resolvable relations.
+             *
+             * @see https://www.storyblok.com/docs/guide/in-depth/rendering-the-link-field
+             */
             $limit = match ($request->resolveLinks->type) {
                 LinkType::Story => 50,
                 LinkType::Link, LinkType::Url => 500,

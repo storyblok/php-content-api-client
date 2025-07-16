@@ -21,6 +21,7 @@ use Storyblok\Api\Domain\Type\Asset;
 use Storyblok\Api\Domain\Type\Editable;
 use Storyblok\Api\Domain\Type\MultiLink;
 use Storyblok\Api\Domain\Type\RichText;
+use Storyblok\Api\Domain\Value\Link;
 use Storyblok\Api\Domain\Value\Uuid;
 use Tiptap\Editor;
 use Webmozart\Assert\Assert;
@@ -161,6 +162,18 @@ trait ValueObjectTrait
         Assert::isArray($values[$key]);
 
         return new MultiLink($values[$key]);
+    }
+
+    /**
+     * @param array<mixed>     $values
+     * @param non-empty-string $key
+     */
+    final protected static function Link(array $values, string $key): Link
+    {
+        Assert::keyExists($values, $key);
+        Assert::isArray($values[$key]);
+
+        return new Link($values[$key]);
     }
 
     /**

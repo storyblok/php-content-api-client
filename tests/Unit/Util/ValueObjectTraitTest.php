@@ -23,6 +23,7 @@ use Storyblok\Api\Domain\Type\MultiLink;
 use Storyblok\Api\Domain\Type\MultiLinkType;
 use Storyblok\Api\Domain\Type\Orientation;
 use Storyblok\Api\Domain\Type\RichText;
+use Storyblok\Api\Domain\Value\Link;
 use Storyblok\Api\Domain\Value\Uuid;
 use Storyblok\Api\Tests\Util\FakerTrait;
 use Storyblok\Api\Util\ValueObjectTrait;
@@ -1205,5 +1206,21 @@ final class ValueObjectTraitTest extends TestCase
         $result = $class::nullOrString($values, 'key');
 
         self::assertNull($result);
+    }
+
+    #[Test]
+    public function Link(): void
+    {
+        $class = new class() {
+            use ValueObjectTrait {
+                ValueObjectTrait::Link as public;
+            }
+        };
+
+        $values = ['link' => self::faker()->linkResponse()];
+
+        $result = $class::Link($values, 'link');
+
+        self::assertInstanceOf(Link::class, $result);
     }
 }

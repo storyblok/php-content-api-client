@@ -365,10 +365,14 @@ trait ValueObjectTrait
      * @param array<mixed>     $values
      * @param non-empty-string $key
      */
-    final protected static function nullOrString(array $values, string $key): ?string
+    final protected static function nullOrString(array $values, string $key, ?int $maxLength = null): ?string
     {
         if (!\array_key_exists($key, $values)) {
             return null;
+        }
+
+        if (null !== $maxLength) {
+            Assert::maxLength($values[$key], $maxLength);
         }
 
         try {

@@ -1082,6 +1082,22 @@ final class ValueObjectTraitTest extends TestCase
     }
 
     #[Test]
+    public function nullOrStringThrowsExceptionWhenMaxLengthExceeded(): void
+    {
+        $class = new class() {
+            use ValueObjectTrait {
+                ValueObjectTrait::nullOrString as public;
+            }
+        };
+
+        $this->expectException(\InvalidArgumentException::class);
+
+        $values = ['key' => 'too long string'];
+
+        $class::nullOrString($values, 'key', 10);
+    }
+
+    #[Test]
     public function string(): void
     {
         $class = new class() {

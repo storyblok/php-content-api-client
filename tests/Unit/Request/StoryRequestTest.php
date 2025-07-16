@@ -17,8 +17,11 @@ namespace Storyblok\Api\Tests\Unit\Request;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Dto\Version;
+use Storyblok\Api\Domain\Value\Resolver\LinkLevel;
+use Storyblok\Api\Domain\Value\Resolver\LinkType;
 use Storyblok\Api\Domain\Value\Resolver\Relation;
 use Storyblok\Api\Domain\Value\Resolver\RelationCollection;
+use Storyblok\Api\Domain\Value\Resolver\ResolveLinks;
 use Storyblok\Api\Request\StoryRequest;
 use Storyblok\Api\Tests\Util\FakerTrait;
 
@@ -79,6 +82,20 @@ final class StoryRequestTest extends TestCase
         self::assertSame([
             'language' => 'default',
             'resolve_relations' => 'root.relation,root.another_relation',
+        ], $request->toArray());
+    }
+
+    #[Test]
+    public function toArrayResolveLinks(): void
+    {
+        $request = new StoryRequest(
+            resolveLinks: new ResolveLinks(LinkType::Story, LinkLevel::Deep),
+        );
+
+        self::assertSame([
+            'language' => 'default',
+            'resolve_links' => 'story',
+            'resolve_links_level' => 2,
         ], $request->toArray());
     }
 }

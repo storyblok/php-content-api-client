@@ -35,7 +35,7 @@ final readonly class StoriesResponse
     public array $rels;
 
     /**
-     * @var list<string>
+     * @var list<array<string, mixed>>
      */
     public array $links;
 

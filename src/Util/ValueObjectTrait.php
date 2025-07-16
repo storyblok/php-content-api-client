@@ -168,6 +168,22 @@ trait ValueObjectTrait
      * @param array<mixed>     $values
      * @param non-empty-string $key
      */
+    final protected static function LinkOrMultiLink(array $values, string $key): Link|MultiLink
+    {
+        Assert::keyExists($values, $key);
+        Assert::isArray($values[$key]);
+
+        if (\array_key_exists('id', $values[$key]) && \is_int($values[$key]['id'])) {
+            return self::Link($values, $key);
+        }
+
+        return self::MultiLink($values, $key);
+    }
+
+    /**
+     * @param array<mixed>     $values
+     * @param non-empty-string $key
+     */
     final protected static function Link(array $values, string $key): Link
     {
         Assert::keyExists($values, $key);

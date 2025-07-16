@@ -1223,4 +1223,36 @@ final class ValueObjectTraitTest extends TestCase
 
         self::assertInstanceOf(Link::class, $result);
     }
+
+    #[Test]
+    public function LinkOrMultiLinkReturnsLink(): void
+    {
+        $class = new class() {
+            use ValueObjectTrait {
+                ValueObjectTrait::LinkOrMultiLink as public;
+            }
+        };
+
+        $values = ['link' => self::faker()->linkResponse()];
+
+        $result = $class::LinkOrMultiLink($values, 'link');
+
+        self::assertInstanceOf(Link::class, $result);
+    }
+
+    #[Test]
+    public function LinkOrMultiLinkReturnsMultiLink(): void
+    {
+        $class = new class() {
+            use ValueObjectTrait {
+                ValueObjectTrait::LinkOrMultiLink as public;
+            }
+        };
+
+        $values = ['link' => self::faker()->multiLinkResponse()];
+
+        $result = $class::LinkOrMultiLink($values, 'link');
+
+        self::assertInstanceOf(MultiLink::class, $result);
+    }
 }

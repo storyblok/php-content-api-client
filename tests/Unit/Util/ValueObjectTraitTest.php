@@ -1209,7 +1209,7 @@ final class ValueObjectTraitTest extends TestCase
     }
 
     #[Test]
-    public function Link(): void
+    public function link(): void
     {
         $class = new class() {
             use ValueObjectTrait {
@@ -1225,7 +1225,7 @@ final class ValueObjectTraitTest extends TestCase
     }
 
     #[Test]
-    public function LinkOrMultiLinkReturnsLink(): void
+    public function linkOrMultiLinkReturnsLink(): void
     {
         $class = new class() {
             use ValueObjectTrait {
@@ -1241,7 +1241,7 @@ final class ValueObjectTraitTest extends TestCase
     }
 
     #[Test]
-    public function LinkOrMultiLinkReturnsMultiLink(): void
+    public function linkOrMultiLinkReturnsMultiLink(): void
     {
         $class = new class() {
             use ValueObjectTrait {

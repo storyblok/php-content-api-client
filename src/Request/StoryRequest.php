@@ -16,6 +16,7 @@ namespace Storyblok\Api\Request;
 
 use Storyblok\Api\Domain\Value\Dto\Version;
 use Storyblok\Api\Domain\Value\Resolver\RelationCollection;
+use Storyblok\Api\Domain\Value\Resolver\ResolveLinks;
 use Webmozart\Assert\Assert;
 
 /**
@@ -27,6 +28,7 @@ final readonly class StoryRequest
         public string $language = 'default',
         public ?Version $version = null,
         public RelationCollection $withRelations = new RelationCollection(),
+        public ResolveLinks $resolveLinks = new ResolveLinks(),
     ) {
         Assert::stringNotEmpty($language);
     }
@@ -36,6 +38,8 @@ final readonly class StoryRequest
      *     language: string,
      *     version?: string,
      *     resolve_relations?: string,
+     *     resolve_links?: string,
+     *     resolve_links_level?: int,
      * }
      */
     public function toArray(): array
@@ -50,6 +54,11 @@ final readonly class StoryRequest
 
         if ($this->withRelations->count() > 0) {
             $array['resolve_relations'] = $this->withRelations->toString();
+        }
+
+        if (null !== $this->resolveLinks->type) {
+            $array['resolve_links'] = $this->resolveLinks->type->value;
+            $array['resolve_links_level'] = $this->resolveLinks->level->value;
         }
 
         return $array;

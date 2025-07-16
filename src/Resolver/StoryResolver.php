@@ -25,21 +25,21 @@ final readonly class StoryResolver implements ResolverInterface
     {
         $relationMap = [];
 
-        foreach ($relations as $key => $relation) {
+        foreach ($relations as $relation) {
             Assert::keyExists($relation, 'uuid');
             Assert::uuid($relation['uuid']);
             $relationMap[$relation['uuid']] = $relation;
-
-            // There is a limit of possible resolvable relations.
-            // @see https://www.storyblok.com/docs/api/content-delivery/v2/stories/retrieve-a-single-story
-            if (50 === $key) {
-                break;
-            }
         }
 
         foreach ($target as &$value) {
             if (\is_string($value) && \array_key_exists($value, $relationMap)) {
                 $value = $relationMap[$value];
+
+                continue;
+            }
+
+            if (\is_array($value) && \array_key_exists('id', $value) && \array_key_exists($value['id'], $relationMap)) {
+                $value = $relationMap[$value['id']];
 
                 continue;
             }

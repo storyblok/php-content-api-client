@@ -216,6 +216,153 @@ final class StoriesResolvedApiTest extends TestCase
     }
 
     #[Test]
+    public function allByContentTypeResolvesLinksAndRelations(): void
+    {
+        $storiesApi = $this->createMock(StoriesApiInterface::class);
+        $storiesApi->expects(self::once())
+            ->method('allByContentType')
+            ->willReturn(new StoriesResponse(new Total(3), new Pagination(), [
+                'stories' => [
+                    [
+                        'reference' => $uuid = self::faker()->uuid(),
+                    ],
+                ],
+                'cv' => 0,
+                'rels' => [
+                    $uuid => [
+                        '_uuid' => $uuid,
+                        'foo' => 'bar',
+                    ],
+                ],
+                'links' => [],
+            ]));
+
+        $resolver = $this->createMock(ResolverInterface::class);
+        $resolver->expects(self::exactly(2))
+            ->method('resolve');
+
+        (new StoriesResolvedApi($storiesApi, $resolver, true, true))->allByContentType('some-content-type', new StoriesRequest(withRelations: new RelationCollection(['reference']), resolveLinks: new ResolveLinks(LinkType::Link)));
+    }
+
+    #[Test]
+    public function allByContentTypeResolvesRelation(): void
+    {
+        $storiesApi = $this->createMock(StoriesApiInterface::class);
+        $storiesApi->expects(self::once())
+            ->method('allByContentType')
+            ->willReturn(new StoriesResponse(new Total(3), new Pagination(), [
+                'stories' => [
+                    [
+                        'reference' => $uuid = self::faker()->uuid(),
+                    ],
+                ],
+                'cv' => 0,
+                'rels' => [
+                    $uuid => [
+                        '_uuid' => $uuid,
+                        'foo' => 'bar',
+                    ],
+                ],
+                'links' => [],
+            ]));
+
+        $resolver = $this->createMock(ResolverInterface::class);
+        $resolver->expects(self::once())
+            ->method('resolve');
+
+        (new StoriesResolvedApi($storiesApi, $resolver, true))->allByContentType('content-type', new StoriesRequest(withRelations: new RelationCollection(['reference'])));
+    }
+
+    #[Test]
+    public function allByContentTypeResolvesLink(): void
+    {
+        $storiesApi = $this->createMock(StoriesApiInterface::class);
+        $storiesApi->expects(self::once())
+            ->method('allByContentType')
+            ->willReturn(new StoriesResponse(new Total(3), new Pagination(), [
+                'stories' => [
+                    [
+                        'reference' => $uuid = self::faker()->uuid(),
+                    ],
+                ],
+                'cv' => 0,
+                'rels' => [],
+                'links' => [
+                    $uuid => [
+                        '_uuid' => $uuid,
+                        'foo' => 'bar',
+                    ],
+                ],
+            ]));
+
+        $resolver = $this->createMock(ResolverInterface::class);
+        $resolver->expects(self::once())
+            ->method('resolve');
+
+        (new StoriesResolvedApi($storiesApi, $resolver, false, true))->allByContentType('some-content-type', new StoriesRequest(resolveLinks: new ResolveLinks(LinkType::Link)));
+    }
+
+    #[Test]
+    public function allByContentTypeDoesNotResolveRelationWhenClassPropertyIsSetToFalse(): void
+    {
+        $storiesApi = $this->createMock(StoriesApiInterface::class);
+        $storiesApi->expects(self::once())
+            ->method('allByContentType')
+            ->willReturn($expected = new StoriesResponse(new Total(3), new Pagination(), [
+                'stories' => [
+                    [
+                        'reference' => $uuid = self::faker()->uuid(),
+                    ],
+                ],
+                'cv' => 0,
+                'rels' => [
+                    $uuid => [
+                        '_uuid' => $uuid,
+                        'foo' => 'bar',
+                    ],
+                ],
+                'links' => [],
+            ]));
+
+        $resolver = $this->createMock(ResolverInterface::class);
+        $resolver->expects(self::never())
+            ->method('resolve');
+
+        self::assertSame($expected, (new StoriesResolvedApi($storiesApi, $resolver))->allByContentType('content-type'));
+    }
+
+    #[Test]
+    public function allByContentTypeDoesNotResolveLinksWhenClassPropertyIsSetToFalse(): void
+    {
+        $storiesApi = $this->createMock(StoriesApiInterface::class);
+        $storiesApi->expects(self::once())
+            ->method('allByContentType')
+            ->willReturn($expected = new StoriesResponse(new Total(3), new Pagination(), [
+                'stories' => [
+                    [
+                        'link' => [
+                            'id' => $uuid = self::faker()->uuid(),
+                        ],
+                    ],
+                ],
+                'cv' => 0,
+                'rels' => [],
+                'links' => [
+                    $uuid => [
+                        '_uuid' => $uuid,
+                        'foo' => 'bar',
+                    ],
+                ],
+            ]));
+
+        $resolver = $this->createMock(ResolverInterface::class);
+        $resolver->expects(self::never())
+            ->method('resolve');
+
+        self::assertSame($expected, (new StoriesResolvedApi($storiesApi, $resolver))->allByContentType('some-content-type'));
+    }
+
+    #[Test]
     public function allByUuidsWithoutRequestResolvesNothing(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
@@ -229,6 +376,153 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         self::assertSame($expected, (new StoriesResolvedApi($storiesApi, new StoryResolver()))->allByUuids([new Uuid(self::faker()->uuid())]));
+    }
+
+    #[Test]
+    public function allByUuidsResolvesLinksAndRelations(): void
+    {
+        $storiesApi = $this->createMock(StoriesApiInterface::class);
+        $storiesApi->expects(self::once())
+            ->method('allByUuids')
+            ->willReturn(new StoriesResponse(new Total(3), new Pagination(), [
+                'stories' => [
+                    [
+                        'reference' => $uuid = self::faker()->uuid(),
+                    ],
+                ],
+                'cv' => 0,
+                'rels' => [
+                    $uuid => [
+                        '_uuid' => $uuid,
+                        'foo' => 'bar',
+                    ],
+                ],
+                'links' => [],
+            ]));
+
+        $resolver = $this->createMock(ResolverInterface::class);
+        $resolver->expects(self::exactly(2))
+            ->method('resolve');
+
+        (new StoriesResolvedApi($storiesApi, $resolver, true, true))->allByUuids([new Uuid(self::faker()->uuid())], request: new StoriesRequest(withRelations: new RelationCollection(['reference']), resolveLinks: new ResolveLinks(LinkType::Link)));
+    }
+
+    #[Test]
+    public function allByUuidsResolvesRelation(): void
+    {
+        $storiesApi = $this->createMock(StoriesApiInterface::class);
+        $storiesApi->expects(self::once())
+            ->method('allByUuids')
+            ->willReturn(new StoriesResponse(new Total(3), new Pagination(), [
+                'stories' => [
+                    [
+                        'reference' => $uuid = self::faker()->uuid(),
+                    ],
+                ],
+                'cv' => 0,
+                'rels' => [
+                    $uuid => [
+                        '_uuid' => $uuid,
+                        'foo' => 'bar',
+                    ],
+                ],
+                'links' => [],
+            ]));
+
+        $resolver = $this->createMock(ResolverInterface::class);
+        $resolver->expects(self::once())
+            ->method('resolve');
+
+        (new StoriesResolvedApi($storiesApi, $resolver, true))->allByUuids([new Uuid(self::faker()->uuid())], request: new StoriesRequest(withRelations: new RelationCollection(['reference'])));
+    }
+
+    #[Test]
+    public function allByUuidsResolvesLink(): void
+    {
+        $storiesApi = $this->createMock(StoriesApiInterface::class);
+        $storiesApi->expects(self::once())
+            ->method('allByUuids')
+            ->willReturn(new StoriesResponse(new Total(3), new Pagination(), [
+                'stories' => [
+                    [
+                        'reference' => $uuid = self::faker()->uuid(),
+                    ],
+                ],
+                'cv' => 0,
+                'rels' => [],
+                'links' => [
+                    $uuid => [
+                        '_uuid' => $uuid,
+                        'foo' => 'bar',
+                    ],
+                ],
+            ]));
+
+        $resolver = $this->createMock(ResolverInterface::class);
+        $resolver->expects(self::once())
+            ->method('resolve');
+
+        (new StoriesResolvedApi($storiesApi, $resolver, false, true))->allByUuids([new Uuid(self::faker()->uuid())], request: new StoriesRequest(resolveLinks: new ResolveLinks(LinkType::Link)));
+    }
+
+    #[Test]
+    public function allByUuidsDoesNotResolveRelationWhenClassPropertyIsSetToFalse(): void
+    {
+        $storiesApi = $this->createMock(StoriesApiInterface::class);
+        $storiesApi->expects(self::once())
+            ->method('allByUuids')
+            ->willReturn($expected = new StoriesResponse(new Total(3), new Pagination(), [
+                'stories' => [
+                    [
+                        'reference' => $uuid = self::faker()->uuid(),
+                    ],
+                ],
+                'cv' => 0,
+                'rels' => [
+                    $uuid => [
+                        '_uuid' => $uuid,
+                        'foo' => 'bar',
+                    ],
+                ],
+                'links' => [],
+            ]));
+
+        $resolver = $this->createMock(ResolverInterface::class);
+        $resolver->expects(self::never())
+            ->method('resolve');
+
+        self::assertSame($expected, (new StoriesResolvedApi($storiesApi, $resolver))->allByUuids([new Uuid(self::faker()->uuid())]));
+    }
+
+    #[Test]
+    public function allByUuidsDoesNotResolveLinksWhenClassPropertyIsSetToFalse(): void
+    {
+        $storiesApi = $this->createMock(StoriesApiInterface::class);
+        $storiesApi->expects(self::once())
+            ->method('allByUuids')
+            ->willReturn($expected = new StoriesResponse(new Total(3), new Pagination(), [
+                'stories' => [
+                    [
+                        'link' => [
+                            'id' => $uuid = self::faker()->uuid(),
+                        ],
+                    ],
+                ],
+                'cv' => 0,
+                'rels' => [],
+                'links' => [
+                    $uuid => [
+                        '_uuid' => $uuid,
+                        'foo' => 'bar',
+                    ],
+                ],
+            ]));
+
+        $resolver = $this->createMock(ResolverInterface::class);
+        $resolver->expects(self::never())
+            ->method('resolve');
+
+        self::assertSame($expected, (new StoriesResolvedApi($storiesApi, $resolver))->allByUuids([new Uuid(self::faker()->uuid())]));
     }
 
     #[Test]

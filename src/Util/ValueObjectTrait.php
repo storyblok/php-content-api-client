@@ -88,11 +88,12 @@ trait ValueObjectTrait
     }
 
     /**
-     * @template T
+     * @template T of \BackedEnum
      *
      * @param array<mixed>     $values
      * @param non-empty-string $key
      * @param class-string<T>  $class
+     * @param null|T           $default
      * @param null|array<T>    $allowedSubset Only some cases of the enum that are allowed
      *
      * @return T

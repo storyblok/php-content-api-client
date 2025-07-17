@@ -187,19 +187,13 @@ parameters:
 			path: tests/Unit/Domain/Value/AssetTest.php
 
 		-
-			message: '#^Cannot call method equalsOneOf\(\) on class\-string\|object\.$#'
-			identifier: method.nonObject
-			count: 73
+			message: '#^Parameter \#3 \$class of static method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:332\:\:enum\(\) expects class\-string\<BackedEnum\>, string given\.$#'
+			identifier: argument.type
+			count: 1
 			path: tests/Unit/Util/ValueObjectTraitTest.php
 
 		-
-			message: '#^PHPDoc tag @return with type T is not subtype of native type BackedEnum\.$#'
-			identifier: return.phpDocType
-			count: 73
-			path: tests/Unit/Util/ValueObjectTraitTest.php
-
-		-
-			message: '#^Static call to instance method stdClass\:\:from\(\)\.$#'
-			identifier: method.staticCall
-			count: 73
+			message: '#^Unable to resolve the template type T in call to method static method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:332\:\:enum\(\)$#'
+			identifier: argument.templateType
+			count: 1
 			path: tests/Unit/Util/ValueObjectTraitTest.php

@@ -362,10 +362,11 @@ trait ValueObjectTrait
     /**
      * Returns null if the value is not set or a trimmed non-empty string.
      *
-     * @param array<mixed>     $values
-     * @param non-empty-string $key
+     * @param array<mixed>          $values
+     * @param non-empty-string      $key
+     * @param null|non-empty-string $regex
      */
-    final protected static function nullOrString(array $values, string $key, ?int $maxLength = null): ?string
+    final protected static function nullOrString(array $values, string $key, ?int $maxLength = null, ?string $regex = null): ?string
     {
         if (!\array_key_exists($key, $values)) {
             return null;
@@ -374,6 +375,11 @@ trait ValueObjectTrait
         if (null !== $maxLength) {
             Assert::greaterThan($maxLength, 0);
             Assert::maxLength($values[$key], $maxLength);
+        }
+
+        if (null !== $regex) {
+            Assert::stringNotEmpty($regex);
+            Assert::regex($values[$key], $regex);
         }
 
         try {
@@ -386,15 +392,21 @@ trait ValueObjectTrait
     /**
      * Returns a trimmed non-empty string.
      *
-     * @param array<mixed>     $values
-     * @param non-empty-string $key
+     * @param array<mixed>          $values
+     * @param non-empty-string      $key
+     * @param null|non-empty-string $regex
      */
-    final protected static function string(array $values, string $key, ?int $maxLength = null): string
+    final protected static function string(array $values, string $key, ?int $maxLength = null, ?string $regex = null): string
     {
         Assert::keyExists($values, $key);
 
         if (null !== $maxLength) {
             Assert::maxLength($values[$key], $maxLength);
+        }
+
+        if (null !== $regex) {
+            Assert::stringNotEmpty($regex);
+            Assert::regex($values[$key], $regex);
         }
 
         return TrimmedNonEmptyString::fromString($values[$key])->toString();

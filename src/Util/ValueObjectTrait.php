@@ -372,8 +372,8 @@ trait ValueObjectTrait
         }
 
         if (null !== $maxLength) {
-            Assert::maxLength($values[$key], $maxLength);
             Assert::greaterThan($maxLength, 0);
+            Assert::maxLength($values[$key], $maxLength);
         }
 
         try {

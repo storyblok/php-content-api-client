@@ -14,7 +14,6 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Util;
 
-use BackedEnum as T;
 use OskarStark\Value\TrimmedNonEmptyString;
 use Safe\DateTimeImmutable;
 use Storyblok\Api\Domain\Type\Asset;
@@ -94,6 +93,7 @@ trait ValueObjectTrait
      * @param array<mixed>     $values
      * @param non-empty-string $key
      * @param class-string<T>  $class
+     * @param null|T           $default
      * @param null|array<T>    $allowedSubset Only some cases of the enum that are allowed
      *
      * @return T

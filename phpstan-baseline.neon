@@ -193,6 +193,18 @@ parameters:
 			path: tests/Unit/Util/ValueObjectTraitTest.php
 
 		-
+			message: '#^Parameter \$regex of static method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:1133\:\:nullOrString\(\) expects non\-empty\-string\|null, '''' given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
+			message: '#^Parameter \$regex of static method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:1243\:\:string\(\) expects non\-empty\-string\|null, '''' given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Unit/Util/ValueObjectTraitTest.php
+
+		-
 			message: '#^Unable to resolve the template type T in call to method static method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:332\:\:enum\(\)$#'
 			identifier: argument.templateType
 			count: 1

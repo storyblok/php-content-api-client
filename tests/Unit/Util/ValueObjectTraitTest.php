@@ -1092,7 +1092,7 @@ final class ValueObjectTraitTest extends TestCase
 
         $this->expectException(\InvalidArgumentException::class);
 
-        $values = ['key' => 'too long string'];
+        $values = ['key' => str_repeat('a', 11)];
 
         $class::nullOrString($values, 'key', 10);
     }

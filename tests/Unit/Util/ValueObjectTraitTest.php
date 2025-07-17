@@ -1136,11 +1136,27 @@ final class ValueObjectTraitTest extends TestCase
             }
         };
 
-        $this->expectException(\InvalidArgumentException::class);
-
         $values = ['key' => 'hello-world'];
 
+        $this->expectException(\InvalidArgumentException::class);
+
         $class::nullOrString($values, 'key', regex: '');
+    }
+
+    #[Test]
+    public function nullOrStringThrowsExceptionWhenRegexNotMatch(): void
+    {
+        $class = new class() {
+            use ValueObjectTrait {
+                ValueObjectTrait::nullOrString as public;
+            }
+        };
+
+        $values = ['key' => 'not-matching'];
+
+        $this->expectException(\InvalidArgumentException::class);
+
+        $class::nullOrString($values, 'key', regex: '/^hello-world$/');
     }
 
     #[Test]
@@ -1235,6 +1251,22 @@ final class ValueObjectTraitTest extends TestCase
         $values = ['key' => 'hello-world'];
 
         $class::string($values, 'key', regex: '');
+    }
+
+    #[Test]
+    public function stringThrowsExceptionWhenRegexNotMatch(): void
+    {
+        $class = new class() {
+            use ValueObjectTrait {
+                ValueObjectTrait::string as public;
+            }
+        };
+
+        $values = ['key' => 'not-matching'];
+
+        $this->expectException(\InvalidArgumentException::class);
+
+        $class::string($values, 'key', regex: '/^hello-world$/');
     }
 
     #[Test]

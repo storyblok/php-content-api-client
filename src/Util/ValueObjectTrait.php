@@ -378,7 +378,8 @@ trait ValueObjectTrait
         }
 
         if (null !== $regex) {
-            Assert::regex($values[$key], TrimmedNonEmptyString::fromString($regex)->toString());
+            TrimmedNonEmptyString::fromString($regex)->toString();
+            Assert::regex($values[$key], $regex);
         }
 
         try {
@@ -404,7 +405,8 @@ trait ValueObjectTrait
         }
 
         if (null !== $regex) {
-            Assert::regex($values[$key], TrimmedNonEmptyString::fromString($regex)->toString());
+            TrimmedNonEmptyString::fromString($regex)->toString();
+            Assert::regex($values[$key], $regex);
         }
 
         return TrimmedNonEmptyString::fromString($values[$key])->toString();

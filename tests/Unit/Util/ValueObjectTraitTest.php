@@ -1114,6 +1114,52 @@ final class ValueObjectTraitTest extends TestCase
     }
 
     #[Test]
+    public function nullOrStringWithRegex(): void
+    {
+        $class = new class() {
+            use ValueObjectTrait {
+                ValueObjectTrait::nullOrString as public;
+            }
+        };
+
+        $values = ['key' => 'hello-world'];
+
+        self::assertSame('hello-world', $class::nullOrString($values, 'key', regex: '/^hello-world$/'));
+    }
+
+    #[Test]
+    public function nullOrStringThrowsExceptionWhenRegexEmpty(): void
+    {
+        $class = new class() {
+            use ValueObjectTrait {
+                ValueObjectTrait::nullOrString as public;
+            }
+        };
+
+        $values = ['key' => 'hello-world'];
+
+        $this->expectException(\InvalidArgumentException::class);
+
+        $class::nullOrString($values, 'key', regex: '');
+    }
+
+    #[Test]
+    public function nullOrStringThrowsExceptionWhenRegexNotMatch(): void
+    {
+        $class = new class() {
+            use ValueObjectTrait {
+                ValueObjectTrait::nullOrString as public;
+            }
+        };
+
+        $values = ['key' => 'not-matching'];
+
+        $this->expectException(\InvalidArgumentException::class);
+
+        $class::nullOrString($values, 'key', regex: '/^hello-world$/');
+    }
+
+    #[Test]
     public function string(): void
     {
         $class = new class() {
@@ -1175,6 +1221,52 @@ final class ValueObjectTraitTest extends TestCase
         $this->expectException(\InvalidArgumentException::class);
 
         $class::string($values, 'key', 5);
+    }
+
+    #[Test]
+    public function stringWithRegex(): void
+    {
+        $class = new class() {
+            use ValueObjectTrait {
+                ValueObjectTrait::string as public;
+            }
+        };
+
+        $values = ['key' => 'hello-world'];
+
+        self::assertSame('hello-world', $class::string($values, 'key', regex: '/^hello-world$/'));
+    }
+
+    #[Test]
+    public function stringThrowsExceptionWhenRegexEmpty(): void
+    {
+        $class = new class() {
+            use ValueObjectTrait {
+                ValueObjectTrait::string as public;
+            }
+        };
+
+        $this->expectException(\InvalidArgumentException::class);
+
+        $values = ['key' => 'hello-world'];
+
+        $class::string($values, 'key', regex: '');
+    }
+
+    #[Test]
+    public function stringThrowsExceptionWhenRegexNotMatch(): void
+    {
+        $class = new class() {
+            use ValueObjectTrait {
+                ValueObjectTrait::string as public;
+            }
+        };
+
+        $values = ['key' => 'not-matching'];
+
+        $this->expectException(\InvalidArgumentException::class);
+
+        $class::string($values, 'key', regex: '/^hello-world$/');
     }
 
     #[Test]

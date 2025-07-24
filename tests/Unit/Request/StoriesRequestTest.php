@@ -25,6 +25,9 @@ use Storyblok\Api\Domain\Value\Filter\FilterCollection;
 use Storyblok\Api\Domain\Value\Filter\Filters\InFilter;
 use Storyblok\Api\Domain\Value\Id;
 use Storyblok\Api\Domain\Value\IdCollection;
+use Storyblok\Api\Domain\Value\QueryParameter\Operator;
+use Storyblok\Api\Domain\Value\QueryParameter\PublishedAtQueryParameter;
+use Storyblok\Api\Domain\Value\QueryParameter\QueryParameterCollection;
 use Storyblok\Api\Domain\Value\Resolver\Relation;
 use Storyblok\Api\Domain\Value\Resolver\RelationCollection;
 use Storyblok\Api\Domain\Value\Slug\Slug;
@@ -219,6 +222,28 @@ final class StoriesRequestTest extends TestCase
             'page' => 1,
             'per_page' => 25,
             'starts_with' => 'my/path',
+        ], $request->toArray());
+    }
+
+    #[Test]
+    public function toArrayWithQueryParameters(): void
+    {
+        $faker = self::faker();
+
+        $date = $faker->dateTime();
+        $expectedData = $date->format('Y-m-d H:i');
+
+        $queryParameter = new PublishedAtQueryParameter($date, Operator::GreaterThan);
+
+        $request = new StoriesRequest(
+            queryParameterCollection: new QueryParameterCollection([$queryParameter]),
+        );
+
+        self::assertSame([
+            'language' => 'default',
+            'page' => 1,
+            'per_page' => 25,
+            PublishedAtQueryParameter::PUBLISHED_AT_GT => $expectedData,
         ], $request->toArray());
     }
 }

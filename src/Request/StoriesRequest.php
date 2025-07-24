@@ -20,6 +20,7 @@ use Storyblok\Api\Domain\Value\Dto\Version;
 use Storyblok\Api\Domain\Value\Field\FieldCollection;
 use Storyblok\Api\Domain\Value\Filter\FilterCollection;
 use Storyblok\Api\Domain\Value\IdCollection;
+use Storyblok\Api\Domain\Value\QueryParameter\QueryParameterCollection;
 use Storyblok\Api\Domain\Value\Resolver\RelationCollection;
 use Storyblok\Api\Domain\Value\Resolver\ResolveLinks;
 use Storyblok\Api\Domain\Value\Slug\Slug;
@@ -49,6 +50,8 @@ final readonly class StoriesRequest
         public ResolveLinks $resolveLinks = new ResolveLinks(),
         public SlugCollection $excludeSlugs = new SlugCollection(),
         public ?Slug $startsWith = null,
+        public QueryParameterCollection $queryParameterCollection = new QueryParameterCollection(
+        ),
     ) {
         Assert::stringNotEmpty($language);
         Assert::lessThanEq($this->pagination->perPage, self::MAX_PER_PAGE);
@@ -71,6 +74,12 @@ final readonly class StoriesRequest
      *     version?: string,
      *     excluding_slugs?: string,
      *     starts_with?: string,
+     *     published_at_gt?: string,
+     *     published_at_lt?: string,
+     *     first_published_at_gt?: string,
+     *     first_published_at_lt?: string,
+     *     updated_at_gt?: string,
+     *     updated_at_lt?: string,
      * }
      */
     public function toArray(): array
@@ -124,6 +133,10 @@ final readonly class StoriesRequest
 
         if (null !== $this->startsWith) {
             $array['starts_with'] = $this->startsWith->value;
+        }
+
+        if ($this->queryParameterCollection->count() > 0) {
+            $array = array_merge($array, $this->queryParameterCollection->toArray());
         }
 
         return $array;

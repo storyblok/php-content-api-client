@@ -322,18 +322,22 @@ Supported date parameters are:
  * `updated_at_gt`
  * `updated_at_lt`
 
+Ensure that the dates used have to be in UTC timezone.
+
 ```php
 use Storyblok\Api\StoriesApi;
 use Storyblok\Api\StoryblokClient;
 use Storyblok\Api\Domain\Value\QueryParameter\PublishedAtGt;
 use Storyblok\Api\Request\StoriesRequest;
 
+$dateTime = new \DateTimeImmutable('1969-12-28 12:12:12.425', new \DateTimeZone('UTC'));
+
 $client = new StoryblokClient(/* ... */);
 
 $storiesApi = new StoriesApi($client);
 $response = $storiesApi->all(new StoriesRequest(
     language: 'de',
-    publishedAtGt: new PublishedAtGt($date)
+    publishedAtGt: new PublishedAtGt($dateTime)
 ));
 ```
 

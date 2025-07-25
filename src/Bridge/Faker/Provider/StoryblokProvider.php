@@ -46,6 +46,7 @@ final class StoryblokProvider extends BaseProvider
             'stories' => [],
             'cv' => $this->generator->randomNumber(),
             'rels' => [],
+            'rel_uuids' => [],
             'links' => [],
         ];
 
@@ -57,6 +58,10 @@ final class StoryblokProvider extends BaseProvider
 
         for ($i = 0; $this->generator->numberBetween(1, 5) > $i; ++$i) {
             $response['rels'][] = $this->generator->url();
+        }
+
+        for ($i = 0; $this->generator->numberBetween(1, 5) > $i; ++$i) {
+            $response['rel_uuids'][] = $this->generator->uuid();
         }
 
         for ($i = 0; $this->generator->numberBetween(1, 5) > $i; ++$i) {

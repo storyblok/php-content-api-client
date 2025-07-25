@@ -14,6 +14,8 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Tests\Unit\Domain\Value;
 
+use Ergebnis\DataProvider\StringProvider;
+use PHPUnit\Framework\Attributes\DataProviderExternal;
 use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Link;
@@ -148,6 +150,19 @@ final class LinkTest extends TestCase
         $values = self::faker()->linkResponse();
         unset($values['path']);
 
+        self::expectException(\InvalidArgumentException::class);
+
+        new Link($values);
+    }
+
+    #[DataProviderExternal(StringProvider::class, 'blank')]
+    #[DataProviderExternal(StringProvider::class, 'empty')]
+    #[Test]
+    public function pathMustBeValidString(string $value): void
+    {
+        $values = self::faker()->linkResponse(['path' => $value]);
+
+        self::expectExceptionMessage('The value of key "path" is invalid.');
         self::expectException(\InvalidArgumentException::class);
 
         new Link($values);

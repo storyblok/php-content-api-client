@@ -24,7 +24,6 @@ final readonly class StoryResolver implements ResolverInterface
     public function resolve(array $target, array $relations): array
     {
         $relationMap = [];
-        $seen = [];
 
         foreach ($relations as $relation) {
             Assert::keyExists($relation, 'uuid');
@@ -38,6 +37,10 @@ final readonly class StoryResolver implements ResolverInterface
     private function doResolve(array $target, array $relationMap, array $seen): array
     {
         foreach ($target as $key => $value) {
+            if ('uuid' === $key) {
+                continue;
+            }
+
             if (\is_string($value) && isset($relationMap[$value])) {
                 if (\in_array($value, $seen, true)) {
                     continue;

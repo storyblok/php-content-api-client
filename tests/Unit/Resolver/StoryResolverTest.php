@@ -270,4 +270,39 @@ final class StoryResolverTest extends TestCase
 
         self::assertSame($expected, $resolver->resolve($story, $references));
     }
+
+    #[Test]
+    public function resolveMustNeverResolveUuidOfStory(): void
+    {
+        $resolver = new StoryResolver();
+
+        $faker = self::faker();
+
+        $story = [
+            'name' => $faker->word(),
+            'content' => [
+                'uuid' => $uuid = $faker->uuid(),
+                'reference' => $referenceUuid = $faker->uuid(),
+                'some_field' => $faker->word(),
+            ],
+        ];
+
+        $references = [
+            $a = [
+                'uuid' => $referenceUuid,
+                'name' => $faker->word(),
+                'another_field' => $faker->sentence(),
+            ],
+            $b = [
+                'uuid' => $uuid,
+                'name' => $faker->word(),
+                'another_field' => $faker->sentence(),
+            ],
+        ];
+
+        $expected = $story;
+        $expected['content']['reference'] = $a;
+
+        self::assertSame($expected, $resolver->resolve($story, $references));
+    }
 }

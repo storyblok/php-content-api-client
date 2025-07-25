@@ -188,4 +188,86 @@ final class StoryResolverTest extends TestCase
 
         self::assertSame($expected, $resolver->resolve($story, $references));
     }
+
+    #[Test]
+    public function resolveRecursive(): void
+    {
+        $resolver = new StoryResolver();
+
+        $faker = self::faker();
+
+        $story = [
+            'name' => $faker->word(),
+            'content' => [
+                'uuid' => $faker->uuid(),
+                'reference' => $cUuid = $faker->uuid(),
+                'some_field' => $faker->word(),
+            ],
+        ];
+
+        $references = [
+            $b = [
+                'uuid' => $bUuid = $faker->uuid(),
+                'name' => $faker->word(),
+                'another_field' => $faker->sentence(),
+            ],
+            $c = [
+                'uuid' => $cUuid,
+                'name' => $faker->word(),
+                'some_field' => [
+                    'test' => $bUuid,
+                ],
+            ],
+        ];
+
+        $expected = $story;
+        $expected['content']['reference'] = $c;
+        $expected['content']['reference']['some_field']['test'] = $b;
+
+        self::assertSame($expected, $resolver->resolve($story, $references));
+    }
+
+    #[Test]
+    public function resolveWithManyNestedRels(): void
+    {
+        $resolver = new StoryResolver();
+
+        $faker = self::faker();
+
+        $story = [
+            'name' => $faker->word(),
+            'content' => [
+                'uuid' => $faker->uuid(),
+                'reference' => $cUuid = $faker->uuid(),
+                'some_field' => $faker->word(),
+            ],
+        ];
+
+        $references = [
+            $a = [
+                'uuid' => $aUuid = $faker->uuid,
+                'name' => $faker->word(),
+            ],
+            $b = [
+                'uuid' => $bUuid = $faker->uuid(),
+                'name' => $faker->word(),
+                'another_field' => $faker->sentence(),
+                'field' => $aUuid,
+            ],
+            $c = [
+                'uuid' => $cUuid,
+                'name' => $faker->word(),
+                'some_field' => [
+                    'test' => $bUuid,
+                ],
+            ],
+        ];
+
+        $expected = $story;
+        $expected['content']['reference'] = $c;
+        $expected['content']['reference']['some_field']['test'] = $b;
+        $expected['content']['reference']['some_field']['test']['field'] = $a;
+
+        self::assertSame($expected, $resolver->resolve($story, $references));
+    }
 }

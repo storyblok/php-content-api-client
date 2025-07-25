@@ -20,7 +20,12 @@ use Storyblok\Api\Domain\Value\Dto\Version;
 use Storyblok\Api\Domain\Value\Field\FieldCollection;
 use Storyblok\Api\Domain\Value\Filter\FilterCollection;
 use Storyblok\Api\Domain\Value\IdCollection;
-use Storyblok\Api\Domain\Value\QueryParameter\QueryParameterCollection;
+use Storyblok\Api\Domain\Value\QueryParameter\FirstPublishedAtGt;
+use Storyblok\Api\Domain\Value\QueryParameter\FirstPublishedAtLt;
+use Storyblok\Api\Domain\Value\QueryParameter\PublishedAtGt;
+use Storyblok\Api\Domain\Value\QueryParameter\PublishedAtLt;
+use Storyblok\Api\Domain\Value\QueryParameter\UpdatedAtGt;
+use Storyblok\Api\Domain\Value\QueryParameter\UpdatedAtLt;
 use Storyblok\Api\Domain\Value\Resolver\RelationCollection;
 use Storyblok\Api\Domain\Value\Resolver\ResolveLinks;
 use Storyblok\Api\Domain\Value\Slug\Slug;
@@ -50,8 +55,12 @@ final readonly class StoriesRequest
         public ResolveLinks $resolveLinks = new ResolveLinks(),
         public SlugCollection $excludeSlugs = new SlugCollection(),
         public ?Slug $startsWith = null,
-        public QueryParameterCollection $queryParameterCollection = new QueryParameterCollection(
-        ),
+        public ?PublishedAtGt $publishedAtGt = null,
+        public ?PublishedAtLt $publishedAtLt = null,
+        public ?FirstPublishedAtGt $firstPublishedAtGt = null,
+        public ?FirstPublishedAtLt $firstPublishedAtLt = null,
+        public ?UpdatedAtGt $updatedAtGt = null,
+        public ?UpdatedAtLt $updatedAtLt = null,
     ) {
         Assert::stringNotEmpty($language);
         Assert::lessThanEq($this->pagination->perPage, self::MAX_PER_PAGE);
@@ -135,8 +144,28 @@ final readonly class StoriesRequest
             $array['starts_with'] = $this->startsWith->value;
         }
 
-        if ($this->queryParameterCollection->count() > 0) {
-            $array = array_merge($array, $this->queryParameterCollection->toArray());
+        if (null !== $this->publishedAtGt) {
+            $array['published_at_gt'] = $this->publishedAtGt->toString();
+        }
+
+        if (null !== $this->publishedAtLt) {
+            $array['published_at_lt'] = $this->publishedAtLt->toString();
+        }
+
+        if (null !== $this->firstPublishedAtGt) {
+            $array['first_published_at_gt'] = $this->firstPublishedAtGt->toString();
+        }
+
+        if (null !== $this->firstPublishedAtLt) {
+            $array['first_published_at_lt'] = $this->firstPublishedAtLt->toString();
+        }
+
+        if (null !== $this->updatedAtGt) {
+            $array['updated_at_gt'] = $this->updatedAtGt->toString();
+        }
+
+        if (null !== $this->updatedAtLt) {
+            $array['updated_at_lt'] = $this->updatedAtLt->toString();
         }
 
         return $array;

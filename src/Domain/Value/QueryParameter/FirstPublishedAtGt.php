@@ -15,15 +15,21 @@ declare(strict_types=1);
 namespace Storyblok\Api\Domain\Value\QueryParameter;
 
 /**
- * Represents top level query parameters which are holding simple string values.
- *
  * @author Frank Stelzer <dev@frankstelzer.de>
  */
-interface QueryParameter
+final readonly class FirstPublishedAtGt implements QueryParameter
 {
-    public const string DATE_TIME_FORMAT = 'Y-m-d\TH:i:s.v\Z';
+    public function __construct(private \DateTimeInterface $dateTime)
+    {
+    }
 
-    public function getName(): string;
+    public function getName(): string
+    {
+        return 'first_published_at_gt';
+    }
 
-    public function toString(): string;
+    public function toString(): string
+    {
+        return $this->dateTime->format(QueryParameter::DATE_TIME_FORMAT);
+    }
 }

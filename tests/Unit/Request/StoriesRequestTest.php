@@ -25,9 +25,13 @@ use Storyblok\Api\Domain\Value\Filter\FilterCollection;
 use Storyblok\Api\Domain\Value\Filter\Filters\InFilter;
 use Storyblok\Api\Domain\Value\Id;
 use Storyblok\Api\Domain\Value\IdCollection;
-use Storyblok\Api\Domain\Value\QueryParameter\Operator;
-use Storyblok\Api\Domain\Value\QueryParameter\PublishedAtQueryParameter;
-use Storyblok\Api\Domain\Value\QueryParameter\QueryParameterCollection;
+use Storyblok\Api\Domain\Value\QueryParameter\FirstPublishedAtGt;
+use Storyblok\Api\Domain\Value\QueryParameter\FirstPublishedAtLt;
+use Storyblok\Api\Domain\Value\QueryParameter\PublishedAtGt;
+use Storyblok\Api\Domain\Value\QueryParameter\PublishedAtLt;
+use Storyblok\Api\Domain\Value\QueryParameter\QueryParameter;
+use Storyblok\Api\Domain\Value\QueryParameter\UpdatedAtGt;
+use Storyblok\Api\Domain\Value\QueryParameter\UpdatedAtLt;
 use Storyblok\Api\Domain\Value\Resolver\Relation;
 use Storyblok\Api\Domain\Value\Resolver\RelationCollection;
 use Storyblok\Api\Domain\Value\Slug\Slug;
@@ -226,24 +230,122 @@ final class StoriesRequestTest extends TestCase
     }
 
     #[Test]
-    public function toArrayWithQueryParameters(): void
+    public function toArrayWithPublishedAtGt(): void
     {
         $faker = self::faker();
 
         $date = $faker->dateTime();
-        $expectedData = $date->format('Y-m-d H:i');
-
-        $queryParameter = new PublishedAtQueryParameter($date, Operator::GreaterThan);
+        $expectedDate = $date->format(QueryParameter::DATE_TIME_FORMAT);
 
         $request = new StoriesRequest(
-            queryParameterCollection: new QueryParameterCollection([$queryParameter]),
+            publishedAtGt: new PublishedAtGt($date),
         );
 
         self::assertSame([
             'language' => 'default',
             'page' => 1,
             'per_page' => 25,
-            PublishedAtQueryParameter::PUBLISHED_AT_GT => $expectedData,
+            'published_at_gt' => $expectedDate,
+        ], $request->toArray());
+    }
+
+    #[Test]
+    public function toArrayWithPublishedAtLt(): void
+    {
+        $faker = self::faker();
+
+        $date = $faker->dateTime();
+        $expectedDate = $date->format(QueryParameter::DATE_TIME_FORMAT);
+
+        $request = new StoriesRequest(
+            publishedAtLt: new PublishedAtLt($date),
+        );
+
+        self::assertSame([
+            'language' => 'default',
+            'page' => 1,
+            'per_page' => 25,
+            'published_at_lt' => $expectedDate,
+        ], $request->toArray());
+    }
+
+    #[Test]
+    public function toArrayWithFirstPublishedAtGt(): void
+    {
+        $faker = self::faker();
+
+        $date = $faker->dateTime();
+        $expectedDate = $date->format(QueryParameter::DATE_TIME_FORMAT);
+
+        $request = new StoriesRequest(
+            firstPublishedAtGt: new FirstPublishedAtGt($date),
+        );
+
+        self::assertSame([
+            'language' => 'default',
+            'page' => 1,
+            'per_page' => 25,
+            'first_published_at_gt' => $expectedDate,
+        ], $request->toArray());
+    }
+
+    #[Test]
+    public function toArrayWithFirstPublishedAtLt(): void
+    {
+        $faker = self::faker();
+
+        $date = $faker->dateTime();
+        $expectedDate = $date->format(QueryParameter::DATE_TIME_FORMAT);
+
+        $request = new StoriesRequest(
+            firstPublishedAtLt: new FirstPublishedAtLt($date),
+        );
+
+        self::assertSame([
+            'language' => 'default',
+            'page' => 1,
+            'per_page' => 25,
+            'first_published_at_lt' => $expectedDate,
+        ], $request->toArray());
+    }
+
+    #[Test]
+    public function toArrayWithUpdatedAtGt(): void
+    {
+        $faker = self::faker();
+
+        $date = $faker->dateTime();
+        $expectedDate = $date->format(QueryParameter::DATE_TIME_FORMAT);
+
+        $request = new StoriesRequest(
+            updatedAtGt: new UpdatedAtGt($date),
+        );
+
+        self::assertSame([
+            'language' => 'default',
+            'page' => 1,
+            'per_page' => 25,
+            'updated_at_gt' => $expectedDate,
+        ], $request->toArray());
+    }
+
+    #[Test]
+    public function toArrayWithUpdatedAtLt(): void
+    {
+        $faker = self::faker();
+
+        $date = $faker->dateTime();
+        $expectedDate = $date->format(QueryParameter::DATE_TIME_FORMAT);
+
+        $request = new StoriesRequest(
+            updatedAtLt: new UpdatedAtLt($date),
+        );
+
+        self::assertSame([
+            'language' => 'default',
+            'page' => 1,
+            'per_page' => 25,
+            'updated_at_lt' => $expectedDate,
         ], $request->toArray());
     }
 }

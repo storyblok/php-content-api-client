@@ -325,9 +325,7 @@ Supported date parameters are:
 ```php
 use Storyblok\Api\StoriesApi;
 use Storyblok\Api\StoryblokClient;
-use Storyblok\Api\Domain\Value\QueryParameter\Operator;
-use Storyblok\Api\Domain\Value\QueryParameter\PublishedAtQueryParameter;
-use Storyblok\Api\Domain\Value\QueryParameter\QueryParameterCollection;
+use Storyblok\Api\Domain\Value\QueryParameter\PublishedAtGt;
 use Storyblok\Api\Request\StoriesRequest;
 
 $client = new StoryblokClient(/* ... */);
@@ -335,9 +333,7 @@ $client = new StoryblokClient(/* ... */);
 $storiesApi = new StoriesApi($client);
 $response = $storiesApi->all(new StoriesRequest(
     language: 'de',
-    queryParameterCollection: new QueryParameterCollection([
-        new PublishedAtQueryParameter(new DateTimeImmutable(), Operator::GreaterThan)
-    ])
+    publishedAtGt: new PublishedAtGt($date)
 ));
 ```
 

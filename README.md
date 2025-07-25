@@ -311,16 +311,16 @@ new OrFilter(
 
 #### Filtering by native date fields
 
-The Storyblok API allows filtering by publish or updated dates.
+The Storyblok API allows filtering by published or updated dates.
 Those fields could not be filtered by `gt_date` or `lt_date` operations and have dedicated parameters in the request.
 
 Supported date parameters are:
-* `published_at_gt`
-* `published_at_lt`
-* `first_published_at_gt`
-* `first_published_at_lt`
-* `updated_at_gt`
-* `updated_at_lt`
+ * `published_at_gt`
+ * `published_at_lt`
+ * `first_published_at_gt`
+ * `first_published_at_lt`
+ * `updated_at_gt`
+ * `updated_at_lt`
 
 ```php
 use Storyblok\Api\StoriesApi;

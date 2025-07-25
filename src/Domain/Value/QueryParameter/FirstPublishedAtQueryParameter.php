@@ -21,8 +21,8 @@ final readonly class FirstPublishedAtQueryParameter extends DateQueryParameter
 
     public function __construct(\DateTimeInterface $publishedAt, Operator $operator)
     {
-        $name = match ($operator->value) {
-            'lt' => self::FIRST_PUBLISHED_AT_LT,
+        $name = match ($operator) {
+            Operator::LessThan => self::FIRST_PUBLISHED_AT_LT,
             default => self::FIRST_PUBLISHED_AT_GT,
         };
 

@@ -35,6 +35,11 @@ final readonly class StoriesResponse
     public array $rels;
 
     /**
+     * @var list<string>
+     */
+    public array $relUuids;
+
+    /**
      * @var list<array<string, mixed>>
      */
     public array $links;
@@ -54,8 +59,21 @@ final readonly class StoriesResponse
         Assert::integer($values['cv']);
         $this->cv = $values['cv'];
 
-        Assert::keyExists($values, 'rels');
-        $this->rels = $values['rels'];
+        $rels = [];
+
+        if (\array_key_exists('rels', $values)) {
+            $rels = $values['rels'];
+        }
+
+        $this->rels = $rels;
+
+        $relUuids = [];
+
+        if (\array_key_exists('rel_uuids', $values)) {
+            $relUuids = $values['rel_uuids'];
+        }
+
+        $this->relUuids = $relUuids;
 
         Assert::keyExists($values, 'links');
         $this->links = $values['links'];

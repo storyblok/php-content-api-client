@@ -79,14 +79,29 @@ final class StoryResponseTest extends TestCase
     }
 
     #[Test]
-    public function relsKeyMustExist(): void
+    public function relsIsOptional(): void
     {
         $values = self::faker()->storyResponse();
         unset($values['rels']);
 
-        self::expectException(\InvalidArgumentException::class);
+        self::assertEmpty((new StoryResponse($values))->rels);
+    }
 
-        new StoryResponse($values);
+    #[Test]
+    public function relUuids(): void
+    {
+        $values = self::faker()->storyResponse();
+
+        self::assertCount(\count($values['rel_uuids']), (new StoryResponse($values))->relUuids);
+    }
+
+    #[Test]
+    public function relsUuidsIsOptional(): void
+    {
+        $values = self::faker()->storyResponse();
+        unset($values['rel_uuids']);
+
+        self::assertEmpty((new StoryResponse($values))->relUuids);
     }
 
     #[Test]

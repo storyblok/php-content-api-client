@@ -73,7 +73,7 @@ parameters:
 			path: src/Bridge/Faker/Provider/StoryblokProvider.php
 
 		-
-			message: '#^Method Storyblok\\Api\\Bridge\\Faker\\Provider\\StoryblokProvider\:\:storiesResponse\(\) should return array\{cv\: int, stories\: list\<array\<string, mixed\>\>, links\: array\<string\>, rels\: array\<string\>\} but returns array\.$#'
+			message: '#^Method Storyblok\\Api\\Bridge\\Faker\\Provider\\StoryblokProvider\:\:storiesResponse\(\) should return array\{cv\: int, stories\: list\<array\<string, mixed\>\>, links\: array\<string\>, rel_uuids\: array\<string\>, rels\: array\<string\>\} but returns array\.$#'
 			identifier: return.type
 			count: 1
 			path: src/Bridge/Faker/Provider/StoryblokProvider.php
@@ -85,7 +85,7 @@ parameters:
 			path: src/Bridge/Faker/Provider/StoryblokProvider.php
 
 		-
-			message: '#^Method Storyblok\\Api\\Bridge\\Faker\\Provider\\StoryblokProvider\:\:storyResponse\(\) should return array\{cv\: int, story\: array\<string, mixed\>, links\: array\<string\>, rels\: array\<string\>\} but returns array\.$#'
+			message: '#^Method Storyblok\\Api\\Bridge\\Faker\\Provider\\StoryblokProvider\:\:storyResponse\(\) should return array\{cv\: int, story\: array\<string, mixed\>, links\: array\<string\>, rels\: array\<string\>, rel_uuids\: array\<string\>\} but returns array\.$#'
 			identifier: return.type
 			count: 1
 			path: src/Bridge/Faker/Provider/StoryblokProvider.php

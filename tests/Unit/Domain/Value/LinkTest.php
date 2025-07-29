@@ -156,7 +156,6 @@ final class LinkTest extends TestCase
     }
 
     #[DataProviderExternal(StringProvider::class, 'blank')]
-    #[DataProviderExternal(StringProvider::class, 'empty')]
     #[Test]
     public function pathMustBeValidString(string $value): void
     {

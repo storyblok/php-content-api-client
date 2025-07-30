@@ -31,21 +31,34 @@ final readonly class StoryResolver implements ResolverInterface
             $relationMap[$relation['uuid']] = $relation;
         }
 
-        foreach ($target as &$value) {
-            if (\is_string($value) && \array_key_exists($value, $relationMap)) {
-                $value = $relationMap[$value];
+        return $this->doResolve($target, $relationMap, []);
+    }
 
+    private function doResolve(array $target, array $relationMap, array $seen): array
+    {
+        foreach ($target as $key => $value) {
+            if ('uuid' === $key) {
                 continue;
             }
 
-            if (\is_array($value) && \array_key_exists('id', $value) && \array_key_exists($value['id'], $relationMap)) {
-                $value = $relationMap[$value['id']];
+            if (\is_string($value) && isset($relationMap[$value])) {
+                if (\in_array($value, $seen, true)) {
+                    continue;
+                }
 
-                continue;
-            }
+                $seen[] = $value;
+                $target[$key] = $this->doResolve($relationMap[$value], $relationMap, $seen);
+            } elseif (\is_array($value) && isset($value['id'], $relationMap[$value['id']])) {
+                $id = $value['id'];
 
-            if (\is_array($value)) {
-                $value = $this->resolve($value, $relations);
+                if (\in_array($id, $seen, true)) {
+                    continue;
+                }
+
+                $seen[] = $id;
+                $target[$key] = $this->doResolve($relationMap[$id], $relationMap, $seen);
+            } elseif (\is_array($value)) {
+                $target[$key] = $this->doResolve($value, $relationMap, $seen);
             }
         }
 

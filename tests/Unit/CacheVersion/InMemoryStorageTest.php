@@ -35,7 +35,7 @@ final class InMemoryStorageTest extends TestCase
     }
 
     /**
-     * @return iterable<int, ?int>
+     * @return iterable<array<int, null|int>>
      */
     public static function values(): iterable
     {

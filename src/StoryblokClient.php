@@ -56,6 +56,13 @@ final class StoryblokClient implements StoryblokClientInterface
         return $this;
     }
 
+    public function withCacheVersionStorage(CacheVersionStorageInterface $storage): self
+    {
+        $this->storage = $storage;
+
+        return $this;
+    }
+
     public function request(string $method, string $url, array $options = []): ResponseInterface
     {
         Assert::notStartsWith($url, 'http', '$url should be relative: Got: %s');

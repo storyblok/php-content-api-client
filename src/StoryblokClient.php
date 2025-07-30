@@ -18,6 +18,8 @@ use OskarStark\Value\TrimmedNonEmptyString;
 use Psr\Log\LoggerInterface;
 use Psr\Log\NullLogger;
 use Storyblok\Api\Bridge\HttpClient\QueryStringHelper;
+use Storyblok\Api\CacheVersion\CacheVersionStorageInterface;
+use Storyblok\Api\CacheVersion\InMemoryStorage;
 use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Contracts\HttpClient\HttpClientInterface;
 use Symfony\Contracts\HttpClient\ResponseInterface;
@@ -30,7 +32,6 @@ use function Safe\parse_url;
 final class StoryblokClient implements StoryblokClientInterface
 {
     private HttpClientInterface $client;
-    private ?int $cacheVersion = null;
 
     public function __construct(
         string $baseUri,
@@ -38,6 +39,7 @@ final class StoryblokClient implements StoryblokClientInterface
         private string $token,
         int $timeout = 4,
         private LoggerInterface $logger = new NullLogger(),
+        private CacheVersionStorageInterface $storage = new InMemoryStorage(),
     ) {
         $this->client = HttpClient::createForBaseUri($baseUri);
         $this->token = TrimmedNonEmptyString::fromString($token, '$token must not be an empty string')->toString();
@@ -72,13 +74,13 @@ final class StoryblokClient implements StoryblokClientInterface
             $url = QueryStringHelper::applyQueryString($url, [
                 ...$options['query'],
                 'token' => $this->token,
-                'cv' => $this->cacheVersion,
+                'cv' => $this->storage->get(),
             ]);
             unset($options['query']);
         } else {
             $options['query'] = [
                 'token' => $this->token,
-                'cv' => $this->cacheVersion,
+                'cv' => $this->storage->get(),
             ];
         }
 
@@ -110,7 +112,7 @@ final class StoryblokClient implements StoryblokClientInterface
             $parsedUrl = parse_url($response->getInfo('url'), \PHP_URL_QUERY);
             parse_str($parsedUrl, $parsed);
 
-            $this->cacheVersion = \array_key_exists('cv', $parsed) ? (int) $parsed['cv'] : $this->cacheVersion;
+            $this->storage->set(\array_key_exists('cv', $parsed) ? (int) $parsed['cv'] : $this->storage->get());
         }
 
         return $response;

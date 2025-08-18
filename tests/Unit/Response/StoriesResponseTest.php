@@ -98,14 +98,12 @@ final class StoriesResponseTest extends TestCase
     }
 
     #[Test]
-    public function relsKeyMustExist(): void
+    public function relsKeyIsOptional(): void
     {
         $values = self::faker()->storiesResponse();
         unset($values['rels']);
 
-        self::expectException(\InvalidArgumentException::class);
-
-        new StoriesResponse(new Total(1), new Pagination(), $values);
+        self::assertEmpty((new StoriesResponse(new Total(1), new Pagination(), $values))->rels);
     }
 
     #[Test]
@@ -128,5 +126,25 @@ final class StoriesResponseTest extends TestCase
         self::expectException(\InvalidArgumentException::class);
 
         new StoriesResponse(new Total(1), new Pagination(), $values);
+    }
+
+    #[Test]
+    public function relUuids(): void
+    {
+        $values = self::faker()->storiesResponse();
+
+        self::assertCount(
+            \count($values['rel_uuids']),
+            (new StoriesResponse(new Total(1), new Pagination(), $values))->relUuids,
+        );
+    }
+
+    #[Test]
+    public function relUuidsKeyIsOptional(): void
+    {
+        $values = self::faker()->storiesResponse();
+        unset($values['rel_uuids']);
+
+        self::assertEmpty((new StoriesResponse(new Total(1), new Pagination(), $values))->relUuids);
     }
 }

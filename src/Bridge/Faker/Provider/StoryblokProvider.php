@@ -31,12 +31,14 @@ final class StoryblokProvider extends BaseProvider
      *      stories?: list<array<string, mixed>>,
      *      links?: string[],
      *      rels?: string[],
+     *      rel_uuids?: string[],
      *  } $overrides
      *
      * @return array{
      *     cv: integer,
      *     stories: list<array<string, mixed>>,
      *     links: string[],
+     *     rel_uuids: string[],
      *     rels: string[],
      * }
      */
@@ -46,6 +48,7 @@ final class StoryblokProvider extends BaseProvider
             'stories' => [],
             'cv' => $this->generator->randomNumber(),
             'rels' => [],
+            'rel_uuids' => [],
             'links' => [],
         ];
 
@@ -57,6 +60,10 @@ final class StoryblokProvider extends BaseProvider
 
         for ($i = 0; $this->generator->numberBetween(1, 5) > $i; ++$i) {
             $response['rels'][] = $this->generator->url();
+        }
+
+        for ($i = 0; $this->generator->numberBetween(1, 5) > $i; ++$i) {
+            $response['rel_uuids'][] = $this->generator->uuid();
         }
 
         for ($i = 0; $this->generator->numberBetween(1, 5) > $i; ++$i) {
@@ -75,6 +82,7 @@ final class StoryblokProvider extends BaseProvider
      *      story?: array<string, mixed>,
      *      links?: string[],
      *      rels?: string[],
+     *      rel_uuids?: string[],
      *  } $overrides
      *
      * @return array{
@@ -82,6 +90,7 @@ final class StoryblokProvider extends BaseProvider
      *     story: array<string, mixed>,
      *     links: string[],
      *     rels: string[],
+     *     rel_uuids: string[],
      * }
      */
     public function storyResponse(array $overrides = []): array
@@ -92,6 +101,7 @@ final class StoryblokProvider extends BaseProvider
             ],
             'cv' => $this->generator->randomNumber(),
             'rels' => [],
+            'rel_uuids' => [],
             'links' => [],
         ];
 

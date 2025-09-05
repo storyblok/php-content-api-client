@@ -64,10 +64,10 @@ final readonly class Link
         $this->uuid = new Uuid($values['uuid']);
 
         Assert::keyExists($values, 'name');
-        $this->name = TrimmedNonEmptyString::fromString($values['name'])->toString();
+        $this->name = TrimmedNonEmptyString::fromString($values['name'], 'The value of key "name" must be an trimmed non empty string')->toString();
 
         Assert::keyExists($values, 'slug');
-        $this->slug = TrimmedNonEmptyString::fromString($values['slug'])->toString();
+        $this->slug = TrimmedNonEmptyString::fromString($values['slug'], 'The value of key "slug" must be an trimmed non empty string')->toString();
 
         Assert::keyExists($values, 'path');
 
@@ -78,7 +78,7 @@ final readonly class Link
         $this->path = $path ?? null;
 
         Assert::keyExists($values, 'real_path');
-        $this->realPath = TrimmedNonEmptyString::fromString($values['real_path'])->toString();
+        $this->realPath = TrimmedNonEmptyString::fromString($values['real_path'], 'The value of key "real_path" must be an trimmed non empty string')->toString();
 
         Assert::keyExists($values, 'position');
         Assert::integer($values['position']);

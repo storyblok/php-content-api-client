@@ -161,7 +161,7 @@ final class LinkTest extends TestCase
     {
         $values = self::faker()->linkResponse(['path' => $value]);
 
-        self::expectExceptionMessage('The value of key "path" is invalid.');
+        self::expectExceptionMessage('The value of key "path" must be an trimmed non empty string');
         self::expectException(\InvalidArgumentException::class);
 
         new Link($values);

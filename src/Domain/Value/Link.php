@@ -72,7 +72,7 @@ final readonly class Link
         Assert::keyExists($values, 'path');
 
         if (null !== $values['path'] && '' !== $values['path']) {
-            $path = TrimmedNonEmptyString::fromString($values['path'], 'The value of key "path" is invalid.')->toString();
+            $path = TrimmedNonEmptyString::fromString($values['path'], 'The value of key "path" must be an trimmed non empty string')->toString();
         }
 
         $this->path = $path ?? null;

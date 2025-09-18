@@ -31,7 +31,6 @@ final readonly class StoryResolver implements ResolverInterface
             $relationMap[$relation['uuid']] = $relation;
         }
 
-
         // Resolve relations within the relation map first
         $this->doResolve($relationMap, $relationMap);
 

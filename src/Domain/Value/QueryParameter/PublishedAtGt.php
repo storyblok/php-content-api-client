@@ -26,11 +26,6 @@ final readonly class PublishedAtGt
     {
     }
 
-    public function getName(): string
-    {
-        return 'published_at_gt';
-    }
-
     public function toString(): string
     {
         return $this->dateTime->format('Y-m-d\TH:i:s.v\Z');

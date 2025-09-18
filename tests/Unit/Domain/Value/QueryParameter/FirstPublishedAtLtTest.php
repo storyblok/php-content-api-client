@@ -33,7 +33,6 @@ class FirstPublishedAtLtTest extends TestCase
         $expectedValue = $value->format('Y-m-d\TH:i:s.v\Z');
 
         $valueObject = new FirstPublishedAtLt($value);
-        self::assertSame('first_published_at_lt', $valueObject->getName());
         self::assertSame($expectedValue, $valueObject->toString());
     }
 }

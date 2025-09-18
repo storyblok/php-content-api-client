@@ -45,7 +45,7 @@ final readonly class Link
     public function __construct(array $values)
     {
         Assert::keyExists($values, 'id');
-        Assert::integer($values['id']);
+        Assert::integer($values['id'], 'The value of the "id" key must be an integer. Got: %s');
         $this->id = new Id($values['id']);
 
         Assert::keyExists($values, 'parent_id');
@@ -64,24 +64,24 @@ final readonly class Link
         $this->uuid = new Uuid($values['uuid']);
 
         Assert::keyExists($values, 'name');
-        $this->name = TrimmedNonEmptyString::fromString($values['name'])->toString();
+        $this->name = TrimmedNonEmptyString::fromString($values['name'], 'The value of the "name" key must be a non-empty, trimmed string. Got: %s')->toString();
 
         Assert::keyExists($values, 'slug');
-        $this->slug = TrimmedNonEmptyString::fromString($values['slug'])->toString();
+        $this->slug = TrimmedNonEmptyString::fromString($values['slug'], 'The value of the "slug" key must be a non-empty, trimmed string. Got: %s')->toString();
 
         Assert::keyExists($values, 'path');
 
-        if (null !== $values['path']) {
-            $path = TrimmedNonEmptyString::fromString($values['path'])->toString();
+        if (null !== $values['path'] && '' !== $values['path']) {
+            $path = TrimmedNonEmptyString::fromString($values['path'], 'The value of the "path" key must be a non-empty, trimmed string. Got: %s')->toString();
         }
 
         $this->path = $path ?? null;
 
         Assert::keyExists($values, 'real_path');
-        $this->realPath = TrimmedNonEmptyString::fromString($values['real_path'])->toString();
+        $this->realPath = TrimmedNonEmptyString::fromString($values['real_path'], 'The value of the "real_path" key must be a non-empty, trimmed string. Got: %s')->toString();
 
         Assert::keyExists($values, 'position');
-        Assert::integer($values['position']);
+        Assert::integer($values['position'], 'The value of the "position" key must be an integer. Got: %s');
         $this->position = $values['position'];
 
         Assert::keyExists($values, 'is_folder');
@@ -94,7 +94,7 @@ final readonly class Link
         $this->isPublished = true === $values['published'];
 
         Assert::keyExists($values, 'alternates');
-        Assert::isArray($values['alternates']);
+        Assert::isArray($values['alternates'], 'The value of the "alternates" key must be an array. Got: %s');
         $this->alternates = array_map(static fn (array $values) => new LinkAlternate($values), $values['alternates']);
     }
 

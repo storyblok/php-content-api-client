@@ -19,13 +19,9 @@ namespace Storyblok\Api\Domain\Value\QueryParameter;
  */
 final readonly class FirstPublishedAtLt
 {
-    public function __construct(private \DateTimeInterface $dateTime)
-    {
-    }
-
-    public function getName(): string
-    {
-        return 'first_published_at_lt';
+    public function __construct(
+        private \DateTimeInterface $dateTime
+    ) {
     }
 
     public function toString(): string

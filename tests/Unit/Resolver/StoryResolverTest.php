@@ -245,7 +245,7 @@ final class StoryResolverTest extends TestCase
 
         $references = [
             $a = [
-                'uuid' => $aUuid = $faker->uuid,
+                'uuid' => $aUuid = $faker->uuid(),
                 'name' => $faker->word(),
             ],
             $b = [

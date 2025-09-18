@@ -31,37 +31,30 @@ final readonly class StoryResolver implements ResolverInterface
             $relationMap[$relation['uuid']] = $relation;
         }
 
-        return $this->doResolve($target, $relationMap, []);
+
+        // Resolve relations within the relation map first
+        $this->doResolve($relationMap, $relationMap);
+
+        // Then resolve relations in the main target
+        $this->doResolve($target, $relationMap);
+
+        return $target;
     }
 
-    private function doResolve(array $target, array $relationMap, array $seen): array
+    private function doResolve(array &$target, array &$relationMap): void
     {
-        foreach ($target as $key => $value) {
+        foreach ($target as $key => &$value) {
             if ('uuid' === $key) {
                 continue;
             }
 
             if (\is_string($value) && isset($relationMap[$value])) {
-                if (\in_array($value, $seen, true)) {
-                    continue;
-                }
-
-                $seen[] = $value;
-                $target[$key] = $this->doResolve($relationMap[$value], $relationMap, $seen);
+                $value = $relationMap[$value];
             } elseif (\is_array($value) && isset($value['id'], $relationMap[$value['id']])) {
-                $id = $value['id'];
-
-                if (\in_array($id, $seen, true)) {
-                    continue;
-                }
-
-                $seen[] = $id;
-                $target[$key] = $this->doResolve($relationMap[$id], $relationMap, $seen);
+                $value = $relationMap[$value['id']];
             } elseif (\is_array($value)) {
-                $target[$key] = $this->doResolve($value, $relationMap, $seen);
+                $this->doResolve($value, $relationMap);
             }
         }
-
-        return $target;
     }
 }

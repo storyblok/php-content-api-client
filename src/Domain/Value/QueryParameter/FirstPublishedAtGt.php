@@ -24,11 +24,6 @@ final readonly class FirstPublishedAtGt
     ) {
     }
 
-    public function getName(): string
-    {
-        return 'first_published_at_gt';
-    }
-
     public function toString(): string
     {
         return $this->dateTime->format('Y-m-d\TH:i:s.v\Z');

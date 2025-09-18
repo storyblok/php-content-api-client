@@ -309,6 +309,38 @@ new OrFilter(
 );
 ```
 
+#### Filtering by native date fields
+
+The Storyblok API allows filtering by published or updated dates.
+Those fields could not be filtered by `gt_date` or `lt_date` operations and have dedicated parameters in the request.
+
+Supported date parameters are:
+ * `published_at_gt`
+ * `published_at_lt`
+ * `first_published_at_gt`
+ * `first_published_at_lt`
+ * `updated_at_gt`
+ * `updated_at_lt`
+
+Ensure that the dates used have to be in UTC timezone.
+
+```php
+use Storyblok\Api\StoriesApi;
+use Storyblok\Api\StoryblokClient;
+use Storyblok\Api\Domain\Value\QueryParameter\PublishedAtGt;
+use Storyblok\Api\Request\StoriesRequest;
+
+$dateTime = new \DateTimeImmutable('1969-12-28 12:12:12.425', new \DateTimeZone('UTC'));
+
+$client = new StoryblokClient(/* ... */);
+
+$storiesApi = new StoriesApi($client);
+$response = $storiesApi->all(new StoriesRequest(
+    language: 'de',
+    publishedAtGt: new PublishedAtGt($dateTime)
+));
+```
+
 ### Get all available stories by Content Type (`string`)
 
 ```php

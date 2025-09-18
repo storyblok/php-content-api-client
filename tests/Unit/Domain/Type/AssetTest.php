@@ -285,17 +285,6 @@ final class AssetTest extends TestCase
         self::assertTrue($expected->equals((new Asset($response))->orientation));
     }
 
-    #[Test]
-    public function orientationWithNoImage(): void
-    {
-        $faker = self::faker();
-        $response = $faker->storyAssetResponse([
-            'filename' => $faker->url(),
-        ]);
-
-        self::assertTrue(Orientation::Unknown->equals((new Asset($response))->orientation));
-    }
-
     /**
      * @return iterable<string, array{0: Orientation, 1: int, 2: int}>
      */
@@ -307,6 +296,17 @@ final class AssetTest extends TestCase
         yield 'square with 8% more height' => [Orientation::Square, 100, 108];
         yield 'landscape' => [Orientation::Landscape, 1920, 1080];
         yield 'portrait' => [Orientation::Portrait, 1080, 1920];
+    }
+
+    #[Test]
+    public function orientationWithNoImage(): void
+    {
+        $faker = self::faker();
+        $response = $faker->storyAssetResponse([
+            'filename' => $faker->url(),
+        ]);
+
+        self::assertTrue(Orientation::Unknown->equals((new Asset($response))->orientation));
     }
 
     #[Test]

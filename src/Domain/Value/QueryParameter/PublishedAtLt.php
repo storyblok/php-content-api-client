@@ -20,7 +20,7 @@ namespace Storyblok\Api\Domain\Value\QueryParameter;
 final readonly class PublishedAtLt
 {
     public function __construct(
-        private \DateTimeInterface $dateTime
+        private \DateTimeInterface $dateTime,
     ) {
     }
 

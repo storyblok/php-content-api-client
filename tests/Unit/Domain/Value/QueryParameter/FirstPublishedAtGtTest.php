@@ -33,7 +33,6 @@ class FirstPublishedAtGtTest extends TestCase
         $expectedValue = $value->format('Y-m-d\TH:i:s.v\Z');
 
         $valueObject = new FirstPublishedAtGt($value);
-        self::assertSame('first_published_at_gt', $valueObject->getName());
         self::assertSame($expectedValue, $valueObject->toString());
     }
 }

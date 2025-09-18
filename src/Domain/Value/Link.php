@@ -94,6 +94,7 @@ final readonly class Link
         $this->isPublished = true === $values['published'];
 
         $alternates = [];
+
         if (\array_key_exists('alternates', $values) && null !== $values['alternates'] && [] !== $values['alternates']) {
             Assert::isArray($values['alternates'], 'The value of the "alternates" key must be an array. Got: %s');
             $alternates = array_map(static fn (array $values): LinkAlternate => new LinkAlternate($values), $values['alternates']);

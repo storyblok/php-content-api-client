@@ -22,7 +22,6 @@ final readonly class PublishedAtGt
     public function __construct(
         private \DateTimeInterface $dateTime
     ) {
-    {
     }
 
     public function toString(): string

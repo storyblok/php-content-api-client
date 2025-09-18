@@ -93,9 +93,13 @@ final readonly class Link
         Assert::keyExists($values, 'published');
         $this->isPublished = true === $values['published'];
 
-        Assert::keyExists($values, 'alternates');
-        Assert::isArray($values['alternates'], 'The value of the "alternates" key must be an array. Got: %s');
-        $this->alternates = array_map(static fn (array $values) => new LinkAlternate($values), $values['alternates']);
+        $alternates = [];
+        if (\array_key_exists('alternates', $values) && null !== $values['alternates'] && [] !== $values['alternates']) {
+            Assert::isArray($values['alternates'], 'The value of the "alternates" key must be an array. Got: %s');
+            $alternates = array_map(static fn (array $values): LinkAlternate => new LinkAlternate($values), $values['alternates']);
+        }
+
+        $this->alternates = $alternates;
     }
 
     public function isFolder(): bool

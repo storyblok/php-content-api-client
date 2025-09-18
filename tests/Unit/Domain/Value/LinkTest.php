@@ -365,6 +365,41 @@ final class LinkTest extends TestCase
     }
 
     #[Test]
+    public function alternateIsOptional(): void
+    {
+        $faker = self::faker();
+
+        $values = $faker->linkResponse();
+        unset($values['alternates']);
+
+        self::assertEmpty((new Link($values))->alternates);
+    }
+
+    #[Test]
+    public function alternateIsOptionalWithEmptyArray(): void
+    {
+        $faker = self::faker();
+
+        $values = $faker->linkResponse();
+        unset($values['alternates']);
+        $values['alternates'] = [];
+
+        self::assertEmpty((new Link($values))->alternates);
+    }
+
+    #[Test]
+    public function alternateIsOptionalWithNull(): void
+    {
+        $faker = self::faker();
+
+        $values = $faker->linkResponse([
+            'alternates' => null,
+        ]);
+
+        self::assertEmpty((new Link($values))->alternates);
+    }
+
+    #[Test]
     public function getNameWithNullReturnsDefaultName(): void
     {
         $faker = self::faker();

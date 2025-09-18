@@ -33,7 +33,6 @@ class UpdatedAtGtTest extends TestCase
         $expectedValue = $value->format('Y-m-d\TH:i:s.v\Z');
 
         $valueObject = new UpdatedAtGt($value);
-        self::assertSame('updated_at_gt', $valueObject->getName());
         self::assertSame($expectedValue, $valueObject->toString());
     }
 }

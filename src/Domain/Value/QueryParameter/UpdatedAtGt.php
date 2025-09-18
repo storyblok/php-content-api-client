@@ -19,13 +19,9 @@ namespace Storyblok\Api\Domain\Value\QueryParameter;
  */
 final readonly class UpdatedAtGt
 {
-    public function __construct(private \DateTimeInterface $dateTime)
-    {
-    }
-
-    public function getName(): string
-    {
-        return 'updated_at_gt';
+    public function __construct(
+        private \DateTimeInterface $dateTime
+    ) {
     }
 
     public function toString(): string

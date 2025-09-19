@@ -46,6 +46,7 @@ final class LinksApi implements LinksApiInterface
         $response = $this->client->request('GET', self::ENDPOINT, [
             'query' => [
                 ...$request->toArray(),
+                'paginated' => 1,
                 'version' => null !== $request->version ? $request->version->value : $this->version->value,
             ],
         ]);
@@ -65,6 +66,7 @@ final class LinksApi implements LinksApiInterface
             'query' => [
                 ...$request->toArray(),
                 'with_parent' => $parentId->value,
+                'paginated' => 1,
                 'version' => null !== $request->version ? $request->version->value : $this->version->value,
             ],
         ]);
@@ -84,6 +86,7 @@ final class LinksApi implements LinksApiInterface
             'query' => [
                 ...$request->toArray(),
                 'with_parent' => 0,
+                'paginated' => 1,
                 'version' => null !== $request->version ? $request->version->value : $this->version->value,
             ],
         ]);

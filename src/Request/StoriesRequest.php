@@ -61,7 +61,7 @@ final readonly class StoriesRequest
         public ?FirstPublishedAtLt $firstPublishedAtLt = null,
         public ?UpdatedAtGt $updatedAtGt = null,
         public ?UpdatedAtLt $updatedAtLt = null,
-        public ?SlugCollection $bySlugs = new SlugCollection(),
+        public SlugCollection $bySlugs = new SlugCollection(),
     ) {
         Assert::stringNotEmpty($language);
         Assert::lessThanEq($this->pagination->perPage, self::MAX_PER_PAGE);

@@ -348,4 +348,22 @@ final class StoriesRequestTest extends TestCase
             'updated_at_lt' => $expectedDate,
         ], $request->toArray());
     }
+
+    #[Test]
+    public function toArrayBySlugs(): void
+    {
+        $request = new StoriesRequest(
+            bySlugs: new SlugCollection([
+                new Slug('path/*'),
+                new Slug('another-path/*'),
+            ]),
+        );
+
+        self::assertSame([
+            'language' => 'default',
+            'page' => 1,
+            'per_page' => 25,
+            'by_slugs' => 'path/*,another-path/*',
+        ], $request->toArray());
+    }
 }

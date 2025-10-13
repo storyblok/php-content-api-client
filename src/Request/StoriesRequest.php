@@ -61,6 +61,7 @@ final readonly class StoriesRequest
         public ?FirstPublishedAtLt $firstPublishedAtLt = null,
         public ?UpdatedAtGt $updatedAtGt = null,
         public ?UpdatedAtLt $updatedAtLt = null,
+        public SlugCollection $bySlugs = new SlugCollection(),
     ) {
         Assert::stringNotEmpty($language);
         Assert::lessThanEq($this->pagination->perPage, self::MAX_PER_PAGE);
@@ -166,6 +167,10 @@ final readonly class StoriesRequest
 
         if (null !== $this->updatedAtLt) {
             $array['updated_at_lt'] = $this->updatedAtLt->toString();
+        }
+
+        if ($this->bySlugs->count() > 0) {
+            $array['by_slugs'] = $this->bySlugs->toString();
         }
 
         return $array;

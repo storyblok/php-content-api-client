@@ -157,7 +157,7 @@ parameters:
 			path: src/Domain/Value/Tag/TagCollection.php
 
 		-
-			message: '#^Method Storyblok\\Api\\Request\\StoriesRequest\:\:toArray\(\) should return array\{language\: string, page\: int, per_page\: int, sort_by\?\: string, filter_query\?\: list\<mixed\>, with_tag\?\: string, excluding_fields\?\: string, excluding_ids\?\: string, \.\.\.\} but returns array\{language\: string, page\: int, per_page\: int, sort_by\?\: string, filter_query\?\: array, with_tag\?\: string, excluding_fields\?\: string, excluding_ids\?\: string, \.\.\.\}\.$#'
+			message: '#^Method Storyblok\\Api\\Request\\StoriesRequest\:\:toArray\(\) should return array\{language\: string, page\: int, per_page\: int, sort_by\?\: string, filter_query\?\: list\<mixed\>, with_tag\?\: string, excluding_fields\?\: string, excluding_ids\?\: string, \.\.\.\} but returns array\{language\: string, page\: int, per_page\: int\<min, 100\>, sort_by\?\: string, filter_query\?\: array, with_tag\?\: string, excluding_fields\?\: string, excluding_ids\?\: string, \.\.\.\}\.$#'
 			identifier: return.type
 			count: 1
 			path: src/Request/StoriesRequest.php
@@ -205,7 +205,7 @@ parameters:
 			path: tests/Unit/Util/ValueObjectTraitTest.php
 
 		-
-			message: '#^Unable to resolve the template type T in call to method static method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:332\:\:enum\(\)$#'
+			message: '#^Unable to resolve the template type T in call to static method class@anonymous/tests/Unit/Util/ValueObjectTraitTest\.php\:332\:\:enum\(\)$#'
 			identifier: argument.templateType
 			count: 1
 			path: tests/Unit/Util/ValueObjectTraitTest.php

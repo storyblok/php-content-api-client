@@ -2,5 +2,4 @@
 vendor
 .php-cs-fixer.cache
 phpunit.xml
-.idea
 .phpunit.result.cache

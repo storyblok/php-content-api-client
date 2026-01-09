@@ -4,3 +4,4 @@ vendor
 phpunit.xml
 .idea
 .phpunit.result.cache
+composer.lock

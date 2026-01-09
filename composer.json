@@ -26,7 +26,7 @@
         "symfony/cache-contracts": "^3.5",
         "symfony/http-client": "^6.0 || ^7.0 || ^8.0",
         "thecodingmachine/safe": "^2.0 || ^3.0",
-        "webmozart/assert": "^1.11"
+        "webmozart/assert": "^1.11 || ^2.0"
     },
     "require-dev": {
         "ergebnis/composer-normalize": "^2.2",

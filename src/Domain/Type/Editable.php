@@ -26,7 +26,7 @@ use function Safe\json_encode;
  *
  * @author Silas Joisten <silasjoisten@proton.me>
  */
-final readonly class Editable
+final readonly class Editable implements \Stringable
 {
     public Uuid $uuid;
     public Id $id;

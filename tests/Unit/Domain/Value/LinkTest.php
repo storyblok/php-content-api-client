@@ -438,6 +438,73 @@ final class LinkTest extends TestCase
     }
 
     #[Test]
+    public function fullSlug(): void
+    {
+        $faker = self::faker();
+
+        $values = $faker->linkResponse(['full_slug' => $fullSlug = $faker->slug()]);
+
+        self::assertSame($fullSlug, (new Link($values))->fullSlug);
+    }
+
+    #[Test]
+    public function fullSlugIsOptional(): void
+    {
+        $faker = self::faker();
+
+        $values = $faker->linkResponse();
+        unset($values['full_slug']);
+
+        self::assertNull((new Link($values))->fullSlug);
+    }
+
+    #[Test]
+    public function fullSlugIsOptionalWithNull(): void
+    {
+        $faker = self::faker();
+
+        $values = $faker->linkResponse(['full_slug' => null]);
+
+        self::assertNull((new Link($values))->fullSlug);
+    }
+
+    #[DataProviderExternal(StringProvider::class, 'blank')]
+    #[Test]
+    public function fullSlugMustBeValidString(string $value): void
+    {
+        $values = self::faker()->linkResponse(['full_slug' => $value]);
+
+        self::expectExceptionMessage('The value of the "full_slug" key must be a non-empty, trimmed string. Got: ""');
+        self::expectException(\InvalidArgumentException::class);
+
+        new Link($values);
+    }
+
+    #[Test]
+    public function getSlugWithNullReturnsFullSlugWhenAvailable(): void
+    {
+        $faker = self::faker();
+
+        $values = $faker->linkResponse([
+            'slug' => $faker->slug(),
+            'full_slug' => $fullSlug = $faker->slug(),
+        ]);
+
+        self::assertSame($fullSlug, (new Link($values))->getSlug());
+    }
+
+    #[Test]
+    public function getSlugWithNullReturnsSlugWhenFullSlugIsNull(): void
+    {
+        $faker = self::faker();
+
+        $values = $faker->linkResponse(['slug' => $slug = $faker->word()]);
+        unset($values['full_slug']);
+
+        self::assertSame($slug, (new Link($values))->getSlug());
+    }
+
+    #[Test]
     public function getSlugWithNullReturnsDefaultName(): void
     {
         $faker = self::faker();

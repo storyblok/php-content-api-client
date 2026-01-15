@@ -141,4 +141,12 @@ final class RelationCollectionTest extends TestCase
         self::assertContainsOnlyInstancesOf(Relation::class, $collection);
         self::assertSame(implode(',', [$relation1, $relation2, $relation3]), $collection->toString());
     }
+
+    #[Test]
+    public function fromStringWithEmptyString(): void
+    {
+        $collection = RelationCollection::fromString('');
+
+        self::assertCount(0, $collection);
+    }
 }

@@ -26,7 +26,7 @@ final readonly class ResolveLinks
 
     /**
      * @param array{
-     *     type?: string|null,
+     *     type?: null|string,
      *     level?: int,
      * } $data
      */
@@ -43,7 +43,7 @@ final readonly class ResolveLinks
 
     /**
      * @return array{
-     *     type: string|null,
+     *     type: null|string,
      *     level: int,
      * }
      */

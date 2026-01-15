@@ -125,4 +125,20 @@ final class RelationCollectionTest extends TestCase
 
         self::assertInstanceOf(\ArrayIterator::class, (new RelationCollection($relations))->getIterator());
     }
+
+    #[Test]
+    public function fromString(): void
+    {
+        $faker = self::faker();
+
+        $relation1 = $faker->relation();
+        $relation2 = $faker->relation();
+        $relation3 = $faker->relation();
+
+        $collection = RelationCollection::fromString(implode(',', [$relation1, $relation2, $relation3]));
+
+        self::assertCount(3, $collection);
+        self::assertContainsOnlyInstancesOf(Relation::class, $collection);
+        self::assertSame(implode(',', [$relation1, $relation2, $relation3]), $collection->toString());
+    }
 }

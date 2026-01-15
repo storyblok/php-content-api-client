@@ -14,11 +14,44 @@ declare(strict_types=1);
 
 namespace Storyblok\Api\Domain\Value\Resolver;
 
+use Webmozart\Assert\Assert;
+
 final readonly class ResolveLinks
 {
     public function __construct(
         public ?LinkType $type = null,
         public LinkLevel $level = LinkLevel::Default,
     ) {
+    }
+
+    /**
+     * @param array{
+     *     type?: string|null,
+     *     level?: int,
+     * } $data
+     */
+    public static function fromArray(array $data): self
+    {
+        Assert::keyExists($data, 'type');
+        Assert::keyExists($data, 'level');
+
+        return new self(
+            type: $data['type'] ? LinkType::from($data['type']) : null,
+            level: LinkLevel::from($data['level']),
+        );
+    }
+
+    /**
+     * @return array{
+     *     type: string|null,
+     *     level: int,
+     * }
+     */
+    public function toArray(): array
+    {
+        return [
+            'type' => $this->type?->value,
+            'level' => $this->level->value,
+        ];
     }
 }

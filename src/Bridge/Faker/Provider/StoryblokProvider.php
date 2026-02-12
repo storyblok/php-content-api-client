@@ -482,6 +482,12 @@ final class StoryblokProvider extends BaseProvider
      *      content_length?: int,
      *      signed_url?: string,
      *      content_type?: string,
+     *      alt?: null|string,
+     *      asset_folder_id?: null|int,
+     *      copyright?: null|string,
+     *      focus?: null|string,
+     *      is_private?: bool,
+     *      title?: null|string,
      *   },
      * } $overrides
      *
@@ -494,6 +500,12 @@ final class StoryblokProvider extends BaseProvider
      *     content_length: int,
      *     signed_url: string,
      *     content_type: string,
+     *     alt: null|string,
+     *     asset_folder_id: null|int,
+     *     copyright: null|string,
+     *     focus: null|string,
+     *     is_private: bool,
+     *     title: null|string,
      *   },
      * }
      */
@@ -508,6 +520,12 @@ final class StoryblokProvider extends BaseProvider
                 'content_length' => $this->generator->numberBetween(1),
                 'signed_url' => $this->generator->url(),
                 'content_type' => $this->generator->word(),
+                'alt' => $this->generator->boolean() ? $this->generator->sentence() : null,
+                'asset_folder_id' => $this->generator->boolean() ? $this->generator->numberBetween(1) : null,
+                'copyright' => $this->generator->boolean() ? $this->generator->sentence() : null,
+                'focus' => $this->generator->boolean() ? $this->generator->numberBetween(0, 100).'x'.$this->generator->numberBetween(0, 100) : null,
+                'is_private' => $this->generator->boolean(),
+                'title' => $this->generator->boolean() ? $this->generator->sentence() : null,
             ],
         ];
 

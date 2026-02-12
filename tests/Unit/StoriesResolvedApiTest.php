@@ -40,7 +40,7 @@ final class StoriesResolvedApiTest extends TestCase
     public function allWithoutRequestResolvesNothing(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
-        $storiesApi->expects(self::once())
+        $storiesApi->expects($this->once())
             ->method('all')
             ->willReturn($expected = new StoriesResponse(new Total(3), new Pagination(), [
                 'stories' => [],
@@ -56,7 +56,7 @@ final class StoriesResolvedApiTest extends TestCase
     public function allResolvesLinksAndRelations(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
-        $storiesApi->expects(self::once())
+        $storiesApi->expects($this->once())
             ->method('all')
             ->willReturn(new StoriesResponse(new Total(3), new Pagination(), [
                 'stories' => [
@@ -75,7 +75,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects(self::exactly(2))
+        $resolver->expects($this->exactly(2))
             ->method('resolve');
 
         (new StoriesResolvedApi($storiesApi, $resolver, true, true))->all(new StoriesRequest(withRelations: new RelationCollection(['reference']), resolveLinks: new ResolveLinks(LinkType::Link)));
@@ -85,7 +85,7 @@ final class StoriesResolvedApiTest extends TestCase
     public function allResolvesRelation(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
-        $storiesApi->expects(self::once())
+        $storiesApi->expects($this->once())
             ->method('all')
             ->willReturn(new StoriesResponse(new Total(3), new Pagination(), [
                 'stories' => [
@@ -104,7 +104,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects(self::once())
+        $resolver->expects($this->once())
             ->method('resolve');
 
         (new StoriesResolvedApi($storiesApi, $resolver, true))->all(new StoriesRequest(withRelations: new RelationCollection(['reference'])));
@@ -114,7 +114,7 @@ final class StoriesResolvedApiTest extends TestCase
     public function allResolvesLink(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
-        $storiesApi->expects(self::once())
+        $storiesApi->expects($this->once())
             ->method('all')
             ->willReturn(new StoriesResponse(new Total(3), new Pagination(), [
                 'stories' => [
@@ -133,7 +133,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects(self::once())
+        $resolver->expects($this->once())
             ->method('resolve');
 
         (new StoriesResolvedApi($storiesApi, $resolver, false, true))->all(new StoriesRequest(resolveLinks: new ResolveLinks(LinkType::Link)));
@@ -143,7 +143,7 @@ final class StoriesResolvedApiTest extends TestCase
     public function allDoesNotResolveRelationWhenClassPropertyIsSetToFalse(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
-        $storiesApi->expects(self::once())
+        $storiesApi->expects($this->once())
             ->method('all')
             ->willReturn($expected = new StoriesResponse(new Total(3), new Pagination(), [
                 'stories' => [
@@ -162,7 +162,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects(self::never())
+        $resolver->expects($this->never())
             ->method('resolve');
 
         self::assertSame($expected, (new StoriesResolvedApi($storiesApi, $resolver))->all());
@@ -172,7 +172,7 @@ final class StoriesResolvedApiTest extends TestCase
     public function allDoesNotResolveLinksWhenClassPropertyIsSetToFalse(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
-        $storiesApi->expects(self::once())
+        $storiesApi->expects($this->once())
             ->method('all')
             ->willReturn($expected = new StoriesResponse(new Total(3), new Pagination(), [
                 'stories' => [
@@ -193,7 +193,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects(self::never())
+        $resolver->expects($this->never())
             ->method('resolve');
 
         self::assertSame($expected, (new StoriesResolvedApi($storiesApi, $resolver))->all());
@@ -203,7 +203,7 @@ final class StoriesResolvedApiTest extends TestCase
     public function allByContentTypeWithoutRequestResolvesNothing(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
-        $storiesApi->expects(self::once())
+        $storiesApi->expects($this->once())
             ->method('allByContentType')
             ->willReturn($expected = new StoriesResponse(new Total(3), new Pagination(), [
                 'stories' => [],
@@ -219,7 +219,7 @@ final class StoriesResolvedApiTest extends TestCase
     public function allByContentTypeResolvesLinksAndRelations(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
-        $storiesApi->expects(self::once())
+        $storiesApi->expects($this->once())
             ->method('allByContentType')
             ->willReturn(new StoriesResponse(new Total(3), new Pagination(), [
                 'stories' => [
@@ -238,7 +238,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects(self::exactly(2))
+        $resolver->expects($this->exactly(2))
             ->method('resolve');
 
         (new StoriesResolvedApi($storiesApi, $resolver, true, true))->allByContentType('some-content-type', new StoriesRequest(withRelations: new RelationCollection(['reference']), resolveLinks: new ResolveLinks(LinkType::Link)));
@@ -248,7 +248,7 @@ final class StoriesResolvedApiTest extends TestCase
     public function allByContentTypeResolvesRelation(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
-        $storiesApi->expects(self::once())
+        $storiesApi->expects($this->once())
             ->method('allByContentType')
             ->willReturn(new StoriesResponse(new Total(3), new Pagination(), [
                 'stories' => [
@@ -267,7 +267,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects(self::once())
+        $resolver->expects($this->once())
             ->method('resolve');
 
         (new StoriesResolvedApi($storiesApi, $resolver, true))->allByContentType('content-type', new StoriesRequest(withRelations: new RelationCollection(['reference'])));
@@ -277,7 +277,7 @@ final class StoriesResolvedApiTest extends TestCase
     public function allByContentTypeResolvesLink(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
-        $storiesApi->expects(self::once())
+        $storiesApi->expects($this->once())
             ->method('allByContentType')
             ->willReturn(new StoriesResponse(new Total(3), new Pagination(), [
                 'stories' => [
@@ -296,7 +296,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects(self::once())
+        $resolver->expects($this->once())
             ->method('resolve');
 
         (new StoriesResolvedApi($storiesApi, $resolver, false, true))->allByContentType('some-content-type', new StoriesRequest(resolveLinks: new ResolveLinks(LinkType::Link)));
@@ -306,7 +306,7 @@ final class StoriesResolvedApiTest extends TestCase
     public function allByContentTypeDoesNotResolveRelationWhenClassPropertyIsSetToFalse(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
-        $storiesApi->expects(self::once())
+        $storiesApi->expects($this->once())
             ->method('allByContentType')
             ->willReturn($expected = new StoriesResponse(new Total(3), new Pagination(), [
                 'stories' => [
@@ -325,7 +325,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects(self::never())
+        $resolver->expects($this->never())
             ->method('resolve');
 
         self::assertSame($expected, (new StoriesResolvedApi($storiesApi, $resolver))->allByContentType('content-type'));
@@ -335,7 +335,7 @@ final class StoriesResolvedApiTest extends TestCase
     public function allByContentTypeDoesNotResolveLinksWhenClassPropertyIsSetToFalse(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
-        $storiesApi->expects(self::once())
+        $storiesApi->expects($this->once())
             ->method('allByContentType')
             ->willReturn($expected = new StoriesResponse(new Total(3), new Pagination(), [
                 'stories' => [
@@ -356,7 +356,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects(self::never())
+        $resolver->expects($this->never())
             ->method('resolve');
 
         self::assertSame($expected, (new StoriesResolvedApi($storiesApi, $resolver))->allByContentType('some-content-type'));
@@ -366,7 +366,7 @@ final class StoriesResolvedApiTest extends TestCase
     public function allByUuidsWithoutRequestResolvesNothing(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
-        $storiesApi->expects(self::once())
+        $storiesApi->expects($this->once())
             ->method('allByUuids')
             ->willReturn($expected = new StoriesResponse(new Total(3), new Pagination(), [
                 'stories' => [],
@@ -382,7 +382,7 @@ final class StoriesResolvedApiTest extends TestCase
     public function allByUuidsResolvesLinksAndRelations(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
-        $storiesApi->expects(self::once())
+        $storiesApi->expects($this->once())
             ->method('allByUuids')
             ->willReturn(new StoriesResponse(new Total(3), new Pagination(), [
                 'stories' => [
@@ -401,7 +401,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects(self::exactly(2))
+        $resolver->expects($this->exactly(2))
             ->method('resolve');
 
         (new StoriesResolvedApi($storiesApi, $resolver, true, true))->allByUuids([new Uuid(self::faker()->uuid())], request: new StoriesRequest(withRelations: new RelationCollection(['reference']), resolveLinks: new ResolveLinks(LinkType::Link)));
@@ -411,7 +411,7 @@ final class StoriesResolvedApiTest extends TestCase
     public function allByUuidsResolvesRelation(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
-        $storiesApi->expects(self::once())
+        $storiesApi->expects($this->once())
             ->method('allByUuids')
             ->willReturn(new StoriesResponse(new Total(3), new Pagination(), [
                 'stories' => [
@@ -430,7 +430,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects(self::once())
+        $resolver->expects($this->once())
             ->method('resolve');
 
         (new StoriesResolvedApi($storiesApi, $resolver, true))->allByUuids([new Uuid(self::faker()->uuid())], request: new StoriesRequest(withRelations: new RelationCollection(['reference'])));
@@ -440,7 +440,7 @@ final class StoriesResolvedApiTest extends TestCase
     public function allByUuidsResolvesLink(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
-        $storiesApi->expects(self::once())
+        $storiesApi->expects($this->once())
             ->method('allByUuids')
             ->willReturn(new StoriesResponse(new Total(3), new Pagination(), [
                 'stories' => [
@@ -459,7 +459,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects(self::once())
+        $resolver->expects($this->once())
             ->method('resolve');
 
         (new StoriesResolvedApi($storiesApi, $resolver, false, true))->allByUuids([new Uuid(self::faker()->uuid())], request: new StoriesRequest(resolveLinks: new ResolveLinks(LinkType::Link)));
@@ -469,7 +469,7 @@ final class StoriesResolvedApiTest extends TestCase
     public function allByUuidsDoesNotResolveRelationWhenClassPropertyIsSetToFalse(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
-        $storiesApi->expects(self::once())
+        $storiesApi->expects($this->once())
             ->method('allByUuids')
             ->willReturn($expected = new StoriesResponse(new Total(3), new Pagination(), [
                 'stories' => [
@@ -488,7 +488,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects(self::never())
+        $resolver->expects($this->never())
             ->method('resolve');
 
         self::assertSame($expected, (new StoriesResolvedApi($storiesApi, $resolver))->allByUuids([new Uuid(self::faker()->uuid())]));
@@ -498,7 +498,7 @@ final class StoriesResolvedApiTest extends TestCase
     public function allByUuidsDoesNotResolveLinksWhenClassPropertyIsSetToFalse(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
-        $storiesApi->expects(self::once())
+        $storiesApi->expects($this->once())
             ->method('allByUuids')
             ->willReturn($expected = new StoriesResponse(new Total(3), new Pagination(), [
                 'stories' => [
@@ -519,7 +519,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects(self::never())
+        $resolver->expects($this->never())
             ->method('resolve');
 
         self::assertSame($expected, (new StoriesResolvedApi($storiesApi, $resolver))->allByUuids([new Uuid(self::faker()->uuid())]));
@@ -529,7 +529,7 @@ final class StoriesResolvedApiTest extends TestCase
     public function bySlugWithoutRequestResolvesNothing(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
-        $storiesApi->expects(self::once())
+        $storiesApi->expects($this->once())
             ->method('bySlug')
             ->willReturn($expected = new StoryResponse([
                 'story' => [],
@@ -545,7 +545,7 @@ final class StoriesResolvedApiTest extends TestCase
     public function byUuidWithoutRequestResolvesNothing(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
-        $storiesApi->expects(self::once())
+        $storiesApi->expects($this->once())
             ->method('byUuid')
             ->willReturn($expected = new StoryResponse([
                 'story' => [],
@@ -561,7 +561,7 @@ final class StoriesResolvedApiTest extends TestCase
     public function byIdWithoutRequestResolvesNothing(): void
     {
         $storiesApi = $this->createMock(StoriesApiInterface::class);
-        $storiesApi->expects(self::once())
+        $storiesApi->expects($this->once())
             ->method('byId')
             ->willReturn($expected = new StoryResponse([
                 'story' => [],

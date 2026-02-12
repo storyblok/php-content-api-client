@@ -29,6 +29,12 @@ final readonly class Asset
     public int $contentLength;
     public string $signedUrl;
     public string $contentType;
+    public ?string $alt;
+    public ?int $assetFolderId;
+    public ?string $copyright;
+    public ?string $focus;
+    public bool $isPrivate;
+    public ?string $title;
 
     /**
      * @param array<string, mixed> $values
@@ -63,5 +69,23 @@ final readonly class Asset
 
         Assert::keyExists($values, 'content_type');
         $this->contentType = $values['content_type'];
+
+        Assert::keyExists($values, 'alt');
+        $this->alt = $values['alt'];
+
+        Assert::keyExists($values, 'asset_folder_id');
+        $this->assetFolderId = $values['asset_folder_id'];
+
+        Assert::keyExists($values, 'copyright');
+        $this->copyright = $values['copyright'];
+
+        Assert::keyExists($values, 'focus');
+        $this->focus = $values['focus'];
+
+        Assert::keyExists($values, 'is_private');
+        $this->isPrivate = $values['is_private'];
+
+        Assert::keyExists($values, 'title');
+        $this->title = $values['title'];
     }
 }

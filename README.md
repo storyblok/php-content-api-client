@@ -534,19 +534,21 @@ $response = $api->all(); // returns Storyblok\Api\Response\TagsResponse
 ## Assets
 
 To use the assets API you have to configure the Assets client.
+The token used for the Assets API is not the preview or public token. It is a specific token for assets. You can create and manage your asset tokens in the **Space Settings** under the **Access Tokens** section.
+The `get()` method expects the full image URL as its parameter.
 
 ```php
 use Storyblok\Api\StoryblokClient;
 use Storyblok\Api\AssetsApi;
 
-$client = new StoryblokClient(
+$assetsClient = new StoryblokClient(
     baseUri: 'https://api.storyblok.com',
-    token: 'assets-api-token',
+    token: 'your-assets-api-token',
     timeout: 10 // optional
 );
 
 $assetsApi = new AssetsApi($assetsClient);
-$assetsApi->get('filename.png')
+$assetsApi->get('https://a.storyblok/your-full-path-URL-image.jpeg')
 ```
 
 ### DX Enhancement through Abstract Collections

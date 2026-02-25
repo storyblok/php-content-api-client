@@ -160,6 +160,77 @@ final class StoryResolverTest extends TestCase
     }
 
     #[Test]
+    public function resolveReplacesMultiLinkWithLinkPayloadAndPreservesAnchor(): void
+    {
+        $resolver = new StoryResolver();
+
+        $faker = self::faker();
+
+        $story = [
+            'name' => $faker->word(),
+            'content' => [
+                'link' => [
+                    'id' => $referenceUuid = $faker->uuid(),
+                    'url' => '',
+                    'anchor' => $anchor = $faker->word(),
+                    'linktype' => 'story',
+                    'fieldtype' => 'multilink',
+                    'cached_url' => 'contact',
+                ],
+            ],
+        ];
+
+        $references = [
+            $reference = [
+                'uuid' => $referenceUuid,
+                'name' => $faker->word(),
+                'another_field' => $faker->sentence(),
+            ],
+        ];
+
+        $expected = $story;
+        $expected['content']['link'] = $reference;
+        $expected['content']['link']['anchor'] = $anchor;
+
+        self::assertSame($expected, $resolver->resolve($story, $references));
+    }
+
+    #[Test]
+    public function resolveReplacesMultiLinkWithLinkPayloadAndDoesNotPreserveEmptyAnchor(): void
+    {
+        $resolver = new StoryResolver();
+
+        $faker = self::faker();
+
+        $story = [
+            'name' => $faker->word(),
+            'content' => [
+                'link' => [
+                    'id' => $referenceUuid = $faker->uuid(),
+                    'url' => '',
+                    'anchor' => '',
+                    'linktype' => 'story',
+                    'fieldtype' => 'multilink',
+                    'cached_url' => 'contact',
+                ],
+            ],
+        ];
+
+        $references = [
+            $reference = [
+                'uuid' => $referenceUuid,
+                'name' => $faker->word(),
+                'another_field' => $faker->sentence(),
+            ],
+        ];
+
+        $expected = $story;
+        $expected['content']['link'] = $reference;
+
+        self::assertSame($expected, $resolver->resolve($story, $references));
+    }
+
+    #[Test]
     public function resolveReplacesMultiLinkWithLinkPayload(): void
     {
         $resolver = new StoryResolver();

@@ -50,7 +50,15 @@ final readonly class StoryResolver implements ResolverInterface
             if (\is_string($value) && isset($relationMap[$value])) {
                 $value = $relationMap[$value];
             } elseif (\is_array($value) && isset($value['id'], $relationMap[$value['id']])) {
-                $value = $relationMap[$value['id']];
+                $resolved = $relationMap[$value['id']];
+
+                // Preserve the anchor from the original multilink field, as it is not part
+                // of the resolved link payload but user-defined on the multilink itself.
+                if (\array_key_exists('anchor', $value) && null !== $value['anchor'] && '' !== $value['anchor']) {
+                    $resolved['anchor'] = $value['anchor'];
+                }
+
+                $value = $resolved;
             } elseif (\is_array($value)) {
                 $this->doResolve($value, $relationMap);
             }

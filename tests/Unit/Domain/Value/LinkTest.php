@@ -481,6 +481,47 @@ final class LinkTest extends TestCase
     }
 
     #[Test]
+    public function anchor(): void
+    {
+        $faker = self::faker();
+
+        $values = $faker->linkResponse(['anchor' => $anchor = $faker->word()]);
+
+        self::assertSame($anchor, (new Link($values))->anchor);
+    }
+
+    #[Test]
+    public function anchorIsOptional(): void
+    {
+        $faker = self::faker();
+
+        $values = $faker->linkResponse();
+        unset($values['anchor']);
+
+        self::assertNull((new Link($values))->anchor);
+    }
+
+    #[Test]
+    public function anchorIsOptionalWithNull(): void
+    {
+        $faker = self::faker();
+
+        $values = $faker->linkResponse(['anchor' => null]);
+
+        self::assertNull((new Link($values))->anchor);
+    }
+
+    #[Test]
+    public function anchorIsOptionalWithEmptyString(): void
+    {
+        $faker = self::faker();
+
+        $values = $faker->linkResponse(['anchor' => '']);
+
+        self::assertNull((new Link($values))->anchor);
+    }
+
+    #[Test]
     public function getSlugWithNullReturnsFullSlugWhenAvailable(): void
     {
         $faker = self::faker();

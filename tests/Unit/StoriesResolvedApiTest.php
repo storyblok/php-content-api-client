@@ -75,7 +75,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects($this->exactly(2))
+        $resolver->expects(self::exactly(2))
             ->method('resolve');
 
         (new StoriesResolvedApi($storiesApi, $resolver, true, true))->all(new StoriesRequest(withRelations: new RelationCollection(['reference']), resolveLinks: new ResolveLinks(LinkType::Link)));
@@ -162,7 +162,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects($this->never())
+        $resolver->expects(self::never())
             ->method('resolve');
 
         self::assertSame($expected, (new StoriesResolvedApi($storiesApi, $resolver))->all());
@@ -193,7 +193,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects($this->never())
+        $resolver->expects(self::never())
             ->method('resolve');
 
         self::assertSame($expected, (new StoriesResolvedApi($storiesApi, $resolver))->all());
@@ -238,7 +238,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects($this->exactly(2))
+        $resolver->expects(self::exactly(2))
             ->method('resolve');
 
         (new StoriesResolvedApi($storiesApi, $resolver, true, true))->allByContentType('some-content-type', new StoriesRequest(withRelations: new RelationCollection(['reference']), resolveLinks: new ResolveLinks(LinkType::Link)));
@@ -325,7 +325,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects($this->never())
+        $resolver->expects(self::never())
             ->method('resolve');
 
         self::assertSame($expected, (new StoriesResolvedApi($storiesApi, $resolver))->allByContentType('content-type'));
@@ -356,7 +356,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects($this->never())
+        $resolver->expects(self::never())
             ->method('resolve');
 
         self::assertSame($expected, (new StoriesResolvedApi($storiesApi, $resolver))->allByContentType('some-content-type'));
@@ -401,7 +401,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects($this->exactly(2))
+        $resolver->expects(self::exactly(2))
             ->method('resolve');
 
         (new StoriesResolvedApi($storiesApi, $resolver, true, true))->allByUuids([new Uuid(self::faker()->uuid())], request: new StoriesRequest(withRelations: new RelationCollection(['reference']), resolveLinks: new ResolveLinks(LinkType::Link)));
@@ -488,7 +488,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects($this->never())
+        $resolver->expects(self::never())
             ->method('resolve');
 
         self::assertSame($expected, (new StoriesResolvedApi($storiesApi, $resolver))->allByUuids([new Uuid(self::faker()->uuid())]));
@@ -519,7 +519,7 @@ final class StoriesResolvedApiTest extends TestCase
             ]));
 
         $resolver = $this->createMock(ResolverInterface::class);
-        $resolver->expects($this->never())
+        $resolver->expects(self::never())
             ->method('resolve');
 
         self::assertSame($expected, (new StoriesResolvedApi($storiesApi, $resolver))->allByUuids([new Uuid(self::faker()->uuid())]));

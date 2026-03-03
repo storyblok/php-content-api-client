@@ -195,4 +195,224 @@ final class AssetTest extends TestCase
 
         new Asset($values);
     }
+
+    #[Test]
+    public function alt(): void
+    {
+        $faker = self::faker();
+
+        $values = $faker->assetResponse([
+            'asset' => [
+                'alt' => $faker->sentence(),
+            ],
+        ])['asset'];
+
+        self::assertSame($values['alt'], (new Asset($values))->alt);
+    }
+
+    #[Test]
+    public function altCanBeNull(): void
+    {
+        $values = self::faker()->assetResponse([
+            'asset' => [
+                'alt' => null,
+            ],
+        ])['asset'];
+
+        self::assertNull((new Asset($values))->alt);
+    }
+
+    #[Test]
+    public function altKeyMustExist(): void
+    {
+        $values = self::faker()->assetResponse()['asset'];
+        unset($values['alt']);
+
+        self::expectException(\InvalidArgumentException::class);
+
+        new Asset($values);
+    }
+
+    #[Test]
+    public function assetFolderId(): void
+    {
+        $faker = self::faker();
+
+        $values = $faker->assetResponse([
+            'asset' => [
+                'asset_folder_id' => $faker->numberBetween(1),
+            ],
+        ])['asset'];
+
+        self::assertSame($values['asset_folder_id'], (new Asset($values))->assetFolderId);
+    }
+
+    #[Test]
+    public function assetFolderIdCanBeNull(): void
+    {
+        $values = self::faker()->assetResponse([
+            'asset' => [
+                'asset_folder_id' => null,
+            ],
+        ])['asset'];
+
+        self::assertNull((new Asset($values))->assetFolderId);
+    }
+
+    #[Test]
+    public function assetFolderIdKeyMustExist(): void
+    {
+        $values = self::faker()->assetResponse()['asset'];
+        unset($values['asset_folder_id']);
+
+        self::expectException(\InvalidArgumentException::class);
+
+        new Asset($values);
+    }
+
+    #[Test]
+    public function copyright(): void
+    {
+        $faker = self::faker();
+
+        $values = $faker->assetResponse([
+            'asset' => [
+                'copyright' => $faker->sentence(),
+            ],
+        ])['asset'];
+
+        self::assertSame($values['copyright'], (new Asset($values))->copyright);
+    }
+
+    #[Test]
+    public function copyrightCanBeNull(): void
+    {
+        $values = self::faker()->assetResponse([
+            'asset' => [
+                'copyright' => null,
+            ],
+        ])['asset'];
+
+        self::assertNull((new Asset($values))->copyright);
+    }
+
+    #[Test]
+    public function copyrightKeyMustExist(): void
+    {
+        $values = self::faker()->assetResponse()['asset'];
+        unset($values['copyright']);
+
+        self::expectException(\InvalidArgumentException::class);
+
+        new Asset($values);
+    }
+
+    #[Test]
+    public function focus(): void
+    {
+        $faker = self::faker();
+
+        $values = $faker->assetResponse([
+            'asset' => [
+                'focus' => '50x50',
+            ],
+        ])['asset'];
+
+        self::assertSame($values['focus'], (new Asset($values))->focus);
+    }
+
+    #[Test]
+    public function focusCanBeNull(): void
+    {
+        $values = self::faker()->assetResponse([
+            'asset' => [
+                'focus' => null,
+            ],
+        ])['asset'];
+
+        self::assertNull((new Asset($values))->focus);
+    }
+
+    #[Test]
+    public function focusKeyMustExist(): void
+    {
+        $values = self::faker()->assetResponse()['asset'];
+        unset($values['focus']);
+
+        self::expectException(\InvalidArgumentException::class);
+
+        new Asset($values);
+    }
+
+    #[Test]
+    public function isPrivate(): void
+    {
+        $values = self::faker()->assetResponse([
+            'asset' => [
+                'is_private' => true,
+            ],
+        ])['asset'];
+
+        self::assertTrue((new Asset($values))->isPrivate);
+    }
+
+    #[Test]
+    public function isPrivateFalse(): void
+    {
+        $values = self::faker()->assetResponse([
+            'asset' => [
+                'is_private' => false,
+            ],
+        ])['asset'];
+
+        self::assertFalse((new Asset($values))->isPrivate);
+    }
+
+    #[Test]
+    public function isPrivateKeyMustExist(): void
+    {
+        $values = self::faker()->assetResponse()['asset'];
+        unset($values['is_private']);
+
+        self::expectException(\InvalidArgumentException::class);
+
+        new Asset($values);
+    }
+
+    #[Test]
+    public function title(): void
+    {
+        $faker = self::faker();
+
+        $values = $faker->assetResponse([
+            'asset' => [
+                'title' => $faker->sentence(),
+            ],
+        ])['asset'];
+
+        self::assertSame($values['title'], (new Asset($values))->title);
+    }
+
+    #[Test]
+    public function titleCanBeNull(): void
+    {
+        $values = self::faker()->assetResponse([
+            'asset' => [
+                'title' => null,
+            ],
+        ])['asset'];
+
+        self::assertNull((new Asset($values))->title);
+    }
+
+    #[Test]
+    public function titleKeyMustExist(): void
+    {
+        $values = self::faker()->assetResponse()['asset'];
+        unset($values['title']);
+
+        self::expectException(\InvalidArgumentException::class);
+
+        new Asset($values);
+    }
 }

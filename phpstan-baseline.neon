@@ -1,7 +1,7 @@
 parameters:
 	ignoreErrors:
 		-
-			message: '#^Method Storyblok\\Api\\Bridge\\Faker\\Provider\\StoryblokProvider\:\:assetResponse\(\) should return array\{asset\: array\{filename\: string, created_at\: string, updated_at\: string, expire_at\: string\|null, content_length\: int, signed_url\: string, content_type\: string\}\} but returns array\.$#'
+			message: '#^Method Storyblok\\Api\\Bridge\\Faker\\Provider\\StoryblokProvider\:\:assetResponse\(\) should return array\{asset\: array\{filename\: string, created_at\: string, updated_at\: string, expire_at\: string\|null, content_length\: int, signed_url\: string, content_type\: string, alt\: string\|null, \.\.\.\}\} but returns array\.$#'
 			identifier: return.type
 			count: 1
 			path: src/Bridge/Faker/Provider/StoryblokProvider.php

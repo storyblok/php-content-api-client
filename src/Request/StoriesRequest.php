@@ -65,6 +65,7 @@ final readonly class StoriesRequest
         public SlugCollection $bySlugs = new SlugCollection(),
         public ?StoryLevel $level = null,
         public ?bool $isStartpage = null,
+        public ?string $fallbackLanguage = null,
     ) {
         Assert::stringNotEmpty($language);
         Assert::lessThanEq($this->pagination->perPage, self::MAX_PER_PAGE);
@@ -95,6 +96,7 @@ final readonly class StoriesRequest
      *     updated_at_lt?: string,
      *     level?: int,
      *     is_startpage?: bool,
+     *     fallback_lang?: string,
      * }
      */
     public function toArray(): array
@@ -184,6 +186,10 @@ final readonly class StoriesRequest
 
         if (null !== $this->isStartpage) {
             $array['is_startpage'] = $this->isStartpage ? 1 : 0;
+        }
+
+        if (null !== $this->fallbackLanguage) {
+            $array['fallback_lang'] = $this->fallbackLanguage;
         }
 
         return $array;

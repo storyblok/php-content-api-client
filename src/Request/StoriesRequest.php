@@ -16,6 +16,7 @@ namespace Storyblok\Api\Request;
 
 use Storyblok\Api\Domain\Value\Dto\Pagination;
 use Storyblok\Api\Domain\Value\Dto\SortBy;
+use Storyblok\Api\Domain\Value\Dto\StoryLevel;
 use Storyblok\Api\Domain\Value\Dto\Version;
 use Storyblok\Api\Domain\Value\Field\FieldCollection;
 use Storyblok\Api\Domain\Value\Filter\FilterCollection;
@@ -62,6 +63,8 @@ final readonly class StoriesRequest
         public ?UpdatedAtGt $updatedAtGt = null,
         public ?UpdatedAtLt $updatedAtLt = null,
         public SlugCollection $bySlugs = new SlugCollection(),
+        public ?StoryLevel $level = null,
+        public ?bool $isStartpage = null,
     ) {
         Assert::stringNotEmpty($language);
         Assert::lessThanEq($this->pagination->perPage, self::MAX_PER_PAGE);
@@ -90,6 +93,8 @@ final readonly class StoriesRequest
      *     first_published_at_lt?: string,
      *     updated_at_gt?: string,
      *     updated_at_lt?: string,
+     *     level?: int,
+     *     is_startpage?: bool,
      * }
      */
     public function toArray(): array
@@ -171,6 +176,14 @@ final readonly class StoriesRequest
 
         if ($this->bySlugs->count() > 0) {
             $array['by_slugs'] = $this->bySlugs->toString();
+        }
+
+        if (null !== $this->level) {
+            $array['level'] = $this->level->value;
+        }
+
+        if (null !== $this->isStartpage) {
+            $array['is_startpage'] = $this->isStartpage ? 1 : 0;
         }
 
         return $array;

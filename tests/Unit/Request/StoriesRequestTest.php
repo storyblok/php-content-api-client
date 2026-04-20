@@ -370,6 +370,22 @@ final class StoriesRequestTest extends TestCase
     }
 
 
+    #[Test]
+    public function toArrayWithContentType(): void
+    {
+        $request = new StoriesRequest(
+            contentType: 'article',
+        );
+
+        self::assertSame([
+            'language' => 'default',
+            'page' => 1,
+            'per_page' => 25,
+            'content_type' => 'article',
+        ], $request->toArray());
+    }
+
+
     #[DataProvider('levelProvider')]
     #[Test]
     public function toArrayLevel(StoryLevel $level, int $expected): void
@@ -387,17 +403,6 @@ final class StoriesRequestTest extends TestCase
     }
 
 
-    /**
-     * @return iterable<string, array{0: StoryLevel, 1: int}>
-     */
-    public static function levelProvider(): iterable
-    {
-        yield 'root' => [StoryLevel::Root, 1];
-        yield 'top-level' => [StoryLevel::TopLevel, 2];
-        yield 'second-level' => [StoryLevel::SecondLevel, 3];
-    }
-
-
     #[DataProvider('isStartpageProvider')]
     #[Test]
     public function toArrayIsStartpage(bool $isStartpage, int $expected): void
@@ -412,6 +417,17 @@ final class StoriesRequestTest extends TestCase
             'per_page' => 25,
             'is_startpage' => $expected,
         ], $request->toArray());
+    }
+
+
+    /**
+     * @return iterable<string, array{0: StoryLevel, 1: int}>
+     */
+    public static function levelProvider(): iterable
+    {
+        yield 'root' => [StoryLevel::Root, 1];
+        yield 'top-level' => [StoryLevel::TopLevel, 2];
+        yield 'second-level' => [StoryLevel::SecondLevel, 3];
     }
 
 

@@ -66,6 +66,7 @@ final readonly class StoriesRequest
         public ?StoryLevel $level = null,
         public ?bool $isStartpage = null,
         public ?string $fallbackLanguage = null,
+        public ?string $contentType = null,
     ) {
         Assert::stringNotEmpty($language);
         Assert::lessThanEq($this->pagination->perPage, self::MAX_PER_PAGE);
@@ -97,6 +98,7 @@ final readonly class StoriesRequest
      *     level?: int,
      *     is_startpage?: bool,
      *     fallback_lang?: string,
+     *     content_type?: string,
      * }
      */
     public function toArray(): array
@@ -190,6 +192,10 @@ final readonly class StoriesRequest
 
         if (null !== $this->fallbackLanguage) {
             $array['fallback_lang'] = $this->fallbackLanguage;
+        }
+
+        if (null !== $this->contentType) {
+            $array['content_type'] = $this->contentType;
         }
 
         return $array;

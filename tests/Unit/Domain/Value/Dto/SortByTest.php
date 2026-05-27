@@ -20,6 +20,8 @@ use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Dto\Direction;
 use Storyblok\Api\Domain\Value\Dto\SortBy;
+use Storyblok\Api\Domain\Value\Dto\SortByDataType;
+use Storyblok\Api\Domain\Value\Dto\SortByNulls;
 use Storyblok\Api\Tests\Util\FakerTrait;
 
 /**
@@ -53,5 +55,32 @@ final class SortByTest extends TestCase
         $value = self::faker()->word();
 
         self::assertSame(\sprintf('%s:%s', $value, Direction::Asc->value), (new SortBy($value, Direction::Asc))->toString());
+    }
+
+    #[Test]
+    public function toStringMethodWithDataType(): void
+    {
+        self::assertSame(
+            'content.price:asc:float',
+            (new SortBy('content.price', Direction::Asc, SortByDataType::Float))->toString(),
+        );
+    }
+
+    #[Test]
+    public function toStringMethodWithNullHandling(): void
+    {
+        self::assertSame(
+            'path:desc:nulls_first',
+            (new SortBy('path', Direction::Desc, null, SortByNulls::First))->toString(),
+        );
+    }
+
+    #[Test]
+    public function toStringMethodWithDataTypeAndNullHandling(): void
+    {
+        self::assertSame(
+            'content.event_number:desc:int:nulls_last',
+            (new SortBy('content.event_number', Direction::Desc, SortByDataType::Int, SortByNulls::Last))->toString(),
+        );
     }
 }

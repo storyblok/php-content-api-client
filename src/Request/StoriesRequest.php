@@ -16,6 +16,7 @@ namespace Storyblok\Api\Request;
 
 use Storyblok\Api\Domain\Value\Dto\Pagination;
 use Storyblok\Api\Domain\Value\Dto\SortBy;
+use Storyblok\Api\Domain\Value\Dto\SortByCollection;
 use Storyblok\Api\Domain\Value\Dto\StoryLevel;
 use Storyblok\Api\Domain\Value\Dto\Version;
 use Storyblok\Api\Domain\Value\Field\FieldCollection;
@@ -45,7 +46,7 @@ final readonly class StoriesRequest
     public function __construct(
         public string $language = 'default',
         public Pagination $pagination = new Pagination(perPage: self::PER_PAGE),
-        public ?SortBy $sortBy = null,
+        public null|SortBy|SortByCollection $sortBy = null,
         public FilterCollection $filters = new FilterCollection(),
         public FieldCollection $excludeFields = new FieldCollection(),
         public TagCollection $withTags = new TagCollection(),
@@ -107,7 +108,11 @@ final readonly class StoriesRequest
             'per_page' => $this->pagination->perPage,
         ];
 
-        if (null !== $this->sortBy) {
+        if ($this->sortBy instanceof SortBy) {
+            $array['sort_by'] = $this->sortBy->toString();
+        }
+
+        if ($this->sortBy instanceof SortByCollection && $this->sortBy->count() > 0) {
             $array['sort_by'] = $this->sortBy->toString();
         }
 

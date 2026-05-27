@@ -24,12 +24,19 @@ final readonly class SortBy
     public function __construct(
         public string $field,
         public Direction $direction,
+        public ?SortByDataType $dataType = null,
+        public ?SortByNulls $nulls = null,
     ) {
         TrimmedNonEmptyString::fromString($field);
     }
 
     public function toString(): string
     {
-        return \sprintf('%s:%s', $this->field, $this->direction->value);
+        return implode(':', array_filter([
+            $this->field,
+            $this->direction->value,
+            $this->dataType?->value,
+            $this->nulls?->value,
+        ]));
     }
 }

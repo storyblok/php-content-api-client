@@ -19,6 +19,9 @@ use PHPUnit\Framework\Attributes\Test;
 use PHPUnit\Framework\TestCase;
 use Storyblok\Api\Domain\Value\Dto\Direction;
 use Storyblok\Api\Domain\Value\Dto\SortBy;
+use Storyblok\Api\Domain\Value\Dto\SortByCollection;
+use Storyblok\Api\Domain\Value\Dto\SortByDataType;
+use Storyblok\Api\Domain\Value\Dto\SortByNulls;
 use Storyblok\Api\Domain\Value\Dto\StoryLevel;
 use Storyblok\Api\Domain\Value\Dto\Version;
 use Storyblok\Api\Domain\Value\Field\Field;
@@ -74,6 +77,35 @@ final class StoriesRequestTest extends TestCase
             'page' => 1,
             'per_page' => 25,
             'sort_by' => 'name:asc',
+        ], $request->toArray());
+    }
+
+    #[Test]
+    public function toArrayWithAdvancedSortBy(): void
+    {
+        $request = new StoriesRequest(sortBy: new SortBy('content.price', Direction::Asc, SortByDataType::Float, SortByNulls::Last));
+
+        self::assertSame([
+            'language' => 'default',
+            'page' => 1,
+            'per_page' => 25,
+            'sort_by' => 'content.price:asc:float:nulls_last',
+        ], $request->toArray());
+    }
+
+    #[Test]
+    public function toArrayWithSortByCollection(): void
+    {
+        $request = new StoriesRequest(sortBy: new SortByCollection([
+            new SortBy('name', Direction::Desc),
+            new SortBy('slug', Direction::Asc),
+        ]),);
+
+        self::assertSame([
+            'language' => 'default',
+            'page' => 1,
+            'per_page' => 25,
+            'sort_by' => 'name:desc,slug:asc',
         ], $request->toArray());
     }
 

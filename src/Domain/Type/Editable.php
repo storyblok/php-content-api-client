@@ -45,7 +45,6 @@ final readonly class Editable implements \Stringable
         );
 
         Assert::keyExists($values, 'uid');
-        Assert::uuid($values['uid']);
         $this->uuid = new Uuid($values['uid']);
 
         Assert::keyExists($values, 'id');

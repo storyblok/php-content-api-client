@@ -29,6 +29,7 @@ final readonly class StoryRequest
         public ?Version $version = null,
         public RelationCollection $withRelations = new RelationCollection(),
         public ResolveLinks $resolveLinks = new ResolveLinks(),
+        public ?string $fallbackLanguage = null,
     ) {
         Assert::stringNotEmpty($language);
     }
@@ -40,6 +41,7 @@ final readonly class StoryRequest
      *     resolve_relations?: string,
      *     resolve_links?: string,
      *     resolve_links_level?: int,
+     *     fallback_lang?: string,
      * }
      */
     public function toArray(): array
@@ -59,6 +61,10 @@ final readonly class StoryRequest
         if (null !== $this->resolveLinks->type) {
             $array['resolve_links'] = $this->resolveLinks->type->value;
             $array['resolve_links_level'] = $this->resolveLinks->level->value;
+        }
+
+        if (null !== $this->fallbackLanguage) {
+            $array['fallback_lang'] = $this->fallbackLanguage;
         }
 
         return $array;
